@@ -5,13 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
+    name: '',
+    identity:'',
+    telephone: '',
+    email: ''
 
   },
 
   nextStep: function() {
+    let {name,identity,telephone,email} = this.data;
     wx.navigateTo({
       url: '../createWarehouse2/createWarehouse2'
     })
+  },
+
+  checkName: function(name){
+    
   },
 
   /**
