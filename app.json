@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/authorityManage/authorityManage",
+    "pages/authorityManagePerson/authorityManagePerson",
+    "pages/test/test",
+    "pages/index/index",
+    "pages/warehouseInfoManage/warehouseInfoManage",
+    "pages/createWarehouse3/createWarehouse3",
+    "pages/createWarehouse2/createWarehouse2",
+    "pages/createWarehouse/createWarehouse",
+    "pages/mainPage/mainPage"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#409eff",
+    "navigationStyle": "custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

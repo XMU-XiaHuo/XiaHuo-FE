@@ -1,0 +1,25 @@
+<!--components/create-steps/create-steps.wxml-->
+<view>
+    <i-steps current="{{current}}">
+      <i-step icon="flag">
+        <view slot="title" class="step-title">
+          开始创建仓库
+        </view>
+      </i-step>
+      <i-step icon="brush">
+        <view slot="title" class="step-title">
+          完善个人信息
+        </view>
+      </i-step>
+      <i-step icon="brush">
+        <view slot="title" class="step-title">
+          完善仓库信息
+        </view>
+      </i-step>
+       <i-step icon="right">
+        <view slot="title" class="step-title">
+          创建完成
+        </view>
+      </i-step>
+    </i-steps>
+  </view>

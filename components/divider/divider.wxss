@@ -1,0 +1,6 @@
+/* components/divider/divider.wxss */
+.divider{
+  width: 100%;
+  height: 1rpx;
+  background-color: #DCDFE6;
+}

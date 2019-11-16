@@ -1,0 +1,7 @@
+/* pages/warehouseInfoManage/warehouseInfoManage.wxss */
+.bottom-button{
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  transform: translateY(-100%);
+}

@@ -1,0 +1,5 @@
+<!--components/back-top-menu/back-top-menu.wxml-->
+<view class="back-top-menu">
+  <image class="menu-img" src="image/back.png" data-url="{{backUrl}}" bindtap="back"></image>
+  <view class="title">{{title}}</view>
+</view>

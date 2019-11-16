@@ -1,0 +1,142 @@
+/* components/top-menu/top-menu.wxss */
+
+.top-menu {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 65px;
+  background-color: #409eff;
+  padding: 25px 0 0 0;
+}
+
+.menu-img {
+  width: 30px;
+  height: 30px;
+  margin-left: 13px;
+}
+
+.title {
+  display: inline-block;
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+}
+
+.sidebar-container {
+  position: absolute;
+  top: 65px;
+  bottom: 0;
+  width: 500rpx;
+  background-color: white;
+  transition: margin-left 0.5s;
+  z-index: 100;
+}
+
+.sidebar-hidden {
+  margin-left: -500rpx;
+}
+
+.mask {
+  position: fixed;
+  top: 65px;
+  width: 100vh;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.user-info {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 30rpx 0 30rpx 30rpx;
+  margin-bottom: 10rpx;
+}
+
+.avatar-img {
+  display: block;
+  width: 130rpx;
+  height: 130rpx;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.avatar-container {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 150rpx;
+  height: 150rpx;
+  padding: 10rpx;
+}
+
+.text-container {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 150rpx;
+  vertical-align: top;
+  padding: 20rpx 0 20rpx 25rpx;
+}
+
+.user-name {
+  display: inline-block;
+  font-size: 16px;
+  width: 150rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  line-height: 1em;
+}
+
+.warehouse-name {
+  margin-top: 25rpx;
+  width: 250rpx;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: text-bottom;
+  line-height: 1em;
+}
+
+.menu-icon {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+
+.menu-title {
+  vertical-align: text-bottom;
+  line-height: 1em;
+  margin-left: 20rpx;
+}
+
+.bottom-bar {
+  position: absolute;
+  top: 100%;
+  transform: translateY(-100%);
+  height: 100rpx;
+  width: 100%;
+}
+
+.bottom-container {
+  height: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.exit {
+  margin-right: 30rpx;
+}
+
+.exit > span {
+  font-size: 16px;
+}
+
+.exit-icon {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}

@@ -1,0 +1,6 @@
+/* pages/createWarehouse/createWarehouse.wxss */
+
+.create-warehouse{
+  position: relative;
+  height: 100vh;
+}

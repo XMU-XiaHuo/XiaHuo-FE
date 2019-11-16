@@ -1,0 +1,83 @@
+/* pages/authorityManage/authorityManage.wxss */
+
+.tip {
+  text-align: right;
+  font-size: 13px;
+  color: #80848f;
+  margin-bottom: 20rpx;
+  padding-right: 20rpx;
+}
+
+.user-name {
+  display: inline-block;
+  margin: 0 20rpx;
+  font-size: 15px;
+}
+
+.i-swipeout-demo-button-group {
+  height: 100%;
+}
+
+.i-swipeout-demo-button {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 100%;
+}
+
+.button-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.delete {
+  background-color: #f56c6c;
+}
+
+.edit {
+  background-color: #e6a23c;
+}
+
+.role-tag {
+  margin-right: 15rpx;
+}
+
+.edit-modal {
+  height: 800rpx;
+}
+
+.i-modal-main {
+  height: 800rpx !important;
+}
+
+.edit-modal-container {
+  text-align: left;
+}
+
+.have-role {
+  margin-bottom: 20rpx;
+  padding: 20rpx 0 20rpx 20rpx;
+}
+
+.have-role-text {
+  padding-bottom: 20rpx;
+  display: inline-block;
+}
+
+.confirm-delete {
+  color: #444;
+  font-size: 16px;
+  margin-bottom: 10rpx;
+}
+
+.bottom-sticky-button{
+  position: fixed;
+  width: 100%;
+  top: 100%;
+  transform: translateY(-100%);
+}

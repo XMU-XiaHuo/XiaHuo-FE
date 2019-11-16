@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-drawer": "../../iview/drawer/index",
+    "i-cell-group": "../../iview/cell-group/index",
+    "i-cell": "../../iview/cell/index",
+    "role-tag": "../../components/role-tag/role-tag",
+    "divider": "../../components/divider/divider"
+    
+  }
+}

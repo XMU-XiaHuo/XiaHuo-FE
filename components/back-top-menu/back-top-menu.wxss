@@ -1,0 +1,24 @@
+/* components/back-top-menu/back-top-menu.wxss */
+.back-top-menu {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 65px;
+  background-color: #409eff;
+  padding: 25px 0 0 0;
+}
+
+.menu-img {
+  width: 30px;
+  height: 30px;
+  margin-left: 13px;
+}
+
+.title {
+  display: inline-block;
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+}

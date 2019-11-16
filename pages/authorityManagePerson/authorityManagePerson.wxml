@@ -1,0 +1,15 @@
+<!--pages/authorityManagePerson/authorityManagePerson.wxml-->
+<view class="authority-manage-person">
+  <back-top-menu title="修改权限"></back-top-menu>
+  <i-cell-group>
+    <i-cell wx:for="{{roleList}}" wx:key="index" title="{{item.title}}" label="{{item.label}}">
+      <i-switch slot="footer" value="{{item.switch}}" bind:change="onSwitchChange" data-index="{{index}}">
+        <i-icon type="right" slot="open"></i-icon>
+        <i-icon type="close" slot="close"></i-icon>
+      </i-switch>
+    </i-cell>
+  </i-cell-group>
+  <view class="bottom-button">
+    <i-button bind:click="nextStep" type="primary" shape="circle">保存</i-button>
+  </view>
+</view>

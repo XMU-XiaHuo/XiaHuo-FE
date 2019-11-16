@@ -1,0 +1,18 @@
+<!--pages/createWarehouse3/createWarehouse3.wxml-->
+<view class="create-warehouse3">
+  <back-top-menu title="创建完成" backUrl="../index/index"></back-top-menu>
+  <view class="empty"></view>
+  <create-steps current="3"></create-steps>
+  <view class="empty"></view>
+  <view class="empty"></view>
+  <view class="success-info">
+    <image class="success-img" src="image/success.png"></image>
+  </view>
+  <view class="success-text">
+    创建成功 !
+  </view>
+  <view class="bottom-button">
+    <i-button bind:click="nextStep" type="primary" shape="circle">完成</i-button>
+  </view>
+
+</view>

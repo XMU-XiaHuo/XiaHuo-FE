@@ -1,0 +1,13 @@
+.container{
+  font-weight: lighter;
+  font-family: "Roboto", "Helvetica", arial, sans-serif;
+}
+.empty{
+  height: 100rpx;
+}
+.bottom-button{
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  transform: translateY(-100%);
+}

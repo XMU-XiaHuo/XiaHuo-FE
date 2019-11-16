@@ -1,0 +1,25 @@
+/* components/role-tag/role-tag.wxss */
+.warehouse-role {
+  display: inline-block;
+  padding: 8rpx;
+  border-radius: 10rpx;
+  font-size: 14px;
+  line-height: 1em;
+  color: white;
+}
+
+.owner {
+  background-color: #e6a23c;
+}
+
+.admin {
+  background-color: #409eff;
+}
+
+.counter, .orderer, .storager, .picker {
+  background-color: #67c23a;
+}
+
+.none{
+  background-color: #F56C6C;
+}

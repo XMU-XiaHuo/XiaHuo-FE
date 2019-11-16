@@ -1,0 +1,10 @@
+<!--pages/test/test.wxml-->
+<view class="test">
+  <role-tag role="owner"></role-tag>
+  <role-tag role="admin"></role-tag>
+  <role-tag role="counter"></role-tag>
+  <role-tag role="orderer"></role-tag>
+  <role-tag role="picker"></role-tag>
+  <role-tag role="storager"></role-tag>
+  <role-tag role="none"></role-tag>
+</view>

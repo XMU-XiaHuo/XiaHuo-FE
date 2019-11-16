@@ -1,0 +1,5 @@
+<!--pages/mainPage/mainPage.wxml-->
+<view class="container">
+  <top-menu title="厦货"></top-menu>
+</view>
+

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-steps": "../../iview/steps/index",
+    "i-step": "../../iview/step/index"
+  }
+}

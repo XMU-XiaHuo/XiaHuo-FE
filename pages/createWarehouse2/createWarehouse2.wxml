@@ -1,0 +1,16 @@
+<!--pages/createWarehouse2/createWarehouse2.wxml-->
+<view class="create-warehouse2">
+  <back-top-menu title="完善仓库信息"></back-top-menu>
+  <view class="empty"></view>
+  <create-steps current="2"></create-steps>
+  <view class="empty"></view>
+  <i-panel title="请完善仓库信息:">
+    <i-input value="{{ value1 }}" title="仓库名" autofocus placeholder="请输入仓库名（2-10字）" />
+    <i-input value="{{ value2 }}" title="仓库地址" placeholder="请输入仓库地址" />
+    <i-input value="{{ value3 }}" type="textarea" title="仓库简介" placeholder="请输入仓库简介（不超过50字）" />
+  </i-panel>
+  <view class="bottom-button">
+    <i-button bind:click="nextStep" type="primary" shape="circle">提交</i-button>
+  </view>
+
+</view>

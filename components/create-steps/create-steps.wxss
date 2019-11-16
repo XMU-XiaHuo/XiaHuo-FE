@@ -1,0 +1,4 @@
+/* components/create-steps/create-steps.wxss */
+.step-title{
+  font-size: 13px;
+}

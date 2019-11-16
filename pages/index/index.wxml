@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="container">
+  <image src="{{logo}}" class='logo'></image>
+  <view class='welcome-text'>厦货欢迎您的到来</view>
+  <view class='welcome-text'>请选择您要进入的仓库</view>
+  <view class='warehouse-list'>
+    <view class='warehouse-container' wx:for="{{warehouse}}" bindtap="bindViewTap">
+      <view class="warehouse-name">{{item.name}}</view>
+      <role-tag role="{{item.role}}"></role-tag>
+    </view>
+    <view class="warehouse-container create" bindtap="jumpToCreatePage">
+      <view class="warehouse-name">{{item.name}}创建新仓库</view>
+      <image src="image/create.png" class="create-img"></image>
+    </view>
+  </view>
+</view>
