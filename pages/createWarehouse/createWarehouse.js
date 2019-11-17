@@ -46,18 +46,8 @@ Page({
   },
 
   nextStep: function() {
-    console.log(this.data.userInfo);
-    let {
-      name,
-      identity,
-      phone,
-      email
-    } = this.data.userInfo;
-
-    // 检测姓名
-    let checkNameResult = this.checkName(name);
-    this.setData({
-      ['errorInfo.nameError']: checkNameResult
+    wx.navigateTo({
+      url: '../createWarehouse2/createWarehouse2'
     })
 
     // 检测身份证号
@@ -75,6 +65,10 @@ Page({
     // wx.navigateTo({
     //   url: '../createWarehouse2/createWarehouse2'
     // })
+  },
+
+  checkName: function(name){
+    
   },
 
   /**
