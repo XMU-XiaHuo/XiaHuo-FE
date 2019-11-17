@@ -33,7 +33,7 @@ Page({
   checkName: function (name) {
     let regName = /^[\u4e00-\u9fa5]{2,4}$/;
     if (!regName.test(name)) {
-      return '姓名格式错误（应为2-4个汉字）';
+      return '姓名格式错误（应为 2 - 4 个汉字）';
     }
     return '';
   },
