@@ -3,8 +3,8 @@
     "create-steps": "../../components/create-steps/create-steps",
     "back-top-menu": "../../components/back-top-menu/back-top-menu",
     "i-panel": "../../iview/panel/index",
-    "i-input": "../../iview/input/index",
     "i-button": "../../iview/button/index",
+    "van-field": "../../vant/field/index",
     "divider": "../../components/divider/divider"
   }
 }

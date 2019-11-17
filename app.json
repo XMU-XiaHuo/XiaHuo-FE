@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/createWarehouse/createWarehouse",
     "pages/authorityManage/authorityManage",
     "pages/authorityManagePerson/authorityManagePerson",
     "pages/test/test",
@@ -7,7 +8,6 @@
     "pages/warehouseInfoManage/warehouseInfoManage",
     "pages/createWarehouse3/createWarehouse3",
     "pages/createWarehouse2/createWarehouse2",
-    "pages/createWarehouse/createWarehouse",
     "pages/mainPage/mainPage"
   ],
   "window": {
