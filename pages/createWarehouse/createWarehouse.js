@@ -19,7 +19,7 @@ Page({
     }
   },
 
-  //处理输入事件
+  // 处理输入事件
   inputEventCatcher: function (e) {
     let {
       key
@@ -53,7 +53,7 @@ Page({
       phone,
       email
     } = this.data.userInfo;
-
+    
     // 检测姓名
     let checkNameResult = this.checkName(name);
     this.setData({

@@ -5,7 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
+    warehouseInfo: {
+      name: '',
+      address: '',
+      info: ''
+    },
+    errorInfo: {
+      nameError: '',
+      addressError: '',
+      infoError: ''
+    }
+  },
 
+  // 处理输入事件
+  inputEventCatcher: function (e) {
+    let {
+      key
+    } = e.target.dataset;
+    let modifyKey = 'warehouseInfo.' + key;
+    this.setData({
+      [modifyKey]: e.detail
+    })
   },
 
   /**
