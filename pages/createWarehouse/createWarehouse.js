@@ -46,7 +46,6 @@ Page({
   },
 
   nextStep: function() {
-    console.log(this.data.userInfo);
     let {
       name,
       identity,
