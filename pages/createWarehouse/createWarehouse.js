@@ -45,6 +45,7 @@ Page({
     return '';
   },
 
+  // 下一步
   nextStep: function() {
     let {
       name,
@@ -74,10 +75,6 @@ Page({
     // wx.navigateTo({
     //   url: '../createWarehouse2/createWarehouse2'
     // })
-  },
-
-  checkName: function(name){
-    
   },
 
   /**
