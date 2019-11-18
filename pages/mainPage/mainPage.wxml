@@ -1,5 +1,12 @@
 <!--pages/mainPage/mainPage.wxml-->
 <view class="container">
   <top-menu title="厦货"></top-menu>
+
+  <van-grid column-num="3" square clickable>
+    <van-grid-item wx:for="{{ routeList }}" use-slot class="route-square">
+      <image class="route-icon" src="{{item.icon}}"></image>
+      <text class="route-title">{{item.title}}</text>
+    </van-grid-item>
+  </van-grid>
 </view>
 

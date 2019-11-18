@@ -35,6 +35,21 @@ Component({
         icon: 'image/goods.png'
       },
       {
+        title: '商品入库',
+        url: '../index/index',
+        icon: 'image/ruku.png'
+      },
+      {
+        title: '拣货',
+        url: '../index/index',
+        icon: 'image/pick.png'
+      },
+      {
+        title: '退换货',
+        url: '../index/index',
+        icon: 'image/tuihuo.png'
+      },
+      {
         title: '仓储盘点',
         url: '../index/index',
         icon: 'image/store.png'
@@ -53,7 +68,7 @@ Component({
         title: '报溢',
         url: '../index/index',
         icon: 'image/baoyi.png'
-      },
+      }
     ]
   },
 

@@ -1,1 +1,15 @@
 /* pages/mainPage/mainPage.wxss */
+
+.route-square:active {
+  background-color: #d9ecff;
+}
+
+.route-icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.route-title {
+  margin-top: 15rpx;
+  font-size: 15px;
+}
