@@ -1,7 +1,5 @@
 {
   "usingComponents": {
-    "van-grid": "../../vant/grid/index",
-    "van-grid-item": "../../vant/grid-item/index",
     "top-menu": "../../components/top-menu/top-menu",
     "role-tag": "../../components/role-tag/role-tag",
     "divider": "../../components/divider/divider"

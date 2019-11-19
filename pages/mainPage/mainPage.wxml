@@ -17,10 +17,16 @@
     </view>
   </view>
   <divider></divider>
-  <van-grid column-num="3" square clickable>
-    <van-grid-item wx:for="{{ routeList }}" use-slot class="route-square">
-      <image class="route-icon" src="{{item.icon}}"></image>
-      <text class="route-title">{{item.title}}</text>
-    </van-grid-item>
-  </van-grid>
+
+  <view class="grid-container">
+    <view wx:for="{{routeList}}" class="square {{index%3===2 ? 'bottom-border' : 'right-bottom-border'}}">
+      <view class="square-content">
+        <view>
+          <image class="route-icon" src="{{item.icon}}"></image>
+        </view>
+        <text class="route-title">{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+
 </view>
