@@ -1,12 +1,13 @@
 // pages/mainPage/mainPage.js
+const app = getApp();
 
-const imgPath = '../../components/top-menu'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: {},
     routeList: [{
         title: '个人信息管理',
         url: '../warehouseInfoManage/warehouseInfoManage',
@@ -70,7 +71,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo
+      });
+    } else {
+      app.eventEmitter.on('getUserInfo', (res) => {
+        this.setData({
+          userInfo: res.userInfo
+        })
+      })
+    };
   },
 
   /**

@@ -3,6 +3,30 @@
 .person-info{
   height: 250rpx;
   width: 100%;
+  padding: 40rpx 30rpx 40rpx 50rpx;
+  box-sizing: border-box;
+}
+
+.avatar-img-container{
+  
+}
+
+.avatar-img{
+  width: 170rpx;
+  height: 170rpx;
+}
+
+.text-container{
+  font-size: 16px;
+  vertical-align: top;
+  width: 470rpx;
+  height: 110rpx;
+  padding: 10rpx 0 0 30rpx;
+  box-sizing: border-box;
+}
+
+.warehouse-name{
+  margin-top: 10rpx;
 }
 
 .route-icon {

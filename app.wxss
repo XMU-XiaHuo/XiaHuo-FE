@@ -11,3 +11,6 @@
   top: 100%;
   transform: translateY(-100%);
 }
+.inline-b{
+  display: inline-block;
+}

@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/userAuthorize/userAuthorize",
     "pages/index/index",
     "pages/mainPage/mainPage",
+    "pages/userAuthorize/userAuthorize",
     "pages/createWarehouse2/createWarehouse2",
     "pages/warehouseInfoManage/warehouseInfoManage",
     "pages/createWarehouse/createWarehouse",

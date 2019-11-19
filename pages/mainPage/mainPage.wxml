@@ -1,8 +1,19 @@
 <!--pages/mainPage/mainPage.wxml-->
 <view class="container">
   <top-menu title="厦货"></top-menu>
-
-  <view class="person-info"></view>
+  <view class="person-info">
+    <view class="inline-b avatar-img-container">
+      <image src="{{userInfo.avatarUrl}}" class="avatar-img"></image>
+    </view>
+    <view class="inline-b text-container">
+      <view class="">
+        {{userInfo.nickName}} 
+      </view>
+      <view class="warehouse-name">
+        仓库名十个字十个字哦
+      </view>
+    </view>
+  </view>
   <divider></divider>
   <van-grid column-num="3" square clickable>
     <van-grid-item wx:for="{{ routeList }}" use-slot class="route-square">

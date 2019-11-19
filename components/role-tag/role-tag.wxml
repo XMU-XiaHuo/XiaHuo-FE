@@ -1,4 +1,2 @@
 <!--components/role-tag/role-tag.wxml-->
-<view class="warehouse-role {{role || operator}}">
-  {{roleMap[role] || '未定义'}}
-</view>
+<view class="warehouse-role-tag {{role || operator}}">{{roleMap[role]}}</view>
