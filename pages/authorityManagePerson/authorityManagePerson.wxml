@@ -1,5 +1,5 @@
 <!--pages/authorityManagePerson/authorityManagePerson.wxml-->
-<view class="authority-manage-person">
+<view class="authority-manage-person container">
   <back-top-menu title="修改权限"></back-top-menu>
   <i-cell-group>
     <i-cell wx:for="{{roleList}}" wx:key="index" title="{{item.title}}" label="{{item.label}}">

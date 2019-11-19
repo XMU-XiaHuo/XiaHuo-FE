@@ -1,11 +1,14 @@
 /* components/back-top-menu/back-top-menu.wxss */
 .back-top-menu {
+  position: fixed;
   display: flex;
   align-items: center;
   box-sizing: border-box;
   height: 65px;
-  background-color: #409eff;
+  width: 750rpx;
   padding: 25px 0 0 0;
+  margin-top: -65px;
+  background-color: #409eff;
 }
 
 .menu-img {

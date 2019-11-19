@@ -1,16 +1,18 @@
 <!--pages/mainPage/mainPage.wxml-->
 <view class="container">
   <top-menu title="厦货"></top-menu>
-  <view class="person-info">
+  <view class="person-info" style="background-image:url('image/bg.jpg')">
     <view class="inline-b avatar-img-container">
       <image src="{{userInfo.avatarUrl}}" class="avatar-img"></image>
     </view>
     <view class="inline-b text-container">
-      <view class="">
-        {{userInfo.nickName}} 
-      </view>
-      <view class="warehouse-name">
-        仓库名十个字十个字哦
+      <view class="text-ellipsis">{{userInfo.nickName}}</view>
+      <view class="warehouse-name text-ellipsis">仓库名</view>
+      <view class="role-container">
+        <role-tag role="picker" class="role-tag-list"></role-tag>
+        <role-tag role="counter" class="role-tag-list"></role-tag>
+        <role-tag role="orderer" class="role-tag-list"></role-tag>
+        <!-- <role-tag role="storager" class="role-tag-list"></role-tag> -->
       </view>
     </view>
   </view>
