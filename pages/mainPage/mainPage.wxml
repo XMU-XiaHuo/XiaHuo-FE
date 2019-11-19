@@ -19,7 +19,7 @@
   <divider></divider>
 
   <view class="grid-container">
-    <view wx:for="{{routeList}}" class="square {{index%3===2 ? 'bottom-border' : 'right-bottom-border'}}">
+    <view wx:for="{{routeList}}" class="square {{index%3===2 ? 'bottom-border' : 'right-bottom-border'}}" bindtap="navigateTo" data-url="{{item.url}}">
       <view class="square-content">
         <view>
           <image class="route-icon" src="{{item.icon}}"></image>

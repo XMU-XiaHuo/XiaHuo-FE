@@ -64,7 +64,19 @@ Page({
         icon: 'image/baoyi.png'
       }
     ]
+  },
 
+  navigateTo: function (e) {
+    let {
+      url
+    } = e.currentTarget.dataset;
+    if (url) {
+      wx.navigateTo({
+        url: e.currentTarget.dataset.url
+      })
+    } else {
+      
+    }
   },
 
   /**
