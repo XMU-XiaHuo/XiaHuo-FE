@@ -10,7 +10,7 @@ Page({
     userInfo: {},
     routeList: [{
         title: '个人信息管理',
-        url: '../warehouseInfoManage/warehouseInfoManage',
+        url: '../personInfoManage/personInfoManage',
         icon: 'image/info.png'
       },
       {
@@ -66,7 +66,7 @@ Page({
     ]
   },
 
-  navigateTo: function (e) {
+  navigateTo: function(e) {
     let {
       url
     } = e.currentTarget.dataset;
@@ -75,7 +75,7 @@ Page({
         url: e.currentTarget.dataset.url
       })
     } else {
-      
+
     }
   },
 

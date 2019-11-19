@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/personInfoManage/personInfoManage",
     "pages/mainPage/mainPage",
     "pages/userAuthorize/userAuthorize",
     "pages/index/index",
@@ -9,7 +10,8 @@
     "pages/authorityManage/authorityManage",
     "pages/authorityManagePerson/authorityManagePerson",
     "pages/test/test",
-    "pages/createWarehouse3/createWarehouse3"
+    "pages/createWarehouse3/createWarehouse3",
+    "pages/myAuthority/myAuthority"
   ],
   "window": {
     "backgroundTextStyle": "light",

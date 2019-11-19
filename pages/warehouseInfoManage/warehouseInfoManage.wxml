@@ -2,12 +2,12 @@
 <view class="container">
   <back-top-menu title="仓库信息管理" backUrl="../mainPage/mainPage"></back-top-menu>
   <view class="empty"></view>
-  <i-panel title="仓库信息:">
+  <i-panel>
     <van-field label="仓库名" value="{{ warehouseInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入仓库名（2-10字）" error-message="{{errorInfo.nameError}}" data-key="name" />
     <van-field label="仓库地址" value="{{ warehouseInfo.address }}" bind:change="inputEventCatcher" placeholder="请输入仓库地址" error-message="{{errorInfo.addressError}}" data-key="address" />
     <van-field label="仓库简介" value="{{ warehouseInfo.info }}" bind:change="inputEventCatcher" placeholder="请输入仓库简介（不超过50字）" error-message="{{errorInfo.infoError}}" data-key="info" type="textarea" autosize/>
   </i-panel>
   <view class="bottom-button">
-    <i-button bind:click="confirmEdit" type="primary" shape="circle">确定</i-button>
+    <i-button bind:click="confirmEdit" type="primary" shape="circle">保存</i-button>
   </view>
 </view>

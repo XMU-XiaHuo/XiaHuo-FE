@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "back-top-menu": "../../components/back-top-menu/back-top-menu",
+    "i-panel": "../../iview/panel/index",
+    "van-field": "../../vant/field/index",
+    "van-cell": "../../vant/cell/index",
+    "i-button": "../../iview/button/index"
+  }
+}

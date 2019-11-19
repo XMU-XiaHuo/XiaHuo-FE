@@ -21,7 +21,7 @@ Component({
     maskHidden: true,
     routeList: [{
         title: '个人信息管理',
-        url: '../index/index',
+        url: '../personInfoManage/personInfoManage',
         icon: 'image/info.png'
       }, {
         title: '仓库信息管理',
