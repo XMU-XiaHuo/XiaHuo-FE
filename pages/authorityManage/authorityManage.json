@@ -6,7 +6,6 @@
     "i-swipeout": "../../iview/swipeout/index",
     "i-action-sheet": "../../iview/action-sheet/index",
     "i-button": "../../iview/button/index",
-    "role-tag": "../../components/role-tag/role-tag",
-    "divider": "../../components/divider/divider"
+    "role-tag": "../../components/role-tag/role-tag"
   }
 }

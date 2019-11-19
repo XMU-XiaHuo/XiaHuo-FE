@@ -1,0 +1,39 @@
+/* pages/userAuthorize/userAuthorize.wxss */
+
+.container {
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 175rpx;
+}
+
+.can-use {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 250rpx;
+  height: 250rpx;
+}
+
+.instructions{
+  width: 80%;
+  margin-top: 70rpx;
+}
+
+.instructions-title{
+  font-size: 25px;
+  display: inline-block;
+  margin-right: 20rpx;
+}
+
+.instructions-title-english{
+  font-size: 17px;
+  display: inline-block;
+}
+
+.instructions-content{
+  font-size: 15px;
+}

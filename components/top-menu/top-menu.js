@@ -20,6 +20,10 @@ Component({
     sideBarHidden: true,
     maskHidden: true,
     routeList: [{
+        title: '个人信息管理',
+        url: '../index/index',
+        icon: 'image/info.png'
+      }, {
         title: '仓库信息管理',
         url: '../warehouseInfoManage/warehouseInfoManage',
         icon: 'image/warehouse.png'

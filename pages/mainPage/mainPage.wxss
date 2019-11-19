@@ -1,7 +1,8 @@
 /* pages/mainPage/mainPage.wxss */
 
-.route-square:active {
-  background-color: #d9ecff;
+.person-info{
+  height: 250rpx;
+  width: 100%;
 }
 
 .route-icon {

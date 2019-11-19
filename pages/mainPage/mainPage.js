@@ -8,54 +8,59 @@ Page({
    */
   data: {
     routeList: [{
+        title: '个人信息管理',
+        url: '../warehouseInfoManage/warehouseInfoManage',
+        icon: 'image/info.png'
+      },
+      {
         title: '仓库信息管理',
         url: '../warehouseInfoManage/warehouseInfoManage',
-        icon: imgPath + '/image/warehouse.png'
+        icon: 'image/warehouse.png'
       },
       {
         title: '权限管理',
         url: '../authorityManage/authorityManage',
-        icon: imgPath + '/image/quanxian.png'
+        icon: 'image/quanxian.png'
       },
       {
         title: '商品管理',
         url: '../index/index',
-        icon: imgPath + '/image/goods.png'
+        icon: 'image/goods.png'
       },
       {
         title: '商品入库',
         url: '../index/index',
-        icon: imgPath + '/image/ruku.png'
+        icon: 'image/ruku.png'
       },
       {
         title: '拣货',
         url: '../index/index',
-        icon: imgPath + '/image/pick.png'
+        icon: 'image/pick.png'
       },
       {
         title: '退换货',
         url: '../index/index',
-        icon: imgPath + '/image/tuihuo.png'
+        icon: 'image/tuihuo.png'
       },
       {
         title: '仓储盘点',
         url: '../index/index',
-        icon: imgPath + '/image/store.png'
+        icon: 'image/store.png'
       },
       {
         title: '查看报表',
         url: '../index/index',
-        icon: imgPath + '/image/baobiao.png'
+        icon: 'image/baobiao.png'
       },
       {
         title: '报损',
         url: '../index/index',
-        icon: imgPath + '/image/baosun.png'
+        icon: 'image/baosun.png'
       },
       {
         title: '报溢',
         url: '../index/index',
-        icon: imgPath + '/image/baoyi.png'
+        icon: 'image/baoyi.png'
       }
     ]
 

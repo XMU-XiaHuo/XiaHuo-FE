@@ -1,0 +1,26 @@
+<!--pages/userAuthorize/userAuthorize.wxml-->
+<view class="container">
+  <view wx:if="{{canIUse}}" class="can-use">
+    <image src="../index/image/logo.png" class='logo'></image>
+    <view class="instructions">
+      <view class="instructions-title">使用须知</view>
+      <view class="instructions-title-english">INSTRUCTIONS</view>
+      <view>
+        <text decode="{{true}}" class="instructions-content">
+          &nbsp;&nbsp;&nbsp;&nbsp;本小程序（ 以下简称为"厦货" ）由厦门大学信息学院软件工程学生开发及管理。厦货的内容面向和适用于中华人民共和国（不包括香港特别行政区，澳门特别行政区及台湾地区）境内的顾客（法人或自然人）。
+        </text>
+      </view>
+      <view>
+        <text decode="{{true}}" class="instructions-content">
+          &nbsp;&nbsp;&nbsp;&nbsp;开发者将努力使厦货的内容尽量做到准确和完整。并有权根据需要随时修改或变更本网站中内容。厦货提供的所有的产品及服务的信息，仅供您作参考之用，其并非要约，也不具有其它任何法律约束力。您如需获取更准确的信息，请与开发者联系。
+        </text>
+      </view>
+    </view>
+    <button class="auth-button"></button>
+    <view class="bottom-button">
+      <i-button type="primary" shape="circle" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</i-button>
+    </view>
+  </view>
+
+  <view wx:else>请升级微信版本</view>
+</view>

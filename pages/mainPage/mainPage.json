@@ -2,6 +2,7 @@
   "usingComponents": {
     "van-grid": "../../vant/grid/index",
     "van-grid-item": "../../vant/grid-item/index",
-    "top-menu": "../../components/top-menu/top-menu"
+    "top-menu": "../../components/top-menu/top-menu",
+    "divider": "../../components/divider/divider"
   }
 }
