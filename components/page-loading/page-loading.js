@@ -7,6 +7,14 @@ Component({
     content: {
       type: String,
       value: ''
+    },
+    isPart: {
+      type: Boolean,
+      value: false
+    },
+    visible: {
+      type: Boolean,
+      value: true
     }
   },
 

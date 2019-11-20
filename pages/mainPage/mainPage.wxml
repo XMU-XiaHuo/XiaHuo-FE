@@ -2,6 +2,7 @@
 <view class="container">
   <top-menu title="厦货"></top-menu>
   <view class="person-info" style="background-image:url('image/bg.jpg')">
+    <page-loading content="加载个人信息中..." isPart="{{true}}" visible="{{userInfoLoading}}"></page-loading>
     <view class="inline-b avatar-img-container">
       <image src="{{userInfo.avatarUrl}}" class="avatar-img"></image>
     </view>

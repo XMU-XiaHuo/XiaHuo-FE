@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "top-menu": "../../components/top-menu/top-menu",
+    "page-loading": "../../components/page-loading/page-loading",
     "role-tag": "../../components/role-tag/role-tag",
     "divider": "../../components/divider/divider"
   }

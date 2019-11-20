@@ -1,6 +1,7 @@
 /* pages/mainPage/mainPage.wxss */
 
 .person-info {
+  position: relative;
   height: 250rpx;
   width: 100%;
   padding: 40rpx 30rpx 40rpx 50rpx;

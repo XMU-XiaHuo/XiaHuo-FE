@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/mainPage/mainPage",
     "pages/pick/pick",
     "pages/authorityManage/authorityManage",
     "pages/myAuthority/myAuthority",
     "pages/personInfoManage/personInfoManage",
-    "pages/mainPage/mainPage",
     "pages/userAuthorize/userAuthorize",
     "pages/index/index",
     "pages/createWarehouse2/createWarehouse2",

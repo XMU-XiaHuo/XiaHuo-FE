@@ -8,6 +8,7 @@ Page({
    */
   data: {
     userInfo: {},
+    userInfoLoading: true,
     routeList: [{
         title: '个人信息管理',
         url: '../personInfoManage/personInfoManage',
@@ -85,12 +86,14 @@ Page({
   onLoad: function(options) {
     if (app.globalData.userInfo) {
       this.setData({
-        userInfo: app.globalData.userInfo
+        userInfo: app.globalData.userInfo,
+        userInfoLoading: false
       });
     } else {
       app.eventEmitter.on('getUserInfo', (res) => {
         this.setData({
-          userInfo: res.userInfo
+          userInfo: res.userInfo,
+          userInfoLoading: false
         })
       })
     };
