@@ -1,0 +1,4 @@
+<!--components/page-loading/page-loading.wxml-->
+<view class="page-loading">
+  <van-loading color="#409EFF" class="loading-img" vertical>{{content}}</van-loading>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "page-loading": "../../components/page-loading/page-loading",
+    "back-top-menu": "../../components/back-top-menu/back-top-menu"
+  }
+}

@@ -45,7 +45,7 @@ Component({
       },
       {
         title: '拣货',
-        url: '../index/index',
+        url: '../pick/pick',
         icon: 'image/pick.png'
       },
       {

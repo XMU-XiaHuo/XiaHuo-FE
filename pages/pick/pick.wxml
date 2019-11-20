@@ -1,0 +1,5 @@
+<!--pages/pick/pick.wxml-->
+<view class="container">
+  <back-top-menu title="开始拣货" backUrl="../mainPage/mainPage"></back-top-menu>
+  <page-loading content="加载扫描二维码.."></page-loading>
+</view>

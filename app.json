@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/pick/pick",
     "pages/authorityManage/authorityManage",
     "pages/myAuthority/myAuthority",
     "pages/personInfoManage/personInfoManage",
