@@ -1,18 +1,49 @@
 // pages/myAuthority/myAuthority.js
+const {
+  Roles,
+  Description
+} = require('../../data/role.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    roleList: []
   },
+
+  onSwitchChange(e) {
+    let {
+      index
+    } = e.currentTarget.dataset;
+    this.setData({
+      ['roleList[' + index + '].switch']: e.detail.value
+    })
+  },
+
+  formatRoleList: function () {
+    let res = [];
+    Object.keys(Roles).forEach((key,index) => {
+      if (key !== 'none') {
+        res.push({
+          title: Roles[key],
+          label: Description[key],
+          have: index%2 === 0
+        })
+      }
+    })
+    this.setData({
+      roleList: res
+    });
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.formatRoleList();
   },
 
   /**

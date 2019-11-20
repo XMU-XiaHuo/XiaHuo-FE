@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/authorityManage/authorityManage",
+    "pages/myAuthority/myAuthority",
     "pages/personInfoManage/personInfoManage",
     "pages/mainPage/mainPage",
     "pages/userAuthorize/userAuthorize",
@@ -7,11 +9,9 @@
     "pages/createWarehouse2/createWarehouse2",
     "pages/warehouseInfoManage/warehouseInfoManage",
     "pages/createWarehouse/createWarehouse",
-    "pages/authorityManage/authorityManage",
     "pages/authorityManagePerson/authorityManagePerson",
     "pages/test/test",
-    "pages/createWarehouse3/createWarehouse3",
-    "pages/myAuthority/myAuthority"
+    "pages/createWarehouse3/createWarehouse3"
   ],
   "window": {
     "backgroundTextStyle": "light",

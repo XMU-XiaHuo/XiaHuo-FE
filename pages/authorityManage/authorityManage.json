@@ -1,11 +1,11 @@
 {
   "usingComponents": {
-    "top-menu": "../../components/top-menu/top-menu",
     "i-panel": "../../iview/panel/index",
     "i-icon": "../../iview/icon/index",
     "i-swipeout": "../../iview/swipeout/index",
     "i-action-sheet": "../../iview/action-sheet/index",
     "i-button": "../../iview/button/index",
-    "role-tag": "../../components/role-tag/role-tag"
+    "role-tag": "../../components/role-tag/role-tag",
+    "back-top-menu": "../../components/back-top-menu/back-top-menu"
   }
 }
