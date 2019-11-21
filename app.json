@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
     "pages/leaveWarehouse/leaveWarehouse",
     "pages/mainPage/mainPage",
-    "pages/pick/pick",
     "pages/authorityManage/authorityManage",
     "pages/myAuthority/myAuthority",
     "pages/personInfoManage/personInfoManage",

@@ -16,7 +16,6 @@
         </text>
       </view>
     </view>
-    <button class="auth-button"></button>
     <view class="bottom-button">
       <i-button type="primary" shape="circle" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</i-button>
     </view>
