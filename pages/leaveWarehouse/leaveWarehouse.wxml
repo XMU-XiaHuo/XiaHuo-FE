@@ -1,0 +1,23 @@
+<!--pages/leaveWarehouse/leaveWarehouse.wxml-->
+<view class="container">
+  <back-top-menu title="退出仓库" backUrl="../personInfoManage/personInfoManage"></back-top-menu>
+  <view class="can-use">
+    <view class="instructions">
+      <view class="instructions-title">退出须知</view>
+      <view class="instructions-title-english">INSTRUCTIONS</view>
+      <view>
+        <text decode="{{true}}" class="instructions-content">
+          &nbsp;&nbsp;&nbsp;&nbsp;一旦确定退出仓库，将会删除仓库中与个人相关的数据，并且必须重新通过仓库创建者或仓库管理员邀请才能再次进入仓库。
+        </text>
+      </view>
+      <view>
+        <text decode="{{true}}" class="instructions-content">
+          &nbsp;&nbsp;&nbsp;&nbsp;如果您是本仓库的创建者，退出仓库意味着解散此仓库，系统将会删除所有的仓库信息，请确认无误后再进行操作。
+        </text>
+      </view>
+    </view>
+  </view>
+  <view class="bottom-button">
+    <i-button type="error" shape="circle">退出仓库</i-button>
+  </view>
+</view>
