@@ -55,7 +55,7 @@ Component({
       },
       {
         title: '仓储盘点',
-        url: '../index/index',
+        url: '../stockCheck/stockCheck',
         icon: 'image/store.png'
       },
       {

@@ -1,0 +1,7 @@
+<!--pages/stockCheck/stockCheck.wxml-->
+<view class="container">
+  <back-top-menu title="仓储盘点" backUrl="../mainPage/mainPage"></back-top-menu>
+  <van-field center label="库位号" value="{{ storageNumber }}" bind:change="inputEventCatcher" placeholder="请输入库位号" error-message="{{storageNumberError}}" data-key="storageNumber">
+    <van-button slot="button" size="small" round type="info" loading="{{isSearching}}"  bind:click="search">查询</van-button>
+  </van-field>
+</view>

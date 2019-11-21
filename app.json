@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/stockCheck/stockCheck",
     "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
     "pages/leaveWarehouse/leaveWarehouse",
