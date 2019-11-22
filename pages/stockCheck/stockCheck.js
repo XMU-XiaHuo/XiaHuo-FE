@@ -7,8 +7,8 @@ Page({
   data: {
     storageNumber: '',
     storageNumberError: '',
-    isSearching: false
-
+    isSearching: false,
+    activeNames: []
 
   },
 
@@ -21,6 +21,13 @@ Page({
     this.setData({
       [modifyKey]: e.detail
     })
+  },
+
+  // 处理收缩面板变化事件
+  collapseChangeCatcher(event) {
+    this.setData({
+      activeNames: event.detail
+    });
   },
 
   search: function(){

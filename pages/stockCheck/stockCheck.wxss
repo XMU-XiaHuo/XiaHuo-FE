@@ -1,1 +1,39 @@
 /* pages/stockCheck/stockCheck.wxss */
+
+.result-title {
+  font-size: 20px;
+  padding-left: 16px;
+}
+
+.no-result-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 300rpx;
+}
+
+.center-container{
+  text-align: center;
+}
+
+.search-img-bg {
+  position: relative;
+  display: inline-block;
+  width: 205rpx;
+  height: 205rpx;
+  background-color: #DCDFE6;
+  border-radius: 50% 50% 50% 50%;
+}
+
+.search-img {
+  position: absolute;
+  width: 150rpx;
+  height: 150rpx;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.no-result-text{
+  margin-top: 20rpx;
+  font-size: 15px;
+}
