@@ -1,1 +1,35 @@
 /* pages/goodsManage/goodsManage.wxss */
+.goods-name {
+  display: inline-block;
+  margin: 0 20rpx;
+  font-size: 15px;
+}
+
+.i-swipeout-demo-button-group {
+  height: 100%;
+}
+
+.i-swipeout-demo-button {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 100%;
+}
+
+.button-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.delete {
+  background-color: #f56c6c;
+}
+
+.edit {
+  background-color: #e6a23c;
+}

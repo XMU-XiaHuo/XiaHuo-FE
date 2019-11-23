@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "i-panel": "../../iview/panel/index",
+    "i-icon": "../../iview/icon/index",
+    "i-swipeout": "../../iview/swipeout/index",
+    "i-action-sheet": "../../iview/action-sheet/index",
+    "i-button": "../../iview/button/index",
+    "back-top-menu": "../../components/back-top-menu/back-top-menu"
+  }
 }

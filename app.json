@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/goodsManage/goodsManage",
     "pages/stockCheck/stockCheck",
     "pages/reportDamage/reportDamage",
     "pages/createWarehouse/createWarehouse",
@@ -15,8 +16,7 @@
     "pages/createWarehouse3/createWarehouse3",
     "pages/warehouseInfoManage/warehouseInfoManage",
     "pages/authorityManagePerson/authorityManagePerson",
-    "pages/test/test",
-    "pages/goodsManage/goodsManage"
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
