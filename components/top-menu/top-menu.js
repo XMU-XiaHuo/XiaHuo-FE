@@ -62,17 +62,17 @@ Component({
         title: '查看报表',
         url: '../index/index',
         icon: 'image/baobiao.png'
-      },
-      {
-        title: '报损',
-        url: '../reportDamage/reportDamage',
-        icon: 'image/baosun.png'
-      },
-      {
-        title: '报溢',
-        url: '../index/index',
-        icon: 'image/baoyi.png'
       }
+      // {
+      //   title: '报损',
+      //   url: '../reportDamage/reportDamage',
+      //   icon: 'image/baosun.png'
+      // },
+      // {
+      //   title: '报溢',
+      //   url: '../index/index',
+      //   icon: 'image/baoyi.png'
+      // }
     ]
   },
 

@@ -8,12 +8,23 @@
   </view>
 
   <view wx:if="{{hasResult}}">
+    <view class="tip">
+      <span>* 若商品数量有误，请及时报损或报溢</span>
+    </view>
     <van-collapse bind:change="collapseChangeCatcher" value="{{ activeNames }}">
       <van-collapse-item title="九型门T恤" name="1" value="x3">
         商品的具体信息
+        <view class="button-group-container">
+          <van-button class="report-button" size="small" round type="info" bind:click="reportOverflow">报溢</van-button>
+          <van-button class="report-button" size="small" round type="info" bind:click="reportDamage">报损</van-button>
+        </view>
       </van-collapse-item>
       <van-collapse-item title="九型门帽子" name="2" value="x2">
         商品的具体信息
+        <view class="button-group-container">
+          <van-button class="report-button" size="small" round type="info" bind:click="reportOverflow">报溢</van-button>
+          <van-button class="report-button" size="small" round type="info" bind:click="reportDamage">报损</van-button>
+        </view>
       </van-collapse-item>
     </van-collapse>
   </view>

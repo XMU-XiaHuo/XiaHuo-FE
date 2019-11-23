@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/stockCheck/stockCheck",
+    "pages/reportDamage/reportDamage",
     "pages/createWarehouse/createWarehouse",
     "pages/mainPage/mainPage",
-    "pages/reportDamage/reportDamage",
-    "pages/stockCheck/stockCheck",
     "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
     "pages/leaveWarehouse/leaveWarehouse",
