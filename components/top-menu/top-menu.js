@@ -35,12 +35,12 @@ Component({
       },
       {
         title: '商品管理',
-        url: '../index/index',
+        url: '../mainPage/mainPage',
         icon: 'image/goods.png'
       },
       {
         title: '商品入库',
-        url: '../index/index',
+        url: '../mainPage/mainPage',
         icon: 'image/ruku.png'
       },
       {
@@ -50,7 +50,7 @@ Component({
       },
       {
         title: '退换货',
-        url: '../index/index',
+        url: '../mainPage/mainPage',
         icon: 'image/tuihuo.png'
       },
       {

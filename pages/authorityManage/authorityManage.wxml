@@ -49,7 +49,7 @@
 
   </i-panel>
 
-  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="handleCancel" bind:click="handleDelete" mask-closable="{{ false }}">
+  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="handleCancel" bind:click="handleDelete">
     <view slot="header" style="padding: 16px">
       <view class="confirm-delete">确定删除吗？</view>
       <text>删除后无法恢复哦</text>

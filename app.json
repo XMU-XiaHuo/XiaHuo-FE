@@ -15,7 +15,8 @@
     "pages/createWarehouse3/createWarehouse3",
     "pages/warehouseInfoManage/warehouseInfoManage",
     "pages/authorityManagePerson/authorityManagePerson",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/goodsManage/goodsManage"
   ],
   "window": {
     "backgroundTextStyle": "light",
