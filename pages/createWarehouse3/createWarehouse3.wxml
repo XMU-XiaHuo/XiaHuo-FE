@@ -1,5 +1,5 @@
 <!--pages/createWarehouse3/createWarehouse3.wxml-->
-<view class="create-warehouse3 container">
+<view class="container">
   <back-top-menu title="创建完成" backUrl="../index/index"></back-top-menu>
   <view class="empty"></view>
   <create-steps current="3"></create-steps>

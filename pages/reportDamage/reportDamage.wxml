@@ -1,0 +1,5 @@
+<!--pages/reportDamage/reportDamage.wxml-->
+<view class="container">
+  <back-top-menu title="报损"></back-top-menu>
+  
+</view>

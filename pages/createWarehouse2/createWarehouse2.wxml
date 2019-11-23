@@ -1,5 +1,5 @@
 <!--pages/createWarehouse2/createWarehouse2.wxml-->
-<view class="create-warehouse2 container">
+<view class="container">
   <back-top-menu title="完善仓库信息"></back-top-menu>
   <view class="empty"></view>
   <create-steps current="2"></create-steps>

@@ -51,9 +51,9 @@ Page({
     })
 
     // 跳转到成功页面
-    // wx.navigateTo({
-    //   url: '../createWarehouse3/createWarehouse3'
-    // })
+    wx.navigateTo({
+      url: '../createWarehouse3/createWarehouse3'
+    })
   },
 
   /**

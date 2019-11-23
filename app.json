@@ -1,20 +1,21 @@
 {
   "pages": [
+    "pages/createWarehouse/createWarehouse",
+    "pages/mainPage/mainPage",
+    "pages/reportDamage/reportDamage",
     "pages/stockCheck/stockCheck",
     "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
     "pages/leaveWarehouse/leaveWarehouse",
-    "pages/mainPage/mainPage",
     "pages/authorityManage/authorityManage",
     "pages/myAuthority/myAuthority",
     "pages/personInfoManage/personInfoManage",
     "pages/index/index",
     "pages/createWarehouse2/createWarehouse2",
+    "pages/createWarehouse3/createWarehouse3",
     "pages/warehouseInfoManage/warehouseInfoManage",
-    "pages/createWarehouse/createWarehouse",
     "pages/authorityManagePerson/authorityManagePerson",
-    "pages/test/test",
-    "pages/createWarehouse3/createWarehouse3"
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

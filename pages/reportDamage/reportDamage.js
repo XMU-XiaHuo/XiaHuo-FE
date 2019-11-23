@@ -1,47 +1,11 @@
-// pages/stockCheck/stockCheck.js
+// pages/reportDamage/reportDamage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    storageNumber: '',
-    storageNumberError: '',
-    isSearching: false,
-    activeNames: [],
-    hasResult: true
 
-  },
-
-  // 处理输入事件
-  inputEventCatcher: function (e) {
-    let {
-      key
-    } = e.target.dataset;
-    let modifyKey = key;
-    this.setData({
-      [modifyKey]: e.detail
-    })
-  },
-
-  // 处理收缩面板变化事件
-  collapseChangeCatcher(event) {
-    this.setData({
-      activeNames: event.detail
-    });
-  },
-
-  search: function(){
-    console.log(this.data.storageNumber);
-    this.setData({
-      isSearching: true
-    });
-
-    setTimeout(()=>{
-      this.setData({
-        isSearching: false
-      })
-    },1000);
   },
 
   /**

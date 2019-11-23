@@ -65,7 +65,7 @@ Component({
       },
       {
         title: '报损',
-        url: '../index/index',
+        url: '../reportDamage/reportDamage',
         icon: 'image/baosun.png'
       },
       {

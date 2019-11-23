@@ -67,14 +67,14 @@ Page({
     })
 
     // 如果有错，不执行下面的步骤
-    if (checkNameResult.length > 0 || checkIdentityResult.length > 0) {
-      return;
-    }
+    // if (checkNameResult.length > 0 || checkIdentityResult.length > 0) {
+    //   return;
+    // }
 
-    // 跳转，这里先注释
-    // wx.navigateTo({
-    //   url: '../createWarehouse2/createWarehouse2'
-    // })
+    // 跳转
+    wx.navigateTo({
+      url: '../createWarehouse2/createWarehouse2'
+    })
   },
 
   /**

@@ -1,17 +1,4 @@
 /* pages/createWarehouse3/createWarehouse3.wxss */
-
-.create-warehouse{
-  position: relative;
-  height: 100vh;
-}
-
-.bottom-button{
-  position: absolute;
-  width: 100%;
-  top: 100%;
-  transform: translateY(-100%);
-}
-
 .success-info{
   width: 100%;
   display: flex;
