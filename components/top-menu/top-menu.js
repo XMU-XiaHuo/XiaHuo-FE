@@ -59,9 +59,9 @@ Component({
         icon: 'image/store.png'
       },
       {
-        title: '查看报表',
+        title: '查看日志',
         url: '../index/index',
-        icon: 'image/baobiao.png'
+        icon: 'image/log.png'
       }
       // {
       //   title: '报损',

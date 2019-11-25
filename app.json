@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/mainPage/mainPage",
     "pages/stockCheck/stockCheck",
     "pages/goodsManage/goodsManage",
     "pages/reportDamage/reportDamage",
     "pages/createWarehouse/createWarehouse",
-    "pages/mainPage/mainPage",
     "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
     "pages/leaveWarehouse/leaveWarehouse",
