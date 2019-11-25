@@ -1,6 +1,11 @@
 <!--pages/goodsManage/goodsManage.wxml-->
 <view class="container">
   <back-top-menu title="商品管理" backUrl="../mainPage/mainPage"></back-top-menu>
+  <view class="search-input-container">
+    <van-field custom-style="border-radius: 20px;height: 40px" center value="{{ goodsName }}" bind:change="inputEventCatcher" placeholder="请输入商品名" data-key="goodsName">
+      <van-button slot="button" size="small" round type="info" loading="{{isSearching}}" bind:click="search">查询</van-button>
+    </van-field>
+  </view>
 
   <i-panel class='panel'>
     <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{140}}" unclosable="{{true}}">

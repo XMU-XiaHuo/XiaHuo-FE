@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/goodsManage/goodsManage",
     "pages/stockCheck/stockCheck",
+    "pages/goodsManage/goodsManage",
     "pages/reportDamage/reportDamage",
     "pages/createWarehouse/createWarehouse",
     "pages/mainPage/mainPage",

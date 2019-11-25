@@ -1,0 +1,4 @@
+<!--components/search-input/search-input.wxml-->
+<view>
+  <input></input>
+</view>

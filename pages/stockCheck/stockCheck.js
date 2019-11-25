@@ -6,7 +6,6 @@ Page({
    */
   data: {
     storageNumber: '',
-    storageNumberError: '',
     isSearching: false,
     activeNames: ['1','2'],
     hasResult: true

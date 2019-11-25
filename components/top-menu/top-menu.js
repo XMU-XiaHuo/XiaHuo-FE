@@ -35,7 +35,7 @@ Component({
       },
       {
         title: '商品管理',
-        url: '../mainPage/mainPage',
+        url: '../goodsManage/goodsManage',
         icon: 'image/goods.png'
       },
       {

@@ -1,4 +1,14 @@
 /* pages/goodsManage/goodsManage.wxss */
+.search-input-container{
+  padding: 20rpx 30rpx;
+  background-color: #EBEEF5;
+  box-sizing: border-box;
+}
+
+.search-input{
+  border-radius: 20px;
+}
+
 .goods-name {
   display: inline-block;
   margin: 0 20rpx;
