@@ -8,7 +8,7 @@ Page({
     storageNumber: '',
     isSearching: false,
     activeNames: ['1','2'],
-    hasResult: true
+    hasResult: false
 
   },
 

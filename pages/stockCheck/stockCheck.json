@@ -4,6 +4,7 @@
     "van-button": "../../vant/button/index",
     "van-collapse": "../../vant/collapse/index",
     "van-collapse-item": "../../vant/collapse-item/index",
-    "back-top-menu": "../../components/back-top-menu/back-top-menu"
+    "back-top-menu": "../../components/back-top-menu/back-top-menu",
+    "no-result": "../../components/no-result/no-result"
   }
 }

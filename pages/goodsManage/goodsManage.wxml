@@ -7,7 +7,7 @@
     </van-field>
   </view>
 
-  <i-panel class='panel'>
+  <i-panel wx:if="{{hasResult}}" class='panel'>
     <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{140}}" unclosable="{{true}}">
       <view slot="content">
         <i-icon type="addressbook" size="28" color="#80848f" />
@@ -39,4 +39,6 @@
     </i-swipeout>
 
   </i-panel>
+
+  <no-result visible="{{!hasResult}}"></no-result>
 </view>

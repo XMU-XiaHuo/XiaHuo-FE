@@ -30,15 +30,6 @@
     </van-collapse>
   </view>
 
-  <view class="no-result-container" wx:else>
-    <view class="center-container">
-      <view class="search-img-bg">
-        <image class="search-img" src="image/search.png"></image>
-      </view>
-      <view class="no-result-text">
-        没有搜索结果
-      </view>
-    </view>
-  </view>
+  <no-result visible="{{!hasResult}}"></no-result>
 
 </view>
