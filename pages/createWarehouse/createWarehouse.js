@@ -20,7 +20,7 @@ Page({
   },
 
   // 处理输入事件
-  inputEventCatcher: function (e) {
+  inputEventCatcher: function(e) {
     let {
       key
     } = e.target.dataset;
@@ -30,17 +30,31 @@ Page({
     })
   },
 
-  checkName: function (name) {
+  checkName: function(name) {
     let regName = /^[\u4e00-\u9fa5]{2,4}$/;
     if (!regName.test(name)) {
       return '姓名格式错误（应为 2 - 4 个汉字）';
     }
     return '';
   },
-  checkIdentity: function (identity) {
-    let regIdentity = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+  checkIdentity: function(identity) {
+    let regIdentity = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
     if (!regIdentity.test(identity)) {
       return '身份证号格式错误';
+    }
+    return '';
+  },
+  checkPhone: function(phone) {
+    let regPhone = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/;
+    if (!regPhone.test(phone)) {
+      return '手机号格式错误';
+    }
+    return '';
+  },
+  checkEmail: function(email) {
+    let regEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    if (!regEmail.test(email)) {
+      return '邮箱格式错误';
     }
     return '';
   },
@@ -53,7 +67,7 @@ Page({
       phone,
       email
     } = this.data.userInfo;
-    
+
     // 检测姓名
     let checkNameResult = this.checkName(name);
     this.setData({
@@ -66,10 +80,22 @@ Page({
       ['errorInfo.identityError']: checkIdentityResult
     })
 
+    // 检测手机号
+    let checkPhoneResult = this.checkPhone(phone);
+    this.setData({
+      ['errorInfo.phoneError']: checkPhoneResult
+    })
+
+    // 检测邮箱
+    let checkEmailResult = this.checkEmail(email);
+    this.setData({
+      ['errorInfo.emailError']: checkEmailResult
+    })
+
     // 如果有错，不执行下面的步骤
-    // if (checkNameResult.length > 0 || checkIdentityResult.length > 0) {
-    //   return;
-    // }
+    if (checkNameResult.length > 0 || checkIdentityResult.length > 0 || checkPhoneResult.length > 0 || checkEmailResult.length > 0) {
+      return;
+    }
 
     // 跳转
     wx.navigateTo({
