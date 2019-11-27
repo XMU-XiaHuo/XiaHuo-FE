@@ -5,8 +5,34 @@ Page({
    * 页面的初始数据
    */
   data: {
+    goodsName: '',
+    isSearching: false,
     hasResult: true
 
+  },
+
+  // 处理输入事件
+  inputEventCatcher: function (e) {
+    let {
+      key
+    } = e.target.dataset;
+    let modifyKey = key;
+    this.setData({
+      [modifyKey]: e.detail
+    })
+  },
+
+  search: function(){
+    console.log(this.data.goodsName);
+    this.setData({
+      isSearching: true
+    });
+
+    setTimeout(() => {
+      this.setData({
+        isSearching: false
+      })
+    }, 1000);
   },
 
   /**

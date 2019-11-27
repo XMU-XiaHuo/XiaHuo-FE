@@ -1,18 +1,22 @@
 <!--pages/goodsManage/goodsManage.wxml-->
 <view class="container">
   <back-top-menu title="商品管理" backUrl="../mainPage/mainPage"></back-top-menu>
-  <view class="search-input-container">
-    <van-field custom-style="border-radius: 20px;height: 40px" center value="{{ goodsName }}" bind:change="inputEventCatcher" placeholder="请输入商品名" data-key="goodsName">
-      <van-button slot="button" size="small" round type="info" loading="{{isSearching}}" bind:click="search">查询</van-button>
-    </van-field>
+
+  <van-search value="{{ goodsName }}" placeholder="请输入搜索关键词" bind:search="search" bind:change="inputEventCatcher" data-key="goodsName"/>
+
+  <view class="tip">
+    <span>* 右滑进行更多操作</span>
   </view>
 
   <i-panel wx:if="{{hasResult}}" class='panel'>
-    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{140}}" unclosable="{{true}}">
+    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{210}}" unclosable="{{true}}">
       <view slot="content">
         <view class="goods-name">任建鹏</view>
       </view>
       <view slot="button" class="i-swipeout-demo-button-group">
+        <view class="i-swipeout-demo-button info">
+          <view class="button-text" bindtap="jumpToEditPage">详情</view>
+        </view>
         <view class="i-swipeout-demo-button edit">
           <view class="button-text" bindtap="jumpToEditPage">编辑</view>
         </view>
@@ -21,22 +25,6 @@
         </view>
       </view>
     </i-swipeout>
-
-    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{140}}">
-      <view slot="content">
-        <i-icon type="addressbook" size="28" color="#80848f" />
-        <view class="goods-name">吴悠</view>
-      </view>
-      <view slot="button" class="i-swipeout-demo-button-group">
-        <view class="i-swipeout-demo-button edit">
-          <view class="button-text" bindtap="jumpToEditPage">编辑</view>
-        </view>
-        <view class="i-swipeout-demo-button delete">
-          <view class="button-text" bindtap="openDeleteAction">删除</view>
-        </view>
-      </view>
-    </i-swipeout>
-
   </i-panel>
 
   <no-result visible="{{!hasResult}}"></no-result>

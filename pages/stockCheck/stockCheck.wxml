@@ -2,11 +2,13 @@
 <view class="container">
   <back-top-menu title="仓储盘点" backUrl="../mainPage/mainPage"></back-top-menu>
 
-  <view class="search-input-container">
+  <!-- <view class="search-input-container">
     <van-field custom-style="border-radius: 20px;height: 40px" center value="{{ storageNumber }}" bind:change="inputEventCatcher" placeholder="请输入库位号" data-key="storageNumber">
       <van-button slot="button" size="small" round type="info" loading="{{isSearching}}" bind:click="search">查询</van-button>
     </van-field>
-  </view>
+  </view> -->
+
+   <van-search value="{{ storageNumber }}" placeholder="请输入库位号" bind:search="search" bind:change="inputEventCatcher" data-key="storageNumber"/>
 
   <view wx:if="{{hasResult}}">
     <view class="tip">

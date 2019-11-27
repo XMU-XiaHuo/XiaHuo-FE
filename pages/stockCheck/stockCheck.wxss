@@ -1,15 +1,5 @@
 /* pages/stockCheck/stockCheck.wxss */
 
-.search-input-container {
-  padding: 20rpx 30rpx;
-  background-color: #ebeef5;
-  box-sizing: border-box;
-}
-
-.search-input {
-  border-radius: 20px;
-}
-
 .result-title {
   font-size: 20px;
   padding-left: 16px;

@@ -1,13 +1,11 @@
 /* pages/goodsManage/goodsManage.wxss */
 
-.search-input-container {
-  padding: 20rpx 30rpx;
-  background-color: #ebeef5;
-  box-sizing: border-box;
-}
-
-.search-input {
-  border-radius: 20px;
+.tip {
+  text-align: right;
+  font-size: 13px;
+  color: #80848f;
+  margin: 30rpx 0 20rpx 0;
+  padding-right: 20rpx;
 }
 
 .goods-name {

@@ -1,7 +1,6 @@
 {
   "usingComponents": {
-    "van-field": "../../vant/field/index",
-    "van-button": "../../vant/button/index",
+    "van-search": "../../vant/search/index",
     "i-panel": "../../iview/panel/index",
     "i-swipeout": "../../iview/swipeout/index",
     "i-action-sheet": "../../iview/action-sheet/index",
