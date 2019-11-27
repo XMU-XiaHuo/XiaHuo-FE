@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/editGoods/editGoods",
     "pages/goodsManage/goodsManage",
     "pages/stockCheck/stockCheck",
     "pages/createWarehouse2/createWarehouse2",

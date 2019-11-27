@@ -20,12 +20,14 @@ Page({
     scrollTop: 0
   },
 
+  //编辑相关
   jumpToEditPage: function() {
     wx.navigateTo({
       url: '../authorityManagePerson/authorityManagePerson'
     })
   },
 
+  //删除相关
   openDeleteAction() {
     this.setData({
       actionSheetVisible: true

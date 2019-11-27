@@ -1,0 +1,11 @@
+<!--pages/editGoods/editGoods.wxml-->
+<view class="container">
+  <back-top-menu title="修改商品信息" backUrl="../goodsManage/goodsManage"></back-top-menu>
+  <view class="empty"></view>
+  <i-panel>
+    <van-field label="商品名" value="{{ goodsInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入商品名" error-message="{{errorInfo.nameError}}" data-key="name" />
+  </i-panel>
+  <view class="bottom-button">
+    <i-button bind:click="confirmEdit" type="primary" shape="circle">保存</i-button>
+  </view>
+</view>
