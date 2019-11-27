@@ -24,7 +24,7 @@
 }
 
 .warehouse-name {
-  margin-top: 10rpx;
+  margin-top: 5rpx;
 }
 
 .role-container {

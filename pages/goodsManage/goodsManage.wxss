@@ -1,11 +1,12 @@
 /* pages/goodsManage/goodsManage.wxss */
-.search-input-container{
+
+.search-input-container {
   padding: 20rpx 30rpx;
-  background-color: #EBEEF5;
+  background-color: #ebeef5;
   box-sizing: border-box;
 }
 
-.search-input{
+.search-input {
   border-radius: 20px;
 }
 
@@ -34,6 +35,10 @@
   color: white;
   font-weight: bold;
   text-align: center;
+}
+
+.info {
+  background-color: #409eff;
 }
 
 .delete {
