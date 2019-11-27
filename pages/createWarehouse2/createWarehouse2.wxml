@@ -1,6 +1,6 @@
 <!--pages/createWarehouse2/createWarehouse2.wxml-->
 <view class="container">
-  <back-top-menu title="完善仓库信息"></back-top-menu>
+  <back-top-menu title="完善仓库信息" backUrl="../createWarehouse/createWarehouse" ></back-top-menu>
   <view class="empty"></view>
   <create-steps current="2"></create-steps>
   <view class="empty"></view>

@@ -12,30 +12,43 @@ Page({
 
   },
 
+  testWxLogin: function() {
+    wx.login({
+      success(res) {
+        console.log("这个是code悠总：" + res.code);
+        if (res.code) {
+         
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
 
     // get 不带参数
-    wxRequest('/get/test', 'GET').then((res) => {
-      console.log(res);
-    });
-    
+    // wxRequest('/get/test', 'GET').then((res) => {
+    //   console.log(res);
+    // });
+
     // get 带参数
-    wxRequest('/user', 'GET',{
-      name:'TanYJie'
-    }).then((res) => {
-      console.log(res);
-    });
+    // wxRequest('/user', 'GET',{
+    //   name:'TanYJie'
+    // }).then((res) => {
+    //   console.log(res);
+    // });
 
     // post
-    wxRequest('/post/test', 'POST', {
-      id: 1,
-      test: true
-    }).then((res) => {
-      console.log(res);
-    });
+    // wxRequest('/post/test', 'POST', {
+    //   id: 1,
+    //   test: true
+    // }).then((res) => {
+    //   console.log(res);
+    // });
   },
 
   /**

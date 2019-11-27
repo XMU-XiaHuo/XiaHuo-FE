@@ -37,12 +37,18 @@ Page({
     return '';
   },
   checkAddress: function(address) {
+    if (address.length === 0) {
+      return '仓库地址不能为空';
+    }
     if (address.length > 50) {
       return '仓库地址应在 50 字内';
     }
     return '';
   },
-  checkInfo: function(info) {
+  checkInfo: function (info) {
+    if (info.length === 0) {
+      return '仓库简介不能为空';
+    }
     if (info.length > 80) {
       return '仓库简介应在 80 字内';
     }

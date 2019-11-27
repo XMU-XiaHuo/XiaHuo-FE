@@ -1,6 +1,6 @@
 <!--pages/createWarehouse/createWarehouse.wxml-->
 <view class="container">
-  <back-top-menu title="完善个人信息"></back-top-menu>
+  <back-top-menu title="完善个人信息" backUrl="../index/index" ></back-top-menu>
   <view class="empty"></view>
   <create-steps current="1"></create-steps>
   <view class="empty"></view>

@@ -39,6 +39,9 @@ Page({
   },
   checkIdentity: function(identity) {
     let regIdentity = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+    if (identity.length === 0) {
+      return '身份证号不能为空'
+    }
     if (!regIdentity.test(identity)) {
       return '身份证号格式错误';
     }
@@ -46,6 +49,9 @@ Page({
   },
   checkPhone: function(phone) {
     let regPhone = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/;
+    if (phone.length === 0) {
+      return '手机号不能为空'
+    }
     if (!regPhone.test(phone)) {
       return '手机号格式错误';
     }
@@ -53,6 +59,9 @@ Page({
   },
   checkEmail: function(email) {
     let regEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    if (email.length === 0) {
+      return '邮箱不能为空'
+    }
     if (!regEmail.test(email)) {
       return '邮箱格式错误';
     }
