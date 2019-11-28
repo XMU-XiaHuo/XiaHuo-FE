@@ -1,0 +1,4 @@
+<!--pages/enterWarehouse/enterWarehouse.wxml-->
+<view class="container">
+  <back-top-menu title="商品入库" backUrl="../mainPage/mainPage"></back-top-menu>
+</view>

@@ -36,7 +36,6 @@ Page({
       name
     } = this.data.goodsInfo;
 
-    console.log(name);
     // 检测商品名
     let checkNameResult = this.checkName(name);
     this.setData({
