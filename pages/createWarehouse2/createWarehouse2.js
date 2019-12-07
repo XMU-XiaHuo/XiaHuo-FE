@@ -30,9 +30,9 @@ Page({
   },
 
   checkName: function(name) {
-    let regName = /^[\u4e00-\u9fa5]{2,10}$/;
+    let regName = /^[\u4e00-\u9fa5]{2,15}$/;
     if (!regName.test(name)) {
-      return '仓库名格式错误（应为 2 - 10 个汉字）';
+      return '仓库名格式错误（应为 2 - 15 个汉字）';
     }
     return '';
   },

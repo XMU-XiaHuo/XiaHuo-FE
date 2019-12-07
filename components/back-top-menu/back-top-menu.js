@@ -11,7 +11,11 @@ Component({
     backUrl: {
       type: String,
       value: undefined
-    }
+    },
+    jumpType: {
+      type: String,
+      value: 'navigate'
+    },
   },
 
   /**
@@ -26,17 +30,28 @@ Component({
    */
   methods: {
     back: function(e) {
+      console.log(getCurrentPages());
       let {
         url
       } = e.currentTarget.dataset;
       if (url) {
-        wx.navigateTo({
-          url: e.currentTarget.dataset.url
-        })
-      } else {
-        wx.navigateBack({
-          delta: 1
-        })
+        if (this.jumpType === 'navigate') {
+          wx.navigateTo({
+            url: e.currentTarget.dataset.url
+          })
+        } else if (this.jumpType === 'redirect') {
+          wx.redirectTo({
+            url: e.currentTarget.dataset.url
+          })
+        } else if (this.jumpType === 'reLaunch') {
+          wx.reLaunch({
+            url: e.currentTarget.dataset.url
+          })
+        } else {          
+          wx.navigateBack({
+            delta: 1
+          })
+        }
       }
     },
   }
