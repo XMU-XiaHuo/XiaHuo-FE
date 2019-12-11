@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/goodsManage/goodsManage",
+    "pages/authorityManagePerson/authorityManagePerson",
     "pages/mainPage/mainPage",
     "pages/enterWarehouse/enterWarehouse",
     "pages/editGoods/editGoods",
-    "pages/goodsManage/goodsManage",
     "pages/stockCheck/stockCheck",
     "pages/createWarehouse2/createWarehouse2",
     "pages/createWarehouse/createWarehouse",
@@ -17,8 +18,7 @@
     "pages/personInfoManage/personInfoManage",
     "pages/index/index",
     "pages/createWarehouse3/createWarehouse3",
-    "pages/warehouseInfoManage/warehouseInfoManage",
-    "pages/authorityManagePerson/authorityManagePerson"
+    "pages/warehouseInfoManage/warehouseInfoManage"
   ],
   "window": {
     "backgroundTextStyle": "light",

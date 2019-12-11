@@ -31,7 +31,7 @@ Page({
       },
       {
         title: '商品入库',
-        url: '../mainPage/mainPage',
+        url: '../enterWarehouse/enterWarehouse',
         icon: 'image/ruku.png'
       },
       {

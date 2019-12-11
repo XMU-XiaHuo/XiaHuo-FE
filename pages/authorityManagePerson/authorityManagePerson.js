@@ -17,9 +17,31 @@ Page({
     let {
       index
     } = e.currentTarget.dataset;
-    this.setData({
-      ['roleList[' + index + '].switch']: e.detail.value
-    })
+    let {
+      value
+    } = e.detail;
+    let roleList = [];
+    if (value) { //如果是开开关
+      roleList = Object.assign(this.data.roleList);
+      if (index < 2) { // 如果开启创建者或管理员权限，则取消勾选其他角色
+        for (let i = 0; i < 6; i++) {
+          roleList[i].switch = index === i ? true : false;
+        }
+        this.setData({
+          roleList: roleList
+        })
+      } else { // 如果开启其他角色权限，则取消创建者和管理员
+        this.setData({
+          ['roleList[0].switch']: false,
+          ['roleList[1].switch']: false,
+          ['roleList[' + index + '].switch']: e.detail.value
+        })
+      }
+    } else { // 否则，正常勾选
+      this.setData({
+        ['roleList[' + index + '].switch']: e.detail.value
+      })
+    }
   },
 
   formatRoleList: function() {

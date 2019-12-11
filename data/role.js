@@ -10,7 +10,7 @@ const Roles = {
 
 const Description = {
   'owner': '仓库的创建者，拥有所有的权限',
-  'admin': '负责帮助创建者管理仓库的权限',
+  'admin': '负责帮助创建者管理仓库，拥有管理仓库以及以下所有权限',
   'storager': '负责商品的入库流程',
   'orderer': '负责电商平台的对接，接入购买单、退货单、换货单的发起流程',
   'picker': '负责订单的拣货和发货流程',
@@ -18,7 +18,24 @@ const Description = {
   'none': '无权限'
 }
 
+const roleMap = function(role) {
+  const handle = 'none';
+  const map = {
+    'Creator': 'owner',
+    'Administrator': 'admin',
+    'PickingMan': 'picker',
+    'IncomeMan': 'storager',
+    'OrderMan': 'orderer',
+    'CheckMan': 'counter'
+  };
+  if (!role) {
+    return handle;
+  }
+  return map[role] || handle;
+}
+
 module.exports = {
   Roles,
-  Description
+  Description,
+  roleMap
 };
