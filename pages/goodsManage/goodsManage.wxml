@@ -9,16 +9,13 @@
   </view>
 
   <i-panel wx:if="{{hasResult}}" class='panel'>
-    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{210}}" unclosable="{{true}}">
+    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{140}}" unclosable="{{true}}">
       <view slot="content">
         <view class="goods-name">任建鹏</view>
       </view>
       <view slot="button" class="i-swipeout-demo-button-group">
         <view class="i-swipeout-demo-button info">
-          <view class="button-text" bindtap="jumpToEditPage">详情</view>
-        </view>
-        <view class="i-swipeout-demo-button edit">
-          <view class="button-text" bindtap="jumpToEditPage">编辑</view>
+          <view class="button-text" bindtap="jumpToInfoPage">详情</view>
         </view>
         <view class="i-swipeout-demo-button delete">
           <view class="button-text" bindtap="openDeleteAction">删除</view>
@@ -35,4 +32,8 @@
   </i-action-sheet>
 
   <no-result visible="{{!hasResult}}"></no-result>
+
+  <view class="bottom-sticky-button" hidden="{{isPageScroll}}">
+    <i-button bind:click="createGoods" type="primary" shape="circle">创建商品</i-button>
+  </view>
 </view>

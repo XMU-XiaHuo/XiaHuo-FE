@@ -13,6 +13,8 @@ Page({
       name: '删除',
       color: '#ed3f14'
     }],
+    isPageScroll: false,
+    scrollTop: 0
 
   },
 
@@ -46,10 +48,10 @@ Page({
     });
   },
 
-  // 编辑商品相关
-  jumpToEditPage: function () {
+  // 查看商品详情
+  jumpToInfoPage: function() {
     wx.navigateTo({
-      url: '../editGoods/editGoods'
+      url: '../goodsDetail/goodsDetail'
     })
   },
 
@@ -75,6 +77,39 @@ Page({
     this.setData({
       actionSheetVisible: false
     });
+  },
+
+  /**
+   * 生命周期函数--监听页面滚动
+   */
+  onPageScroll: function(ev) {
+    let _this = this;
+    let {
+      windowHeight
+    } = wx.getSystemInfoSync();
+
+    //判断浏览器滚动条上下滚动
+    if (ev.scrollTop > this.data.scrollTop || ev.scrollTop == windowHeight) {
+      // 向下滚动
+      if (this.data.isPageScroll === false) {
+        this.setData({
+          isPageScroll: true
+        })
+      }
+    } else {
+      // 向上滚动
+      if (this.data.isPageScroll === true) {
+        this.setData({
+          isPageScroll: false
+        })
+      }
+    }
+    // 给scrollTop重新赋值
+    setTimeout(function() {
+      _this.setData({
+        scrollTop: ev.scrollTop
+      })
+    }, 0);
   },
 
   /**

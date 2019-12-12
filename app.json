@@ -1,10 +1,12 @@
 {
   "pages": [
+    "pages/editGoods/editGoods",
+    "pages/productList/productList",
+    "pages/goodsDetail/goodsDetail",
     "pages/goodsManage/goodsManage",
     "pages/authorityManagePerson/authorityManagePerson",
     "pages/mainPage/mainPage",
     "pages/enterWarehouse/enterWarehouse",
-    "pages/editGoods/editGoods",
     "pages/stockCheck/stockCheck",
     "pages/createWarehouse2/createWarehouse2",
     "pages/createWarehouse/createWarehouse",

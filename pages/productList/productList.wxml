@@ -1,0 +1,5 @@
+<!--pages/productList/productList.wxml-->
+<view class="container">
+  <back-top-menu title="商品列表" backUrl="../goodsDetail/goodsDetail"></back-top-menu>
+
+</view>

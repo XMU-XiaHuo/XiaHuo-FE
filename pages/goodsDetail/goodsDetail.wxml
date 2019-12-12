@@ -1,0 +1,15 @@
+<!--pages/goodsDetail/goodsDetail.wxml-->
+<view class="container">
+  <back-top-menu title="商品详情" backUrl="../goodsManage/goodsManage"></back-top-menu>
+
+  <i-panel>
+    <i-cell title="商品名称" value="{{goodsInfo.name}}"></i-cell>
+    <i-cell title="商品描述" label="{{goodsInfo.description}}"></i-cell>
+    <i-cell title="计量单位" value="{{goodsInfo.unit}}"></i-cell>
+    <i-cell title="过期时间" value="{{goodsInfo.expireDate}}"></i-cell>
+    <i-cell title="商品属性" value="{{goodsInfo.properties}}"></i-cell>
+    <i-cell title="修改基本信息" is-link url="../editGoods/editGoods"></i-cell>
+    <i-cell title="查看商品列表" is-link url="../productList/productList"></i-cell>
+  </i-panel>
+
+</view>

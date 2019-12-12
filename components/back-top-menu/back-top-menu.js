@@ -32,20 +32,21 @@ Component({
     back: function(e) {
       console.log(getCurrentPages());
       let {
-        url
-      } = e.currentTarget.dataset;
-      if (url) {
-        if (this.jumpType === 'navigate') {
+        jumpType,
+        backUrl
+      } = this.data;
+      if (backUrl) {
+        if (jumpType === 'navigate') {
           wx.navigateTo({
-            url: e.currentTarget.dataset.url
+            url: backUrl
           })
-        } else if (this.jumpType === 'redirect') {
+        } else if (jumpType === 'redirect') {
           wx.redirectTo({
-            url: e.currentTarget.dataset.url
+            url: backUrl
           })
-        } else if (this.jumpType === 'reLaunch') {
+        } else if (jumpType === 'reLaunch') {
           wx.reLaunch({
-            url: e.currentTarget.dataset.url
+            url: backUrl
           })
         } else {          
           wx.navigateBack({

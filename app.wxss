@@ -1,22 +1,45 @@
-.container{
+.container {
   padding-top: 65px;
   font-weight: lighter;
   font-family: "Roboto", "Helvetica", arial, sans-serif;
 }
-.empty{
+
+.empty {
   height: 100rpx;
 }
-.bottom-button{
+
+.bottom-button {
   position: absolute;
   width: 100%;
   top: 100%;
   transform: translateY(-100%);
 }
-.inline-b{
+
+.bottom-sticky-button {
+  position: fixed;
+  width: 100%;
+  top: 100%;
+  transform: translateY(-100%);
+}
+
+.inline-b {
   display: inline-block;
 }
-.text-ellipsis{
+
+.text-ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.info {
+  background-color: #409eff;
+}
+
+.delete {
+  background-color: #f56c6c;
+}
+
+.edit {
+  background-color: #e6a23c;
 }
