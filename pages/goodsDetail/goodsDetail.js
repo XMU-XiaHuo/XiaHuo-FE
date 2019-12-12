@@ -8,7 +8,7 @@ Page({
     goodsInfo: {
       name: '衣服',
       unit: '件',
-      expireDate: '2020-06-01',
+      expireDate: '365天',
       description: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
       properties: '尺码 | 颜色'
     }
