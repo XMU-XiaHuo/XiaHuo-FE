@@ -6,7 +6,11 @@ Page({
    */
   data: {
     goodsInfo: {
-      name: ''
+      name: '',
+      description: '',
+      unit: '',
+      expireDate: '',
+      properties: ['尺码','颜色','版本','长度']
     },
     errorInfo: {
       nameError: ''
