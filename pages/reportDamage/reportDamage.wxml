@@ -1,5 +1,5 @@
 <!--pages/reportDamage/reportDamage.wxml-->
 <view class="container">
-  <back-top-menu title="报损/报溢"></back-top-menu>
+  <back-top-menu title="报损/报溢" backUrl="../mainPage/mainPage"></back-top-menu>
   
 </view>

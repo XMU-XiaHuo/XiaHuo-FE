@@ -14,7 +14,7 @@ Component({
     },
     jumpType: {
       type: String,
-      value: 'navigate'
+      value: 'reLaunch'
     },
   },
 
