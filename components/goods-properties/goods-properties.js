@@ -22,12 +22,18 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    deleteTag: function(e){
+
+    // 删除属性
+    deleteTag: function(e) {
       let detail = {
         index: e.target.dataset.index || -1
       }
       this.triggerEvent('deleteTag', detail, {})
-    }
+    },
 
+    // 添加属性
+    createTag: function(e) {
+      this.triggerEvent('createTag', {}, {})
+    }
   }
 })

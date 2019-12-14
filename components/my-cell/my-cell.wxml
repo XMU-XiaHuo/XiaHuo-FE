@@ -1,0 +1,5 @@
+<!--components/my-cell/my-cell.wxml-->
+<view class='my-cell'>
+  <text class='my-cell-label'>{{label}}</text>
+  <slot></slot>
+</view>

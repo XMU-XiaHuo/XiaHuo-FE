@@ -1,19 +1,1 @@
 /* pages/editGoods/editGoods.wxss */
-
-.property-cell {
-  position: relative;
-  display: -webkit-flex;
-  display: flex;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px 16px;
-  font-size: 14px;
-  line-height: 24px;
-  color: #323233;
-  background-color: #fff;
-}
-
-.property-label {
-  max-width: 90px;
-  min-width: 90px;
-}

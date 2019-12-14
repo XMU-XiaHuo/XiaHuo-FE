@@ -48,13 +48,12 @@ Page({
     this.setData({
       ['errorInfo.nameError']: checkNameResult
     })
-
   },
 
+  // 删除商品属性
   deleteTag: function(e){
     let {index} = e.detail;
     let properties = this.data.goodsInfo.properties;
-    console.log(properties)
     properties.splice(index,1);
     this.setData({
       ['goodsInfo.properties']: properties

@@ -1,0 +1,19 @@
+/* components/my-cell/my-cell.wxss */
+
+.my-cell {
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 14px;
+  line-height: 24px;
+  color: #323233;
+  background-color: #fff;
+}
+
+.my-cell-label {
+  max-width: 90px;
+  min-width: 90px;
+}

@@ -9,7 +9,7 @@
   <view class="property-tag-container">
     <view class='property-tag add'>
       <text>添加属性</text>
-      <image src="image/add.png" class="add-icon"></image>
+      <image src="image/add.png" class="add-icon" bindtap="createTag"></image>
     </view>
   </view>
 </view>

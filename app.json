@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/editGoods/editGoods",
     "pages/createGoods/createGoods",
+    "pages/editGoods/editGoods",
     "pages/goodsManage/goodsManage",
     "pages/productList/productList",
     "pages/goodsDetail/goodsDetail",
