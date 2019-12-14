@@ -9,7 +9,7 @@
     <i-cell title="保质期" value="{{goodsInfo.expireDate}}"></i-cell>
     <i-cell title="商品属性" value="{{goodsInfo.properties}}"></i-cell>
     <i-cell title="修改基本信息" is-link url="../editGoods/editGoods"></i-cell>
-    <i-cell title="查看商品列表" is-link url="../productList/productList"></i-cell>
+    <i-cell title="查看产品列表" is-link url="../productList/productList"></i-cell>
   </i-panel>
 
 </view>

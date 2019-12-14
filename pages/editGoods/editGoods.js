@@ -13,7 +13,10 @@ Page({
       properties: ['尺码','颜色','版本','长度']
     },
     errorInfo: {
-      nameError: ''
+      nameError: '',
+      descriptionError: '',
+      unitError: '',
+      expireDateError: '',
     }
   },
 

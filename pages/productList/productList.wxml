@@ -1,5 +1,28 @@
 <!--pages/productList/productList.wxml-->
 <view class="container">
-  <back-top-menu title="商品列表" backUrl="../goodsDetail/goodsDetail"></back-top-menu>
+  <back-top-menu title="产品列表" backUrl="../goodsDetail/goodsDetail"></back-top-menu>
+  <i-panel wx:if="{{hasResult}}" class='panel'>
+    <van-collapse bind:change="collapseChangeCatcher" value="{{ activeNames }}">
+      <van-collapse-item wx:for="{{productList}}" title="{{item.name}}" name="{{item.id}}">
+        商品的具体信息
+        <view class="button-group-container">
+          <van-button class="report-button" size="small" round color="#F56C6C" bind:click="deleteProduct">删除</van-button>
+          <van-button class="report-button" size="small" round color="#409EFF" bind:click="editProduct">编辑</van-button>
+        </view>
+      </van-collapse-item>
+    </van-collapse>
+  </i-panel>
 
+  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="handleCancel" bind:click="handleDelete">
+    <view slot="header" style="padding: 16px">
+      <view class="confirm-delete">确定删除吗？</view>
+      <text>删除后无法恢复哦</text>
+    </view>
+  </i-action-sheet>
+
+  <no-result visible="{{!hasResult}}"></no-result>
+
+  <view class="bottom-sticky-button" hidden="{{isPageScroll}}">
+    <i-button bind:click="createProduct" type="primary" shape="circle">创建产品</i-button>
+  </view>
 </view>

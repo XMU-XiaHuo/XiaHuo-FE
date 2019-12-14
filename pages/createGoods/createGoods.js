@@ -1,32 +1,23 @@
-// pages/productList/productList.js
+// pages/createGoods/createGoods.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    hasResult: true,
-    activeNames: [],
-    productList: [{
-      name: '黄色XL',
-      id: 1
-    }, {
-      name: '黄色L',
-      id: 2
-    }, {
-      name: '红色XL',
-      id: 3
-    }, {
-      name: '红色L',
-      id: 4
-    }]
-  },
-
-  // 处理收缩面板变化事件
-  collapseChangeCatcher(event) {
-    this.setData({
-      activeNames: event.detail
-    });
+    goodsInfo: {
+      name: '',
+      description: '',
+      unit: '',
+      expireDate: '',
+      properties: ['尺码', '颜色', '版本', '长度']
+    },
+    errorInfo: {
+      nameError: '',
+      descriptionError: '',
+      unitError: '',
+      expireDateError: '',
+    }
   },
 
   /**

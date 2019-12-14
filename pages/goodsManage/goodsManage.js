@@ -73,6 +73,13 @@ Page({
     }, 2000);
   },
 
+  // 创建商品跳转
+  createGoods: function () {
+    wx.navigateTo({
+      url: '../createGoods/createGoods'
+    })
+  },
+
   handleCancel() {
     this.setData({
       actionSheetVisible: false

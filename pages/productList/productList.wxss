@@ -1,1 +1,20 @@
 /* pages/productList/productList.wxss */
+
+.button-group-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.report-button {
+  margin-right: 10rpx;
+}
+
+.button-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
