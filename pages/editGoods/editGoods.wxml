@@ -9,20 +9,7 @@
     <van-field label="保质期" value="{{ goodsInfo.expireDate }}" bind:change="inputEventCatcher" placeholder="请输入保质期（以天为单位）" error-message="{{errorInfo.expireDateError}}" data-key="unit" />
     <view class='property-cell'>
       <text class='property-label'>商品属性</text>
-      <view>
-        <view wx:for="{{goodsInfo.properties}}" class="inline-b property-tag-container">
-          <view class='property-tag'>{{item}}</view>
-          <view class="close-icon-container">
-            <image src='image/close.png' class='close-icon'></image>
-          </view>
-        </view>
-        <view class="inline-b property-tag-container">
-          <view class='property-tag add'>
-            <text>添加属性</text>
-            <image src="image/add.png" class="add-icon"></image>
-          </view>
-        </view>
-      </view>
+      <goods-properties propertyList="{{goodsInfo.properties}}"  bind:deleteTag="deleteTag"></goods-properties>
     </view>
   </i-panel>
   <view class="bottom-button">

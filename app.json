@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/editGoods/editGoods",
     "pages/createGoods/createGoods",
     "pages/goodsManage/goodsManage",
     "pages/productList/productList",
-    "pages/editGoods/editGoods",
     "pages/goodsDetail/goodsDetail",
     "pages/authorityManagePerson/authorityManagePerson",
     "pages/mainPage/mainPage",

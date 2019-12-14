@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "back-top-menu": "../../components/back-top-menu/back-top-menu",
+    "goods-properties": "../../components/goods-properties/goods-properties",
     "i-panel": "../../iview/panel/index",
     "i-button": "../../iview/button/index",
     "van-field": "../../vant/field/index"

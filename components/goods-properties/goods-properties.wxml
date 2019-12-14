@@ -1,0 +1,15 @@
+<!--components/goods-properties/goods-properties.wxml-->
+<view>
+  <view wx:for="{{propertyList}}" class="property-tag-container">
+    <view class='property-tag'>{{item}}</view>
+    <view class="close-icon-container">
+      <image src='image/close.png' class='close-icon' bindtap="deleteTag" data-index="{{index}}"></image>
+    </view>
+  </view>
+  <view class="property-tag-container">
+    <view class='property-tag add'>
+      <text>添加属性</text>
+      <image src="image/add.png" class="add-icon"></image>
+    </view>
+  </view>
+</view>

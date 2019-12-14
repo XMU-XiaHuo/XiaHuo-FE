@@ -1,6 +1,6 @@
 <!--pages/createGoods/createGoods.wxml-->
 <view class="container">
-  <back-top-menu title="完善商品信息" backUrl="../goodsManage/goodsManage" ></back-top-menu>
+  <back-top-menu title="创建商品" backUrl="../goodsManage/goodsManage" ></back-top-menu>
   <view class="empty"></view>
   <i-panel title="请完善商品信息:">
     <van-field label="商品名称" value="{{ goodsInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入商品名称（不超过30字）" error-message="{{errorInfo.nameError}}" data-key="name" required/>

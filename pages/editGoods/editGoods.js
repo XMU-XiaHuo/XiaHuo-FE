@@ -51,6 +51,16 @@ Page({
 
   },
 
+  deleteTag: function(e){
+    let {index} = e.detail;
+    let properties = this.data.goodsInfo.properties;
+    console.log(properties)
+    properties.splice(index,1);
+    this.setData({
+      ['goodsInfo.properties']: properties
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
