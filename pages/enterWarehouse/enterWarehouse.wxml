@@ -3,13 +3,21 @@
   <back-top-menu title="商品入库" backUrl="../mainPage/mainPage"></back-top-menu>
   <view class="empty"></view>
   <i-panel title="请完善入库信息:">
-    <van-field label="商品名" value="{{ goodsInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入商品名" error-message="{{errorInfo.nameError}}" data-key="name" required />
+    <view class='input-container'>
+      <van-field label="商品名" value="{{goodsInfo.name}}" bind:change="inputGoodsName" placeholder="请输入商品名" error-message="{{errorInfo.nameError}}" data-key="name" required />
+      <view class="suggest-container" hidden="{{isSuggesting}}">
+        <view class='suggest-item' wx:for="{{suggestGoodsList}}" bindtap="chooseSuggest" data-value="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
     <van-field label="商品数量" value="{{ goodsInfo.number }}" bind:change="inputEventCatcher" placeholder="请输入商品数量" error-message="{{errorInfo.numberError}}" data-key="number" required />
+    <view class="empty"></view>
+    <view class="empty"></view>
+    <view class="empty"></view>
+    <view class="empty"></view>
   </i-panel>
-  <i-panel title="请完善入库信息:">
-    <van-field label="商品名" value="{{ goodsInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入商品名" error-message="{{errorInfo.nameError}}" data-key="name" required />
-    <van-field label="商品数量" value="{{ goodsInfo.number }}" bind:change="inputEventCatcher" placeholder="请输入商品数量" error-message="{{errorInfo.numberError}}" data-key="number" required />
-  </i-panel>
+
   <view class="bottom-button">
     <i-button bind:click="nextStep" type="primary" shape="circle">下一步</i-button>
   </view>

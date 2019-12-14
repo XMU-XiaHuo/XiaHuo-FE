@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "back-top-menu": "../../components/back-top-menu/back-top-menu",
+    "suggest-input": "../../components/suggest-input/suggest-input",
     "i-panel": "../../iview/panel/index",
     "i-button": "../../iview/button/index",
     "van-field": "../../vant/field/index"

@@ -1,4 +1,4 @@
-/* pages/enterWarehouse/enterWarehouse.wxss */
+/* components/suggest-input/suggest-input.wxss */
 
 .input-container {
   position: relative;

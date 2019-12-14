@@ -15,7 +15,9 @@ Page({
       nameError: '',
       addressError: '',
       infoError: ''
-    }
+    },
+    suggestGoodsList: ['上衣', '裤子', '帽子', '袜子', '抱枕', '棉被'],
+    isSuggesting: true
   },
 
   // 处理输入事件
@@ -26,6 +28,42 @@ Page({
     let modifyKey = 'goodsInfo.' + key;
     this.setData({
       [modifyKey]: e.detail
+    })
+  },
+
+  // 输入商品名出推荐
+  inputGoodsName: function(e) {
+    let that = this;
+
+    const giveSuggestion = function() {
+      if (!that.data.goodsInfo.name) {
+        return;
+      }
+      // doSomething
+      that.setData({
+        isSuggesting: false
+      })
+    };
+
+    let id = null;
+    clearTimeout(id);
+    id = setTimeout(() => {
+      giveSuggestion();
+    }, 2000);
+
+    this.setData({
+      ['goodsInfo.name']: e.detail
+    });
+  },
+
+  // 选择某个推荐的项目
+  chooseSuggest: function(e) {
+    let {
+      value
+    } = e.target.dataset;
+    this.setData({
+      ['goodsInfo.name']: value,
+      isSuggesting: true
     })
   },
 
