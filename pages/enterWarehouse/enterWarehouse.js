@@ -1,4 +1,7 @@
 // pages/enterWarehouse/enterWarehouse.js
+
+let giveSuggestId = null;
+
 Page({
 
   /**
@@ -7,14 +10,13 @@ Page({
   data: {
     goodsInfo: {
       name: '',
-      address: '',
-      info: '',
-      number: ''
+      number: '',
+      location: ''
     },
     errorInfo: {
       nameError: '',
-      addressError: '',
-      infoError: ''
+      numberError: '',
+      locationError: ''
     },
     suggestGoodsList: ['上衣', '裤子', '帽子', '袜子', '抱枕', '棉被'],
     isSuggesting: true
@@ -34,8 +36,7 @@ Page({
   // 输入商品名出推荐
   inputGoodsName: function(e) {
     let that = this;
-
-    const giveSuggestion = function() {
+    let giveSuggestion = function() {
       if (!that.data.goodsInfo.name) {
         return;
       }
@@ -44,12 +45,16 @@ Page({
         isSuggesting: false
       })
     };
-
-    let id = null;
-    clearTimeout(id);
-    id = setTimeout(() => {
-      giveSuggestion();
-    }, 2000);
+    if (this.data.isSuggesting) {
+      clearTimeout(giveSuggestId);
+      giveSuggestId = setTimeout(() => {
+        giveSuggestion();
+      }, 500);
+    } else {
+      this.setData({
+        isSuggesting: true
+      })
+    }
 
     this.setData({
       ['goodsInfo.name']: e.detail

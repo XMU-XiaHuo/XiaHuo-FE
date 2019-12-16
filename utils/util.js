@@ -14,6 +14,31 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+// 防抖函数
+const debounce = function(method, context, time) {
+  let id;
+  return function(...args) {
+    clearTimeout(id);
+    id = setTimeout(() => {
+      method.apply(context, args);
+    }, time);
+  };
+};
+
+const throttle = function(method, context, time) {
+  let id;
+  return function(...args) {
+    if (!id) {
+      id = setTimeout(() => {
+        method.apply(context, args);
+        id = null;
+      }, time)
+    }
+  }
+};
+
 module.exports = {
-  formatTime: formatTime
+  formatTime,
+  debounce,
+  throttle
 }

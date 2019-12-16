@@ -4,14 +4,15 @@
   <view class="empty"></view>
   <i-panel title="请完善入库信息:">
     <view class='input-container'>
-      <van-field label="商品名" value="{{goodsInfo.name}}" bind:change="inputGoodsName" placeholder="请输入商品名" error-message="{{errorInfo.nameError}}" data-key="name" required />
+      <van-field label="商品名" value="{{goodsInfo.name}}" bind:change="inputGoodsName" placeholder="请输入商品名" error-message="{{errorInfo.nameError}}" data-key="name" />
       <view class="suggest-container" hidden="{{isSuggesting}}">
         <view class='suggest-item' wx:for="{{suggestGoodsList}}" bindtap="chooseSuggest" data-value="{{item}}">
           {{item}}
         </view>
       </view>
     </view>
-    <van-field label="商品数量" value="{{ goodsInfo.number }}" bind:change="inputEventCatcher" placeholder="请输入商品数量" error-message="{{errorInfo.numberError}}" data-key="number" required />
+    <van-field label="存入数量" value="{{ goodsInfo.number }}" bind:change="inputEventCatcher" placeholder="请输入存入数量" error-message="{{errorInfo.numberError}}" data-key="number" />
+    <van-field label="仓储编号" value="{{ goodsInfo.location }}" bind:change="inputEventCatcher" placeholder="请输入存入的仓储格子编号" error-message="{{errorInfo.locationrError}}" data-key="location" />
     <view class="empty"></view>
     <view class="empty"></view>
     <view class="empty"></view>
