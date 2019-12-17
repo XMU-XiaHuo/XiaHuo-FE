@@ -20,7 +20,8 @@
     "pages/personInfoManage/personInfoManage",
     "pages/index/index",
     "pages/createWarehouse3/createWarehouse3",
-    "pages/warehouseInfoManage/warehouseInfoManage"
+    "pages/warehouseInfoManage/warehouseInfoManage",
+    "pages/createProduct/createProduct"
   ],
   "window": {
     "backgroundTextStyle": "light",

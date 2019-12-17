@@ -5,8 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 是否有结果
     hasResult: true,
+    // 伸缩面板 active 列表
     activeNames: [],
+    // 删除 sheet 显示
+    actionSheetVisible: false,
+    // 删除 sheet 的按钮
+    deleteAction: [{
+      name: '删除',
+      color: '#ed3f14'
+    }],
+    // product 列表
     productList: [{
       name: '黄色XL',
       id: 1
@@ -26,6 +36,38 @@ Page({
   collapseChangeCatcher(event) {
     this.setData({
       activeNames: event.detail
+    });
+  },
+
+  // 删除 product
+  deleteProduct: function(){
+    this.setData({
+      actionSheetVisible: true
+    });
+  },
+
+  // 确认删除后的操作
+  handleDelete() {
+    const action = [...this.data.deleteAction];
+    action[0].loading = true;
+
+    this.setData({
+      deleteAction: action
+    });
+
+    setTimeout(() => {
+      action[0].loading = false;
+      this.setData({
+        actionSheetVisible: false,
+        deleteAction: action
+      });
+    }, 2000);
+  },
+
+  // 取消删除
+  handleCancel() {
+    this.setData({
+      actionSheetVisible: false
     });
   },
 

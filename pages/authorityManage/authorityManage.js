@@ -27,13 +27,14 @@ Page({
     })
   },
 
-  //删除相关
+  //删除成员
   openDeleteAction() {
     this.setData({
       actionSheetVisible: true
     });
   },
 
+  // 确认删除
   handleDelete() {
     const action = [...this.data.deleteAction];
     action[0].loading = true;
@@ -51,6 +52,7 @@ Page({
     }, 2000);
   },
 
+  // 取消删除
   handleCancel() {
     this.setData({
       actionSheetVisible: false
