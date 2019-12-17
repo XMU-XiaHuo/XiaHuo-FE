@@ -3,8 +3,8 @@
   <back-top-menu title="修改商品信息" backUrl="../goodsDetail/goodsDetail"></back-top-menu>
   <view class="empty"></view>
   <i-panel>
-    <van-field label="商品名称" value="{{ goodsInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入商品名称（不超过20字）" error-message="{{errorInfo.nameError}}" data-key="name" required/>
-    <van-field label="商品描述" value="{{ goodsInfo.description }}" bind:change="inputEventCatcher" placeholder="请输入商品描述（不超过50字）" error-message="{{errorInfo.descriptionError}}" data-key="description" type="textarea" autosize required/>
+    <van-field label="商品名称" value="{{ goodsInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入商品名称（不超过20字）" error-message="{{errorInfo.nameError}}" data-key="name" required maxlength="20"/>
+    <van-field label="商品描述" value="{{ goodsInfo.description }}" bind:change="inputEventCatcher" placeholder="请输入商品描述（不超过50字）" error-message="{{errorInfo.descriptionError}}" data-key="description" type="textarea" autosize required maxlength="50"/>
     <van-field label="计量单位" value="{{ goodsInfo.unit }}" bind:change="inputEventCatcher" placeholder="请输入计量单位（如个、斤）" error-message="{{errorInfo.unitError}}" data-key="unit" required/>
     <van-field label="保质期" value="{{ goodsInfo.expireDate }}" bind:change="inputEventCatcher" placeholder="请输入保质期（以天为单位）" error-message="{{errorInfo.expireDateError}}" data-key="unit" />
     <my-cell label="商品属性">

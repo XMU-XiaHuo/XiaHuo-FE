@@ -40,17 +40,11 @@ Page({
     if (address.length === 0) {
       return '仓库地址不能为空';
     }
-    if (address.length > 50) {
-      return '仓库地址应在 50 字内';
-    }
     return '';
   },
-  checkInfo: function (info) {
+  checkInfo: function(info) {
     if (info.length === 0) {
       return '仓库简介不能为空';
-    }
-    if (info.length > 80) {
-      return '仓库简介应在 80 字内';
     }
     return '';
   },
@@ -64,19 +58,14 @@ Page({
 
     // 检测仓库名
     let checkNameResult = this.checkName(name);
-    this.setData({
-      ['errorInfo.nameError']: checkNameResult
-    });
-
     // 检测仓库地址
     let checkAddressResult = this.checkAddress(address);
-    this.setData({
-      ['errorInfo.addressError']: checkAddressResult
-    });
-
     // 检测仓库简介
     let checkInfoResult = this.checkInfo(info);
+    // 设置错误信息
     this.setData({
+      ['errorInfo.nameError']: checkNameResult,
+      ['errorInfo.addressError']: checkAddressResult,
       ['errorInfo.infoError']: checkInfoResult
     });
 

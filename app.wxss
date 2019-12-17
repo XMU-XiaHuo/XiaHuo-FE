@@ -1,4 +1,6 @@
 .container {
+  height: 100vh;
+  box-sizing: border-box;
   padding-top: 65px;
   font-weight: lighter;
   font-family: "Roboto", "Helvetica", arial, sans-serif;

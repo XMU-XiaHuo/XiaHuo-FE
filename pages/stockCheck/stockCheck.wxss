@@ -21,3 +21,8 @@
 .report-button {
   margin-right: 10rpx;
 }
+
+.modal-input {
+  border-bottom: 1.3px solid #DCDFE6 !important;
+
+}

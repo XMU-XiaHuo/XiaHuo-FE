@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/stockCheck/stockCheck",
+    "pages/reportDamage/reportDamage",
     "pages/enterWarehouse/enterWarehouse",
     "pages/createGoods/createGoods",
     "pages/editGoods/editGoods",
@@ -8,11 +10,9 @@
     "pages/goodsDetail/goodsDetail",
     "pages/authorityManagePerson/authorityManagePerson",
     "pages/mainPage/mainPage",
-    "pages/stockCheck/stockCheck",
     "pages/createWarehouse2/createWarehouse2",
     "pages/createWarehouse/createWarehouse",
     "pages/test/test",
-    "pages/reportDamage/reportDamage",
     "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
     "pages/leaveWarehouse/leaveWarehouse",

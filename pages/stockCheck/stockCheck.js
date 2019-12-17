@@ -1,4 +1,8 @@
 // pages/stockCheck/stockCheck.js
+const {
+  $Toast
+} = require('../../iview/base/index');
+
 Page({
 
   /**
@@ -7,8 +11,18 @@ Page({
   data: {
     storageNumber: '',
     isSearching: false,
-    activeNames: ['1','2'],
-    hasResult: true
+    activeNames: ['1', '2'],
+    hasResult: true,
+    modalVisible: true,
+    reportType: 0,
+    report: {
+      description: '',
+      number: '',
+    },
+    errorInfo: {
+      descriptionError: '',
+      numberError: ''
+    }
 
   },
 
@@ -30,6 +44,7 @@ Page({
     });
   },
 
+  // 根据库位号搜索
   search: function() {
     console.log(this.data.storageNumber);
     this.setData({
@@ -43,17 +58,78 @@ Page({
     }, 1000);
   },
 
-  // 跳转至报损页面
+  // 报损弹窗
   reportDamage: function() {
-    wx.navigateTo({
-      url: '../reportDamage/reportDamage?type=0'
+    this.setData({
+      modalVisible: true,
+      reportType: 0
     })
   },
 
-  // 跳转至报溢页面
-  reportOverflow: function () {
-    wx.navigateTo({
-      url: '../reportDamage/reportDamage?type=1'
+  // 报溢弹窗
+  reportOverflow: function() {
+    this.setData({
+      modalVisible: true,
+      reportType: 1
+    })
+  },
+
+  // 处理输入事件
+  inputEventCatcher: function(e) {
+    let {
+      key
+    } = e.target.dataset;
+    let modifyKey = 'report.' + key;
+    this.setData({
+      [modifyKey]: e.detail
+    })
+  },
+
+  // 提交报损/报溢
+  submitReport: function() {
+    let {
+      reportType,
+      report
+    } = this.data;
+    let {
+      description,
+      number
+    } = report;
+    let checkDescriptionResult = this.checkDescription(description);
+    let checkNumberResult = this.checkNumber(number, reportType);
+    this.setData({
+      ['errorInfo.descriptionError']: checkDescriptionResult,
+      ['errorInfo.numberError']: checkNumberResult
+    })
+    if (checkDescriptionResult.length === 0 && checkNumberResult.length === 0) {
+      this.setData({
+        modalVisible: false
+      });
+      $Toast({
+        content: reportType ? '报溢成功' : '报损成功',
+        type: 'success'
+      });
+    }
+  },
+  // 检测描述信息
+  checkDescription: function(description) {
+    if (description === '') {
+      return '描述信息不能为空';
+    }
+    return '';
+  },
+  // 检测真实数量
+  checkNumber: function(number, reportType) {
+    if (number === '') {
+      return '真实数量不能为空';
+    }
+    return '';
+  },
+
+  // 关闭 modal
+  handleClose: function() {
+    this.setData({
+      modalVisible: false
     })
   },
 
