@@ -1,5 +1,0 @@
-<!--pages/reportDamage/reportDamage.wxml-->
-<view class="container">
-  <back-top-menu title="{{type ? '报溢' : '报损'}}" backUrl="../stockCheck/stockCheck"></back-top-menu>
-
-</view>
