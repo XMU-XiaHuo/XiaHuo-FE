@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/editGoods/editGoods",
+    "pages/stockCheck/stockCheck",
+    "pages/createGoods/createGoods",
+    "pages/createProduct/createProduct",
     "pages/index/index",
     "pages/productList/productList",
-    "pages/stockCheck/stockCheck",
     "pages/enterWarehouse/enterWarehouse",
-    "pages/createGoods/createGoods",
-    "pages/editGoods/editGoods",
     "pages/goodsManage/goodsManage",
     "pages/goodsDetail/goodsDetail",
     "pages/authorityManagePerson/authorityManagePerson",
@@ -20,8 +21,7 @@
     "pages/myAuthority/myAuthority",
     "pages/personInfoManage/personInfoManage",
     "pages/createWarehouse3/createWarehouse3",
-    "pages/warehouseInfoManage/warehouseInfoManage",
-    "pages/createProduct/createProduct"
+    "pages/warehouseInfoManage/warehouseInfoManage"
   ],
   "window": {
     "backgroundTextStyle": "light",

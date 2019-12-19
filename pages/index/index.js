@@ -132,7 +132,6 @@ Page({
   },
   onLoad: function() {
     this.userLogin();
-    this.showModal('微信授权失败\n请检查您的网络连接, 并稍后重试');
   },
 
 })

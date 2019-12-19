@@ -25,10 +25,10 @@
     </van-collapse>
   </view>
 
-  <i-modal title="填写具体信息" i-class="modal" visible="{{ modalVisible }}" bind:ok="submitReport" bind:cancel="handleClose">
-    <van-field input-class="modal-input" label="描述信息：" value="{{ report.description }}" bind:change="inputEventCatcher" error-message="{{errorInfo.descriptionError}}" data-key="description" title-width="70px" border="{{false}}" />
+  <i-modal title="填写具体信息" visible="{{ modalVisible }}" bind:ok="submitReport" bind:cancel="handleClose">
+    <van-field input-class="modal-input" label="描述信息：" value="{{ report.description }}" bind:change="inputEventCatcher" error-message="{{errorInfo.descriptionError}}" data-key="description" title-width="70px" border="{{false}}" focus="{{true}}" maxlength="50"
+    />
     <van-field input-class="modal-input" label="真实数量：" value="{{ report.number }}" bind:change="inputEventCatcher" error-message="{{errorInfo.numberError}}" data-key="number" title-width="70px" border="{{false}}" />
-
   </i-modal>
   <i-toast id="toast" />
   <no-result visible="{{!hasResult}}"></no-result>

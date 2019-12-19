@@ -10,22 +10,29 @@ Page({
       description: '',
       unit: '',
       expireDate: '',
-      properties: ['尺码','颜色','版本','长度']
+      properties: ['尺码', '颜色', '版本', '长度']
     },
     errorInfo: {
       nameError: '',
       descriptionError: '',
       unitError: '',
       expireDateError: '',
-    }
+      newPropertyError: ''
+    },
+    modalVisible: true,
+    newProperty: ''
   },
 
   // 处理输入事件
   inputEventCatcher: function(e) {
     let {
-      key
+      key,
+      object
     } = e.target.dataset;
-    let modifyKey = 'goodsInfo.' + key;
+    let modifyKey = key;
+    if (object) {
+      modifyKey = object + '.' + key;
+    }
     this.setData({
       [modifyKey]: e.detail
     })
@@ -51,12 +58,51 @@ Page({
   },
 
   // 删除商品属性
-  deleteTag: function(e){
-    let {index} = e.detail;
+  deleteTag: function(e) {
+    let {
+      index
+    } = e.detail;
     let properties = this.data.goodsInfo.properties;
-    properties.splice(index,1);
+    properties.splice(index, 1);
     this.setData({
       ['goodsInfo.properties']: properties
+    })
+  },
+
+  // 创建商品属性
+  createTag: function(e) {
+
+  },
+
+  // 创建属性成功
+  submitNewProperty: function(e) {
+    let {
+      newProperty,
+      goodsInfo
+    } = this.data;
+    let {
+      properties = []
+    } = goodsInfo;
+    if (newProperty === '') {
+      this.setData({
+        ['errorInfo.newPropertyError']: '属性名不能为空'
+      })
+    } else if (properties.indexOf(newProperty) > -1) {
+      this.setData({
+        ['errorInfo.newPropertyError']: '属性名与已有的重复'
+      })
+    } else {
+      this.setData({
+        ['goodsInfo.properties']: properties.concat(newProperty),
+        modalVisible: false
+      })
+    }
+  },
+
+  // 关闭 modal
+  closeModal: function() {
+    this.setData({
+      modalVisible: false
     })
   },
 

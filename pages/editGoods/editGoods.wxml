@@ -3,15 +3,19 @@
   <back-top-menu title="修改商品信息" backUrl="../goodsDetail/goodsDetail"></back-top-menu>
   <view class="empty"></view>
   <i-panel>
-    <van-field label="商品名称" value="{{ goodsInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入商品名称（不超过20字）" error-message="{{errorInfo.nameError}}" data-key="name" required maxlength="20"/>
-    <van-field label="商品描述" value="{{ goodsInfo.description }}" bind:change="inputEventCatcher" placeholder="请输入商品描述（不超过50字）" error-message="{{errorInfo.descriptionError}}" data-key="description" type="textarea" autosize required maxlength="50"/>
-    <van-field label="计量单位" value="{{ goodsInfo.unit }}" bind:change="inputEventCatcher" placeholder="请输入计量单位（如个、斤）" error-message="{{errorInfo.unitError}}" data-key="unit" required/>
-    <van-field label="保质期" value="{{ goodsInfo.expireDate }}" bind:change="inputEventCatcher" placeholder="请输入保质期（以天为单位）" error-message="{{errorInfo.expireDateError}}" data-key="unit" />
+    <van-field label="商品名称" value="{{ goodsInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入商品名称（不超过20字）" error-message="{{errorInfo.nameError}}" data-key="name" required maxlength="20" />
+    <van-field label="商品描述" value="{{ goodsInfo.description }}" bind:change="inputEventCatcher" placeholder="请输入商品描述（不超过50字）" error-message="{{errorInfo.descriptionError}}" data-key="description" data-object="goodsInfo" type="textarea" autosize required maxlength="50"
+    />
+    <van-field label="计量单位" value="{{ goodsInfo.unit }}" bind:change="inputEventCatcher" placeholder="请输入计量单位（如个、斤）" error-message="{{errorInfo.unitError}}" data-key="unit" data-object="goodsInfo" required/>
+    <van-field label="保质期" value="{{ goodsInfo.expireDate }}" bind:change="inputEventCatcher" placeholder="请输入保质期（以天为单位）" error-message="{{errorInfo.expireDateError}}" data-key="unit" data-object="goodsInfo" />
     <my-cell label="商品属性">
-      <goods-properties propertyList="{{goodsInfo.properties}}" bind:deleteTag="deleteTag"></goods-properties>
+      <goods-properties propertyList="{{goodsInfo.properties}}" bind:deleteTag="deleteTag" bind:createTag="createTag"></goods-properties>
     </my-cell>
   </i-panel>
   <view class="bottom-button">
     <i-button bind:click="confirmEdit" type="primary" shape="circle">保存</i-button>
   </view>
+  <i-modal title="填写属性" i-class="modal" visible="{{ modalVisible }}" bind:ok="submitNewProperty" bind:cancel="closeModal">
+    <van-field input-class="modal-input" label="属性名：" value="{{ newProperty }}" bind:change="inputEventCatcher" error-message="{{errorInfo.newPropertyError}}" data-key="newProperty" title-width="60px" border="{{false}}" focus="{{true}}" maxlength="10" />
+  </i-modal>
 </view>

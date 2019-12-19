@@ -111,6 +111,7 @@ Page({
       });
     }
   },
+  
   // 检测描述信息
   checkDescription: function(description) {
     if (description === '') {

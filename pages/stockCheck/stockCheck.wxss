@@ -23,6 +23,8 @@
 }
 
 .modal-input {
-  border-bottom: 1.3px solid #DCDFE6 !important;
-
+  padding: 0 15rpx !important;
+  border: 0.8px solid #DCDFE6 !important;
+  box-sizing: border-box !important;
+  border-radius: 4px;
 }

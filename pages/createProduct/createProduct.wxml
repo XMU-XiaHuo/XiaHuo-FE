@@ -1,2 +1,13 @@
 <!--pages/createProduct/createProduct.wxml-->
-<text>pages/createProduct/createProduct.wxml</text>
+<view class="container">
+  <back-top-menu title="创建产品" backUrl="../productList/productList"></back-top-menu>
+  <view class="empty"></view>
+  <i-panel title="请完善产品信息:">
+    <van-field label="产品名称" value="{{ productInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入产品名称（不超过20字）" error-message="{{errorInfo.nameError}}" data-key="name" required/>
+  </i-panel>
+  <view class="bottom-button">
+    <i-button bind:click="nextStep" type="primary" shape="circle">提交</i-button>
+  </view>
+
+</view>
+
