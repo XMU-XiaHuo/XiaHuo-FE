@@ -1,4 +1,8 @@
 // pages/productList/productList.js
+const {
+  $Toast
+} = require('../../iview/base/index');
+
 Page({
 
   /**

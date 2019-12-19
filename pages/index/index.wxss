@@ -1,16 +1,30 @@
 .container {
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   box-sizing: border-box;
-  padding-top: 175rpx;
+  padding-top: 250rpx;
 }
 
 .logo {
   width: 250rpx;
   height: 250rpx;
+}
+
+.loading-container {
+  margin-top: 100rpx;
+}
+
+.loading-text {
+  margin-top: 20rpx;
+}
+
+.empty-s {
+  height: 30rpx;
+}
+
+.error-text{
+  font-size: 15px;
 }
 
 .welcome-text {

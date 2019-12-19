@@ -20,9 +20,11 @@
     </view>
   </i-action-sheet>
 
-  <no-result visible="{{!hasResult}}"></no-result>
-
   <view class="bottom-sticky-button" hidden="{{isPageScroll}}">
     <i-button bind:click="createProduct" type="primary" shape="circle">创建产品</i-button>
   </view>
+
+  <no-result visible="{{!hasResult}}"></no-result>
+  <i-toast id="toast" />
+
 </view>

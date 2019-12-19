@@ -1,4 +1,5 @@
-const baseURL = 'http://localhost:3000';
+// const baseURL = 'http://localhost:3000';
+const baseURL = 'http://106.13.46.72:8082'
 
 function wxRequest(
   url = "",

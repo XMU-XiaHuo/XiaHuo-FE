@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "i-panel": "../../iview/panel/index",
+    "i-toast": "../../iview/toast/index",
     "i-action-sheet": "../../iview/action-sheet/index",
     "i-button": "../../iview/button/index",
     "van-button": "../../vant/button/index",
