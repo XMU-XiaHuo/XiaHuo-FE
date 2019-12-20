@@ -1,5 +1,8 @@
 // pages/mainPage/mainPage.js
 const app = getApp();
+const {
+  wxRequest
+} = app.Request;
 
 Page({
 
@@ -67,6 +70,20 @@ Page({
     ]
   },
 
+  // 获取仓库信息
+  getBaseInfo: function(code) {
+    return new Promise((resolve, reject) => {
+      wxRequest({
+        url: '/user/warehouse/warehouse',
+        method: 'GET'
+      }).then((res) => {
+        resolve(res);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  },
+
   navigateTo: function(e) {
     let {
       url
@@ -75,15 +92,10 @@ Page({
       wx.navigateTo({
         url: e.currentTarget.dataset.url
       })
-    } else {
-
     }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
+  getWxUserInfo: function() {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -97,6 +109,15 @@ Page({
         })
       })
     };
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    this.getBaseInfo().then((res) => {
+      console.log(res);
+    })
   },
 
   /**

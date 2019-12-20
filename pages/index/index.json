@@ -1,7 +1,6 @@
 {
   "usingComponents": {
     "role-tag": "../../components/role-tag/role-tag",
-    "i-toast": "../../iview/toast/index",
     "i-modal": "../../iview/modal/index",
     "van-loading": "../../vant/loading/index"
   }

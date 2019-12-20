@@ -15,7 +15,7 @@ Component({
     jumpType: {
       type: String,
       value: 'reLaunch'
-    },
+    }
   },
 
   /**
@@ -48,7 +48,7 @@ Component({
           wx.reLaunch({
             url: backUrl
           })
-        } else {          
+        } else {
           wx.navigateBack({
             delta: 1
           })

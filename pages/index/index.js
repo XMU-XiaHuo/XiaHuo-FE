@@ -1,10 +1,8 @@
 //index.js
-
 const app = getApp();
-
 const {
   wxRequest
-} = require('../../utils/request.js');
+} = app.Request;
 
 Page({
   data: {
@@ -22,26 +20,7 @@ Page({
       }
     ],
     userInfo: {},
-    warehouse: [{
-        name: '厦门吴悠是xxxxxxxxxxxxxx仓库',
-        role: 'owner'
-      },
-      {
-        name: '福州仓库',
-        role: 'admin'
-      },
-      {
-        name: '泉州仓库',
-        role: 'picker'
-      },
-    ],
-
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../mainPage/mainPage'
-    })
+    createWarehouseVisible: true
   },
   jumpToCreatePage: function() {
     wx.navigateTo({
@@ -68,8 +47,15 @@ Page({
   // 发 code 到后端
   codeToBackEnd: function(code) {
     return new Promise((resolve, reject) => {
-      wxRequest('/user/user/user', 'GET', {
-        code: code
+      wxRequest({
+        url: '/user/user/login',
+        method: 'GET',
+        data: {
+          code: code
+        },
+        header: {
+          'content-type': 'application/json'
+        }
       }).then((res) => {
         resolve(res);
       }, (error) => {
@@ -94,7 +80,7 @@ Page({
   }) {
     const index = detail.index;
     if (index === 1) {
-      console.log('重试登录')
+      this.reTry();
     }
     this.setData({
       modalVisible: false
@@ -106,6 +92,7 @@ Page({
   },
   // 用户登录总流程
   userLogin: function() {
+    let that = this;
     Promise.resolve().then(() => {
       this.setData({
         loadingText: '微信授权中...'
@@ -123,11 +110,18 @@ Page({
       console.log(error);
     }).then((res) => {
       // codeToBackEnd 成功
-      console.log(res);
+      if (res.result) {
+        wx.reLaunch({
+          url: '../mainPage/mainPage'
+        });
+      } else {
+        that.setData({
+          createWarehouseVisible: false
+        });
+      }
     }, (error) => {
       // codeToBackEnd 失败
       this.showModal('系统后台出错, 请稍后重试');
-      console.log(error);
     });
   },
   onLoad: function() {

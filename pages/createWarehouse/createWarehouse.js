@@ -1,4 +1,9 @@
 // pages/createWarehouse/createWarehouse.js
+const app = getApp();
+const {
+  wxRequest
+} = app.Request;
+
 Page({
 
   /**
@@ -6,10 +11,10 @@ Page({
    */
   data: {
     userInfo: {
-      name: '',
-      identity: '',
-      phone: '',
-      email: ''
+      name: '谭源杰',
+      identity: '330105199807120017',
+      phone: '18059235981',
+      email: '413145873@qq.com'
     },
     errorInfo: {
       nameError: '',
@@ -29,7 +34,6 @@ Page({
       [modifyKey]: e.detail
     })
   },
-
   checkName: function(name) {
     let regName = /^[\u4e00-\u9fa5]{2,4}$/;
     if (!regName.test(name)) {
@@ -66,6 +70,25 @@ Page({
       return '邮箱格式错误';
     }
     return '';
+  },
+  // 修改个人信息
+  createWarehouse: function(name, identity, phone, email) {
+    return new Promise((resolve, reject) => {
+      wxRequest({
+        url: '/user/user/info',
+        method: 'PUT',
+        data: {
+          email,
+          identity,
+          name,
+          phone
+        }
+      }).then((res) => {
+        resolve(res);
+      }, (error) => {
+        reject(error);
+      });
+    });
   },
 
   // 下一步
@@ -106,10 +129,19 @@ Page({
       return;
     }
 
-    // 跳转
-    wx.navigateTo({
-      url: '../createWarehouse2/createWarehouse2'
-    })
+    this.createWarehouse(name, identity, phone, email).then((res) => {
+      // 跳转
+      wx.navigateTo({
+        url: '../createWarehouse2/createWarehouse2'
+      })
+    }, (error) => {
+      $Message({
+        content: error.message,
+        type: 'error'
+      });
+    });
+
+
   },
 
   /**

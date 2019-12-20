@@ -1,10 +1,12 @@
 //app.js
 const EventEmitter = require('utils/eventEmitter.js');
+const Request = require('utils/request.js');
 
 App({
   onLaunch: function() {
     // 初始化事件监听器
     this.eventEmitter = new EventEmitter();
+    this.Request = Request;
 
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []

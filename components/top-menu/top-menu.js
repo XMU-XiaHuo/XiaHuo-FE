@@ -94,19 +94,6 @@ Component({
   },
 
   lifetimes: {
-    attached: function() {
-      if (app.globalData.userInfo) {
-        this.setData({
-          userInfo: app.globalData.userInfo
-        });
-      } else {
-        app.eventEmitter.on('getUserInfo', (res) => {
-          console.log(res);
-          this.setData({
-            userInfo: res.userInfo
-          })
-        })
-      };
-    }
+    
   },
 })

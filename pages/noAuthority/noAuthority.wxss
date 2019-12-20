@@ -1,0 +1,13 @@
+/* pages/noAuthority/noAuthority.wxss */
+
+.warn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 150rpx;
+}
+
+.warn-img {
+  width: 300rpx;
+  height: 300rpx;
+}
