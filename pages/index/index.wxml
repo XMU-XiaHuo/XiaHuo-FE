@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view class="container">
   <image src="{{logo}}" class='logo'></image>
-  
-  <view class='warehouse-list' hidden="{{createWarehouseVisible}}">
+
+  <view hidden="{{createWarehouseVisible}}">
     <view class="warehouse-container create" bindtap="jumpToCreatePage">
       <image src="image/create.png" class="create-img"></image>
       <view class="warehouse-name">创建新仓库</view>

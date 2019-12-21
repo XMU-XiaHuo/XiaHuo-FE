@@ -10,6 +10,14 @@
   height: 100rpx;
 }
 
+.empty-s {
+  height: 30rpx;
+}
+
+.error-text {
+  font-size: 15px;
+}
+
 .bottom-button {
   position: absolute;
   width: 100%;

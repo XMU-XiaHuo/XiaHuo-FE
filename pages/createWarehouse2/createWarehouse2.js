@@ -1,4 +1,10 @@
 // pages/createWarehouse2/createWarehouse2.js
+const app = getApp();
+const {
+  wxRequest
+} = app.Request;
+
+
 Page({
 
   /**
@@ -6,16 +12,22 @@ Page({
    */
   data: {
     warehouseInfo: {
-      name: '',
-      address: '',
-      info: ''
+      name: '谭源杰的仓库',
+      address: '厦门市思明区海韵学生公寓海韵二',
+      info: '这是一个学生创建的仓库，仓库内有日用品如牙刷、牙膏、毛巾，同时还有水果如苹果、香蕉、梨'
     },
     errorInfo: {
       nameError: '',
       addressError: '',
       infoError: ''
-    }
-
+    },
+    modalVisible: false,
+    errorTitle: '出错了๑Ծ‸Ծ๑',
+    errorMsg: '',
+    modalButtons: [{
+      color: '#409eff',
+      name: '确定',
+    }],
   },
 
   // 处理输入事件
@@ -28,7 +40,6 @@ Page({
       [modifyKey]: e.detail
     })
   },
-
   checkName: function(name) {
     let regName = /^[\u4e00-\u9fa5]{2,15}$/;
     if (!regName.test(name)) {
@@ -49,6 +60,25 @@ Page({
     return '';
   },
 
+  // 创建仓库
+  createWarehouse: function(name, address, info) {
+    return new Promise((resolve, reject) => {
+      wxRequest({
+        url: '/user/warehouse/warehouse',
+        method: 'POST',
+        data: {
+          warehouseName: name,
+          warehousePosition: address,
+          warehouseIntro: info
+        }
+      }).then((res) => {
+        resolve(res);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  },
+  // 下一步
   nextStep: function() {
     let {
       name,
@@ -74,9 +104,32 @@ Page({
       return;
     }
 
-    // 跳转到成功页面
-    wx.navigateTo({
-      url: '../createWarehouse3/createWarehouse3'
+    // 创建仓库
+    this.createWarehouse(name, address, info).then((res) => {
+      // 跳转到成功页面
+      wx.navigateTo({
+        url: '../createWarehouse3/createWarehouse3'
+      })
+    }, (error) => {
+      // 展示错误 modal
+      this.showModal(error.message);
+    });
+  },
+  // 展示错误 modal
+  showModal: function(errorMsg) {
+    let that = this;
+    this.setData({
+      errorMsg: errorMsg || '未知的错误'
+    }, () => {
+      that.setData({
+        modalVisible: true
+      })
+    });
+  },
+  // 错误 modal 的交互
+  clickModal() {
+    this.setData({
+      modalVisible: false
     })
   },
 

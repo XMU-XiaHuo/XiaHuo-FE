@@ -19,18 +19,10 @@
   margin-top: 20rpx;
 }
 
-.empty-s {
-  height: 30rpx;
-}
-
-.error-text {
-  font-size: 15px;
-}
-
 .warehouse-container {
   width: 300rpx;
   height: 250rpx;
-  margin-top: 75rpx;
+  margin-top: 100rpx;
   border-radius: 50rpx 50rpx 50rpx 50rpx;
   border: 2px solid black;
   display: flex;

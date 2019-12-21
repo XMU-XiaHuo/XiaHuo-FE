@@ -21,7 +21,14 @@ Page({
       identityError: '',
       phoneError: '',
       emailError: ''
-    }
+    },
+    modalVisible: false,
+    errorTitle: '出错了๑Ծ‸Ծ๑',
+    errorMsg: '',
+    modalButtons: [{
+      color: '#409eff',
+      name: '确定',
+    }],
   },
 
   // 处理输入事件
@@ -90,7 +97,6 @@ Page({
       });
     });
   },
-
   // 下一步
   nextStep: function() {
     let {
@@ -99,6 +105,7 @@ Page({
       phone,
       email
     } = this.data.userInfo;
+    let that = this;
 
     // 检测姓名
     let checkNameResult = this.checkName(name);
@@ -135,13 +142,26 @@ Page({
         url: '../createWarehouse2/createWarehouse2'
       })
     }, (error) => {
-      $Message({
-        content: error.message,
-        type: 'error'
-      });
+      // 展示错误 modal
+      this.showModal(error.message);
     });
-
-
+  },
+  // 展示错误 modal
+  showModal: function(errorMsg) {
+    let that = this;
+    this.setData({
+      errorMsg: errorMsg || '未知的错误'
+    }, () => {
+      that.setData({
+        modalVisible: true
+      })
+    });
+  },
+  // 错误 modal 的交互
+  clickModal() {
+    this.setData({
+      modalVisible: false
+    })
   },
 
   /**

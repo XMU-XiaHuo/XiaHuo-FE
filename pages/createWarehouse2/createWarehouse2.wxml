@@ -1,16 +1,20 @@
 <!--pages/createWarehouse2/createWarehouse2.wxml-->
 <view class="container">
-  <back-top-menu title="完善仓库信息" backUrl="../createWarehouse/createWarehouse" ></back-top-menu>
+  <back-top-menu title="完善仓库信息" backUrl="../createWarehouse/createWarehouse"></back-top-menu>
   <view class="empty"></view>
   <create-steps current="2"></create-steps>
   <view class="empty"></view>
   <i-panel title="请完善仓库信息:">
-    <van-field label="仓库名" value="{{ warehouseInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入仓库名（2-15字）" error-message="{{errorInfo.nameError}}" data-key="name" maxlength="15"/>
-    <van-field label="仓库地址" value="{{ warehouseInfo.address }}" bind:change="inputEventCatcher" placeholder="请输入仓库地址（不超过50字）" error-message="{{errorInfo.addressError}}" data-key="address" maxlength="50"/>
-    <van-field label="仓库简介" value="{{ warehouseInfo.info }}" bind:change="inputEventCatcher" placeholder="请输入仓库简介（不超过80字）" error-message="{{errorInfo.infoError}}" data-key="info" type="textarea" autosize maxlength="80"/>
+    <van-field label="仓库名" value="{{ warehouseInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入仓库名（2-15字）" error-message="{{errorInfo.nameError}}" data-key="name" maxlength="15" />
+    <van-field label="仓库地址" value="{{ warehouseInfo.address }}" bind:change="inputEventCatcher" placeholder="请输入仓库地址（不超过50字）" error-message="{{errorInfo.addressError}}" data-key="address" maxlength="50" />
+    <van-field label="仓库简介" value="{{ warehouseInfo.info }}" bind:change="inputEventCatcher" placeholder="请输入仓库简介（不超过80字）" error-message="{{errorInfo.infoError}}" data-key="info" maxlength="80" />
   </i-panel>
   <view class="bottom-button">
     <i-button bind:click="nextStep" type="primary" shape="circle">提交</i-button>
   </view>
-
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <text class='error-text'>{{errorMsg}}</text>
+    <view class='empty-s'></view>
+  </i-modal>
 </view>
