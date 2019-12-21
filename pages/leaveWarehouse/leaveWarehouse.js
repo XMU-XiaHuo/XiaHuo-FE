@@ -1,66 +1,111 @@
 // pages/leaveWarehouse/leaveWarehouse.js
+const app = getApp();
+const {
+  wxRequest
+} = app.Request;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    isError: false,
+    modalVisible: false,
+    errorTitle: '',
+    errorMsg: '',
+    modalButtons: [{
+      name: '取消'
+    }, {
+      color: '#409eff',
+      name: '确定',
+    }],
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  // 展示确认 modal
+  showModal: function(title, msg) {
+    let that = this;
+    this.setData({
+      isError: false,
+      errorTitle: '๑Ծ‸Ծ๑',
+      errorMsg: '确认要退出仓库吗',
+      modalButtons: [{
+        name: '取消'
+      }, {
+        color: '#409eff',
+        name: '确定',
+      }]
+    }, () => {
+      that.setData({
+        modalVisible: true
+      })
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // 展示错误 modal
+  showErrorModal: function(errorTitle, errorMsg) {
+    let that = this;
+    this.setData({
+      isError: true,
+      errorTitle: '出错了๑Ծ‸Ծ๑',
+      errorMsg: errorMsg || '未知的错误',
+      modalButtons: [{
+        color: '#409eff',
+        name: '确定',
+      }]
+    }, () => {
+      that.setData({
+        modalVisible: true
+      })
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  //  modal 的交互
+  clickModal({
+    detail
+  }) {
+    let that = this;
+    const index = detail.index;
+    let {
+      isError
+    } = this.data;
+    if (isError) {
+      this.setData({
+        modalVisible: false
+      })
+    } else {
+      if (index === 1) {
+        that.leave().then((res) => {
+          wx.reLaunch({
+            url: '../index/index'
+          });
+        }, (error) => {
+          that.showErrorModal(error.message);
+        })
+      }
+      this.setData({
+        modalVisible: false
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  // 退出仓库请求
+  leave: function(name, address, info) {
+    return new Promise((resolve, reject) => {
+      wxRequest({
+        url: '/user/user/warehouse',
+        method: 'PUT'
+      }).then((res) => {
+        resolve(res);
+      }, (error) => {
+        reject(error);
+      });
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  // 退出仓库总流程
+  exitWarehouse: function() {
+    this.showModal();
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

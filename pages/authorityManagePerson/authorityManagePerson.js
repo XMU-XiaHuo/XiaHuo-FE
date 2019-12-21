@@ -47,9 +47,9 @@ Page({
   formatRoleList: function() {
     let res = [];
     Object.keys(Roles).forEach((key) => {
-      if (key !== 'none') {
+      if (key !== '无权限') {
         res.push({
-          title: Roles[key],
+          title: key,
           label: Description[key],
           switch: false
         })

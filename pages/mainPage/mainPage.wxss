@@ -23,8 +23,13 @@
   box-sizing: border-box;
 }
 
-.warehouse-name {
-  margin-top: 5rpx;
+.text-flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 25rpx 0;
 }
 
 .role-container {

@@ -7,13 +7,11 @@
       <image src="{{userInfo.avatarUrl}}" class="avatar-img"></image>
     </view>
     <view class="inline-b text-container">
-      <view class="text-ellipsis">{{userInfo.nickName}}</view>
-      <view class="warehouse-name text-ellipsis">仓库名</view>
-      <view class="role-container">
-        <role-tag role="picker" class="role-tag-list"></role-tag>
-        <role-tag role="counter" class="role-tag-list"></role-tag>
-        <role-tag role="orderer" class="role-tag-list"></role-tag>
-        <!-- <role-tag role="storager" class="role-tag-list"></role-tag> -->
+      <view class="text-flex-container">
+        <view class="text-ellipsis">{{userName}}</view>
+        <view class="role-container">
+          <role-tag wx:for="{{roleList}}" role="{{item}}" class="role-tag-list"></role-tag>
+        </view>
       </view>
     </view>
   </view>

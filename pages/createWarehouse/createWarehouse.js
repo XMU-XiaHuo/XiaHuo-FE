@@ -43,14 +43,14 @@ Page({
   },
   checkName: function(name) {
     let regName = /^[\u4e00-\u9fa5]{2,4}$/;
-    if (!regName.test(name)) {
+    if (!name || !regName.test(name)) {
       return '姓名格式错误（应为 2 - 4 个汉字）';
     }
     return '';
   },
   checkIdentity: function(identity) {
     let regIdentity = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
-    if (identity.length === 0) {
+    if (!identity || identity.length === 0) {
       return '身份证号不能为空'
     }
     if (!regIdentity.test(identity)) {
@@ -60,7 +60,7 @@ Page({
   },
   checkPhone: function(phone) {
     let regPhone = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/;
-    if (phone.length === 0) {
+    if (!phone || phone.length === 0) {
       return '手机号不能为空'
     }
     if (!regPhone.test(phone)) {
@@ -70,7 +70,7 @@ Page({
   },
   checkEmail: function(email) {
     let regEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-    if (email.length === 0) {
+    if (!email || email.length === 0) {
       return '邮箱不能为空'
     }
     if (!regEmail.test(email)) {
@@ -79,7 +79,7 @@ Page({
     return '';
   },
   // 修改个人信息
-  createWarehouse: function(name, identity, phone, email) {
+  editUserInfo: function(name, identity, phone, email) {
     return new Promise((resolve, reject) => {
       wxRequest({
         url: '/user/user/info',
@@ -136,7 +136,7 @@ Page({
       return;
     }
 
-    this.createWarehouse(name, identity, phone, email).then((res) => {
+    this.editUserInfo(name, identity, phone, email).then((res) => {
       // 跳转
       wx.navigateTo({
         url: '../createWarehouse2/createWarehouse2'

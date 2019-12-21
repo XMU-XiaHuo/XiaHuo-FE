@@ -18,6 +18,11 @@
     </view>
   </view>
   <view class="bottom-button">
-    <i-button type="error" shape="circle">退出仓库</i-button>
+    <i-button type="error" shape="circle" bind:click="exitWarehouse">退出仓库</i-button>
   </view>
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <text class='error-text'>{{errorMsg}}</text>
+    <view class='empty-s'></view>
+  </i-modal>
 </view>

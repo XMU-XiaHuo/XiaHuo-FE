@@ -1,8 +1,12 @@
 {
   "pages": [
+    "pages/authorityManage/authorityManage",
     "pages/index/index",
-    "pages/createWarehouse/createWarehouse",
+    "pages/leaveWarehouse/leaveWarehouse",
+    "pages/myAuthority/myAuthority",
     "pages/mainPage/mainPage",
+    "pages/personInfoManage/personInfoManage",
+    "pages/createWarehouse/createWarehouse",
     "pages/test/test",
     "pages/noAuthority/noAuthority",
     "pages/editGoods/editGoods",
@@ -17,10 +21,6 @@
     "pages/createWarehouse2/createWarehouse2",
     "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
-    "pages/leaveWarehouse/leaveWarehouse",
-    "pages/authorityManage/authorityManage",
-    "pages/myAuthority/myAuthority",
-    "pages/personInfoManage/personInfoManage",
     "pages/createWarehouse3/createWarehouse3",
     "pages/warehouseInfoManage/warehouseInfoManage"
   ],

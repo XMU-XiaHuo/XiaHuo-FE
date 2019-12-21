@@ -9,4 +9,5 @@
       </view>
     </i-cell>
   </i-cell-group>
+  <page-loading content="加载权限信息中..." visible="{{loading}}"></page-loading>
 </view>

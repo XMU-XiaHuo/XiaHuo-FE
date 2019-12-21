@@ -11,6 +11,8 @@ Page({
    */
   data: {
     userInfo: {},
+    userName: '',
+    roleList: [],
     userInfoLoading: true,
     routeList: [{
         title: '个人信息管理',
@@ -57,33 +59,10 @@ Page({
         url: '../mainPage/mainPage',
         icon: 'image/log.png'
       }
-      // {
-      //   title: '报损',
-      //   url: '../reportDamage/reportDamage',
-      //   icon: 'image/baosun.png'
-      // },
-      // {
-      //   title: '报溢',
-      //   url: '../index/index',
-      //   icon: 'image/baoyi.png'
-      // }
     ]
   },
 
-  // 获取仓库信息
-  getBaseInfo: function(code) {
-    return new Promise((resolve, reject) => {
-      wxRequest({
-        url: '/user/warehouse/warehouse',
-        method: 'GET'
-      }).then((res) => {
-        resolve(res);
-      }, (error) => {
-        reject(error);
-      });
-    });
-  },
-
+  // 跳转
   navigateTo: function(e) {
     let {
       url
@@ -95,17 +74,44 @@ Page({
     }
   },
 
+  // 获取权限信息
+  getPermissionInfo: function(code) {
+    return new Promise((resolve, reject) => {
+      wxRequest({
+        url: '/user/user/permissions',
+        method: 'GET'
+      }).then((res) => {
+        resolve(res);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  },
+
+  // 获取个人信息
+  getUserInfo: function() {
+    return new Promise((resolve, reject) => {
+      wxRequest({
+        url: '/user/user/info',
+        method: 'GET'
+      }).then((res) => {
+        resolve(res);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  },
+
+  // 获取微信头像
   getWxUserInfo: function() {
     if (app.globalData.userInfo) {
       this.setData({
-        userInfo: app.globalData.userInfo,
-        userInfoLoading: false
+        userInfo: app.globalData.userInfo
       });
     } else {
       app.eventEmitter.on('getUserInfo', (res) => {
         this.setData({
-          userInfo: res.userInfo,
-          userInfoLoading: false
+          userInfo: res.userInfo
         })
       })
     };
@@ -115,8 +121,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.getBaseInfo().then((res) => {
-      console.log(res);
+    let that = this;
+    this.getWxUserInfo();
+    Promise.all([this.getPermissionInfo(), this.getUserInfo()]).then((resList) => {
+      let permissionRes = resList[0].result;
+      let userRes = resList[1].result;
+      that.setData({
+        userName: userRes.name,
+        roleList: permissionRes,
+        userInfoLoading: false
+      })
     })
   },
 

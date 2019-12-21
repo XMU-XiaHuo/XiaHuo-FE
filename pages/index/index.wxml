@@ -18,6 +18,4 @@
     <text class='error-text'>{{errorMsg}}</text>
     <view class='empty-s'></view>
   </i-modal>
-
-  <i-toast id="toast" />
 </view>

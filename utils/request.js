@@ -22,7 +22,6 @@ function wxRequest({
         'token': wx.getStorageSync("token")
       },
       success: (res) => {
-        console.log(res);
         let {
           data,
           statusCode
@@ -39,6 +38,13 @@ function wxRequest({
         } else {
           if (data.code === 200) {
             resolve(data);
+          } else if (data.code === 401) {
+            wx.reLaunch({
+              url: '',
+            })({
+              url: '../page/index/index'
+            });
+            reject(data);
           } else if (data.code === 403) {
             wx.navigateTo({
               url: '../page/noAuthority/noAuthority'
@@ -46,7 +52,7 @@ function wxRequest({
             reject(data);
           } else {
             console.log('=====================================')
-            console.log('服务器发生错误: 后端的锅');
+            console.log('服务器发生错误: 后端出错');
             console.log(data);
             console.log('=====================================')
             reject(data);

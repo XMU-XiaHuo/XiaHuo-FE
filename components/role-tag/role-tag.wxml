@@ -1,2 +1,2 @@
 <!--components/role-tag/role-tag.wxml-->
-<view class="warehouse-role-tag {{role || operator}}">{{roleMap[role]}}</view>
+<view class="warehouse-role-tag {{roleMap[role]}}">{{role}}</view>
