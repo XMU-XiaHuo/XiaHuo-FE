@@ -58,7 +58,7 @@ Page({
     });
   },
   // 展示错误 modal
-  showModal: function(errorMsg) {
+  showModal: function(errorMsg = '发生了未知的错误') {
     let that = this;
     this.setData({
       errorMsg: errorMsg

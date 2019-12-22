@@ -23,7 +23,14 @@ Page({
       color: '#ed3f14'
     }],
     isPageScroll: false,
-    scrollTop: 0
+    scrollTop: 0,
+    modalVisible: false,
+    errorTitle: '๑Ծ‸Ծ๑',
+    errorMsg: '',
+    modalButtons: [{
+      color: '#409eff',
+      name: '确认',
+    }],
   },
 
   // 编辑相关
@@ -74,12 +81,13 @@ Page({
   },
 
   // 删除成员-接口
-  getMemberInfo: function() {
+  deleteMemberInfo: function() {
     return wxRequest({
       url: '/user/user/member',
       method: 'DELETE'
     });
   },
+  
   /**
    * 生命周期函数--监听页面滚动
    */
@@ -113,12 +121,35 @@ Page({
     }, 0);
   },
 
+  // 展示错误 modal
+  showModal: function(errorMsg = '发生了未知的错误') {
+    let that = this;
+    this.setData({
+      errorMsg: errorMsg
+    }, () => {
+      that.setData({
+        modalVisible: true
+      })
+    });
+  },
+  // 错误 modal 的交互
+  clickModal({
+    detail
+  }) {
+    this.setData({
+      modalVisible: false
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this;
     this.getMemberInfo().then((res) => {
-      console.log(res);
+      console.log(res);b
+    }, (error) => {
+      that.showModal(error.message);
     });
   },
 

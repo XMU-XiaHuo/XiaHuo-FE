@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/authorityManage/authorityManage",
     "pages/warehouseInfoManage/warehouseInfoManage",
+    "pages/authorityManage/authorityManage",
+    "pages/index/index",
     "pages/mainPage/mainPage",
     "pages/leaveWarehouse/leaveWarehouse",
     "pages/myAuthority/myAuthority",

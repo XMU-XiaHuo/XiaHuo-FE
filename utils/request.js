@@ -3,26 +3,25 @@ const baseURL = 'http://106.13.46.72:8082';
 
 function addToken(res) {
   let token = res.header['token'];
-  console.log(res);
   wx.setStorageSync("token", token);
 }
 
 function handle401() {
   wx.reLaunch({
-    url: '../page/index/index'
+    url: '../index/index'
   });
 }
 
 function handle403() {
   wx.navigateTo({
-    url: '../page/noAuthority/noAuthority'
+    url: '../noAuthority/noAuthority'
   });
 }
 
 function wxRequest({
   url = "",
   method = 'GET',
-  data = {},
+  data,
   header
 }) {
   return new Promise((resolve, reject) => {

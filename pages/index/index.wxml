@@ -13,6 +13,7 @@
     <van-loading size="50px" color="#409eff" vertical></van-loading>
     <view class="loading-text">{{loadingText}}</view>
   </view>
+  
   <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
     <view class='empty-s'></view>
     <text class='error-text'>{{errorMsg}}</text>

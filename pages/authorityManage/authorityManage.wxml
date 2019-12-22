@@ -61,4 +61,10 @@
     <i-button bind:click="invite" type="primary" shape="circle">邀请新成员</i-button>
   </view>
 
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <text class='error-text'>{{errorMsg}}</text>
+    <view class='empty-s'></view>
+  </i-modal>
+
 </view>
