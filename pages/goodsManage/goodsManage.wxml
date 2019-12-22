@@ -2,6 +2,8 @@
 <view class="container">
   <back-top-menu title="商品管理" backUrl="../mainPage/mainPage"></back-top-menu>
 
+  <page-loading content="加载商品列表中..." visible="{{loading}}"></page-loading>
+
   <van-search value="{{ goodsName }}" placeholder="请输入搜索关键词" bind:search="search" bind:change="inputEventCatcher" data-key="goodsName" />
 
   <view class="tip">
@@ -9,7 +11,7 @@
   </view>
 
   <i-panel wx:if="{{hasResult}}" class='panel'>
-    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{140}}" unclosable="{{true}}">
+    <i-swipeout i-class="i-swipeout-demo-item" wx:for="[1,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2]" operateWidth="{{140}}" unclosable="{{true}}">
       <view slot="content">
         <view class="goods-name">九型门上衣</view>
       </view>
@@ -24,7 +26,7 @@
     </i-swipeout>
   </i-panel>
 
-  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="handleCancel" bind:click="handleDelete">
+  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="cancelDelete" bind:click="handleDelete">
     <view slot="header" style="padding: 16px">
       <view class="confirm-delete">确定删除吗？</view>
       <text>删除后无法恢复哦</text>
@@ -36,4 +38,10 @@
   <view class="bottom-sticky-button" hidden="{{isPageScroll}}">
     <i-button bind:click="createGoods" type="primary" shape="circle">创建商品</i-button>
   </view>
+
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <text class='error-text'>{{errorMsg}}</text>
+    <view class='empty-s'></view>
+  </i-modal>
 </view>

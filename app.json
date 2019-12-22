@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/goodsManage/goodsManage",
     "pages/warehouseInfoManage/warehouseInfoManage",
     "pages/authorityManage/authorityManage",
     "pages/index/index",
@@ -16,7 +17,6 @@
     "pages/createProduct/createProduct",
     "pages/productList/productList",
     "pages/enterWarehouse/enterWarehouse",
-    "pages/goodsManage/goodsManage",
     "pages/goodsDetail/goodsDetail",
     "pages/authorityManagePerson/authorityManagePerson",
     "pages/createWarehouse2/createWarehouse2",

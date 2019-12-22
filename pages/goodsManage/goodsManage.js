@@ -1,20 +1,45 @@
 // pages/goodsManage/goodsManage.js
+const app = getApp();
+const {
+  wxRequest
+} = app.Request;
+
+const pageLimit = 20;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    // 搜索相关
     goodsName: '',
     isSearching: false,
     hasResult: true,
+
+    // 删除相关
     actionSheetVisible: false,
     deleteAction: [{
       name: '删除',
       color: '#ed3f14'
     }],
+
+    // 页面滚动相关
     isPageScroll: false,
-    scrollTop: 0
+    scrollTop: 0,
+
+    // modal 相关
+    modalVisible: false,
+    errorTitle: '',
+    errorMsg: '',
+    modalButtons: [{
+      color: '#409eff',
+      name: '确认',
+    }],
+
+    // 商品数据相关
+    page: 1,
+    loading: true
 
   },
 
@@ -42,19 +67,12 @@ Page({
     }, 1000);
   },
 
-  openDeleteAction() {
-    this.setData({
-      actionSheetVisible: true
-    });
-  },
-
   // 查看商品详情
   jumpToInfoPage: function() {
     wx.navigateTo({
       url: '../goodsDetail/goodsDetail'
     })
   },
-
   // 删除商品相关
   handleDelete() {
     const action = [...this.data.deleteAction];
@@ -72,18 +90,73 @@ Page({
       });
     }, 2000);
   },
+  // 打开删除确认框
+  openDeleteAction() {
+    this.setData({
+      actionSheetVisible: true
+    });
+  },
+  // 取消删除确认框
+  cancelDelete() {
+    this.setData({
+      actionSheetVisible: false
+    });
+  },
 
   // 创建商品跳转
-  createGoods: function () {
+  createGoods: function() {
     wx.navigateTo({
       url: '../createGoods/createGoods'
     })
   },
 
-  handleCancel() {
+  // 获取商品列表-接口
+  getGoodsList: function() {
+    let page = this.data.page;
+    let that = this;
+
+    that.setData({
+      loading: true
+    }, () => {
+      wxRequest({
+        url: '/goods/goodsList',
+        method: 'GET',
+        data: {
+          page: page,
+          pageLimit: pageLimit
+        }
+      }).then((res) => {
+        console.log(res);
+        that.setData({
+          page: page + 1,
+          loading: false
+        })
+      }, (error) => {
+        that.showModal('๑Ծ‸Ծ๑', error.message);
+      });
+    })
+
+  },
+
+  // 展示错误 modal
+  showModal: function(title = '', msg = '发生了未知的错误') {
+    let that = this;
     this.setData({
-      actionSheetVisible: false
+      errorTitle: title,
+      errorMsg: msg
+    }, () => {
+      that.setData({
+        modalVisible: true
+      })
     });
+  },
+  // 错误 modal 的交互
+  clickModal({
+    detail
+  }) {
+    this.setData({
+      modalVisible: false
+    })
   },
 
   /**
@@ -123,55 +196,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.getGoodsList();
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
+   * 页面相关事件处理函数--监听用户下拉触底
    */
   onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
+    let that = this;
+    this.getGoodsList();
   }
+
 })

@@ -6,6 +6,7 @@
   right: 0;
   bottom: 0;
   background-color: transparent;
+  z-index: 100;
 }
 
 .page-loading-part{
