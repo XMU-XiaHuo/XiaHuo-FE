@@ -3,7 +3,20 @@ const baseURL = 'http://106.13.46.72:8082';
 
 function addToken(res) {
   let token = res.header['token'];
+  console.log(res);
   wx.setStorageSync("token", token);
+}
+
+function handle401() {
+  wx.reLaunch({
+    url: '../page/index/index'
+  });
+}
+
+function handle403() {
+  wx.navigateTo({
+    url: '../page/noAuthority/noAuthority'
+  });
 }
 
 function wxRequest({
@@ -29,26 +42,14 @@ function wxRequest({
         if (url === '/user/user/login') {
           addToken(res);
         }
-        if (statusCode !== 200) {
-          console.log('=====================================')
-          console.log('服务器发生错误: HTTP 状态码不为 200');
-          console.log(data);
-          console.log('=====================================')
-          reject(data);
-        } else {
+        if (statusCode === 200) {
           if (data.code === 200) {
             resolve(data);
           } else if (data.code === 401) {
-            wx.reLaunch({
-              url: '',
-            })({
-              url: '../page/index/index'
-            });
+            handle401();
             reject(data);
           } else if (data.code === 403) {
-            wx.navigateTo({
-              url: '../page/noAuthority/noAuthority'
-            });
+            handle403();
             reject(data);
           } else {
             console.log('=====================================')
@@ -57,6 +58,18 @@ function wxRequest({
             console.log('=====================================')
             reject(data);
           }
+        } else if (statusCode === 401) {
+          handle401();
+          reject(data);
+        } else if (statusCode === 403) {
+          handle403();
+          reject(data);
+        } else {
+          console.log('=====================================')
+          console.log('服务器发生错误: HTTP 状态码不为 200');
+          console.log(data);
+          console.log('=====================================')
+          reject(data);
         }
       },
       fail: (error) => {

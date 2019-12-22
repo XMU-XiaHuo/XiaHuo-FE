@@ -74,31 +74,19 @@ Page({
     }
   },
 
-  // 获取权限信息
+  // 获取权限信息-接口
   getPermissionInfo: function(code) {
-    return new Promise((resolve, reject) => {
-      wxRequest({
-        url: '/user/user/permissions',
-        method: 'GET'
-      }).then((res) => {
-        resolve(res);
-      }, (error) => {
-        reject(error);
-      });
+    return wxRequest({
+      url: '/user/user/permissions',
+      method: 'GET'
     });
   },
 
-  // 获取个人信息
+  // 获取个人信息-接口
   getUserInfo: function() {
-    return new Promise((resolve, reject) => {
-      wxRequest({
-        url: '/user/user/info',
-        method: 'GET'
-      }).then((res) => {
-        resolve(res);
-      }, (error) => {
-        reject(error);
-      });
+    return wxRequest({
+      url: '/user/user/info',
+      method: 'GET'
     });
   },
 

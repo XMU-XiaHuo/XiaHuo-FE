@@ -6,6 +6,7 @@
     <span>* 右滑进行编辑和删除</span>
   </view>
   <i-panel class='panel'>
+    <page-loading content="加载成员中..." visible="{{loading}}"></page-loading>
     <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{0}}" unclosable="{{true}}">
       <view slot="content">
         <i-icon type="addressbook" size="28" color="#80848f" />

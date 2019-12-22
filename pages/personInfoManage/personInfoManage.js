@@ -27,17 +27,11 @@ Page({
     }],
   },
 
-  // 获取个人信息
+  // 获取个人信息-接口
   getUserInfo: function() {
-    return new Promise((resolve, reject) => {
-      wxRequest({
-        url: '/user/user/info',
-        method: 'GET'
-      }).then((res) => {
-        resolve(res);
-      }, (error) => {
-        reject(error);
-      });
+    return wxRequest({
+      url: '/user/user/info',
+      method: 'GET'
     });
   },
 
@@ -79,23 +73,17 @@ Page({
     return '';
   },
 
-  // 修改个人信息
+  // 修改个人信息-接口
   editUserInfo: function(name, identity, phone, email) {
-    return new Promise((resolve, reject) => {
-      wxRequest({
-        url: '/user/user/info',
-        method: 'PUT',
-        data: {
-          email,
-          identity,
-          name,
-          phone
-        }
-      }).then((res) => {
-        resolve(res);
-      }, (error) => {
-        reject(error);
-      });
+    return wxRequest({
+      url: '/user/user/info',
+      method: 'PUT',
+      data: {
+        email,
+        identity,
+        name,
+        phone
+      }
     });
   },
 
@@ -139,6 +127,7 @@ Page({
       this.showModal('出错了๑Ծ‸Ծ๑', error.message);
     });
   },
+
   // 展示错误 modal
   showModal: function(title = '', msg = '未知的错误') {
     let that = this;
@@ -151,6 +140,7 @@ Page({
       })
     });
   },
+
   // 错误 modal 的交互
   clickModal() {
     this.setData({
@@ -158,6 +148,7 @@ Page({
     })
   },
 
+  // 初始化页面
   init: function() {
     let that = this;
     this.getUserInfo().then((res) => {
@@ -173,53 +164,4 @@ Page({
   onLoad: function(options) {
     this.init();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

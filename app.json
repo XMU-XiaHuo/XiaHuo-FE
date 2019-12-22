@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/authorityManage/authorityManage",
     "pages/index/index",
+    "pages/authorityManage/authorityManage",
+    "pages/warehouseInfoManage/warehouseInfoManage",
+    "pages/mainPage/mainPage",
     "pages/leaveWarehouse/leaveWarehouse",
     "pages/myAuthority/myAuthority",
-    "pages/mainPage/mainPage",
     "pages/personInfoManage/personInfoManage",
     "pages/createWarehouse/createWarehouse",
     "pages/test/test",
@@ -21,8 +22,7 @@
     "pages/createWarehouse2/createWarehouse2",
     "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
-    "pages/createWarehouse3/createWarehouse3",
-    "pages/warehouseInfoManage/warehouseInfoManage"
+    "pages/createWarehouse3/createWarehouse3"
   ],
   "window": {
     "backgroundTextStyle": "light",

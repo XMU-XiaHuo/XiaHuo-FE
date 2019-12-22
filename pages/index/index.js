@@ -44,23 +44,17 @@ Page({
       })
     })
   },
-  // 发 code 到后端
+  // 发 code 到后端-接口
   codeToBackEnd: function(code) {
-    return new Promise((resolve, reject) => {
-      wxRequest({
-        url: '/user/user/login',
-        method: 'GET',
-        data: {
-          code: code
-        },
-        header: {
-          'content-type': 'application/json'
-        }
-      }).then((res) => {
-        resolve(res);
-      }, (error) => {
-        reject(error);
-      });
+    return wxRequest({
+      url: '/user/user/login',
+      method: 'GET',
+      data: {
+        code: code
+      },
+      header: {
+        'content-type': 'application/json'
+      }
     });
   },
   // 展示错误 modal

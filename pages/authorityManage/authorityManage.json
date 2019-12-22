@@ -6,6 +6,7 @@
     "i-action-sheet": "../../iview/action-sheet/index",
     "i-button": "../../iview/button/index",
     "role-tag": "../../components/role-tag/role-tag",
-    "back-top-menu": "../../components/back-top-menu/back-top-menu"
+    "back-top-menu": "../../components/back-top-menu/back-top-menu",
+    "page-loading": "../../components/page-loading/page-loading"
   }
 }

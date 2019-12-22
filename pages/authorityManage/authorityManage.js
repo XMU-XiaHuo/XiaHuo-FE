@@ -1,4 +1,9 @@
 // pages/authorityManage/authorityManage.js
+const app = getApp();
+const {
+  wxRequest
+} = app.Request;
+
 const {
   Roles,
   Description
@@ -11,6 +16,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: true,
     actionSheetVisible: false,
     deleteAction: [{
       name: '删除',
@@ -20,14 +26,14 @@ Page({
     scrollTop: 0
   },
 
-  //编辑相关
+  // 编辑相关
   jumpToEditPage: function() {
     wx.navigateTo({
       url: '../authorityManagePerson/authorityManagePerson'
     })
   },
 
-  //删除成员
+  // 删除成员
   openDeleteAction() {
     this.setData({
       actionSheetVisible: true
@@ -59,7 +65,21 @@ Page({
     });
   },
 
+  // 获取成员列表-接口
+  getMemberInfo: function() {
+    return wxRequest({
+      url: '/user/user/members',
+      method: 'GET'
+    });
+  },
 
+  // 删除成员-接口
+  getMemberInfo: function() {
+    return wxRequest({
+      url: '/user/user/member',
+      method: 'DELETE'
+    });
+  },
   /**
    * 生命周期函数--监听页面滚动
    */
@@ -97,7 +117,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.getMemberInfo().then((res) => {
+      console.log(res);
+    });
   },
 
   /**
