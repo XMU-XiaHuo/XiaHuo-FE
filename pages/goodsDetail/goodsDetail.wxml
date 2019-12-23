@@ -1,15 +1,21 @@
 <!--pages/goodsDetail/goodsDetail.wxml-->
 <view class="container">
   <back-top-menu title="商品详情" backUrl="../goodsManage/goodsManage"></back-top-menu>
-
+  <page-loading content="加载商品信息中..." visible="{{loading}}"></page-loading>
   <i-panel>
     <i-cell title="商品名称" value="{{goodsInfo.name}}"></i-cell>
     <i-cell title="商品描述" label="{{goodsInfo.description}}"></i-cell>
     <i-cell title="计量单位" value="{{goodsInfo.unit}}"></i-cell>
     <i-cell title="保质期" value="{{goodsInfo.expireDate}}"></i-cell>
     <i-cell title="商品属性" value="{{goodsInfo.properties}}"></i-cell>
-    <i-cell title="修改基本信息" is-link url="../editGoods/editGoods"></i-cell>
-    <i-cell title="查看产品列表" is-link url="../productList/productList"></i-cell>
+    <i-cell title="修改基本信息" bind:click="goToEditGoods" is-link></i-cell>
+    <i-cell title="查看产品列表" bind:click="goToProductList" is-link></i-cell>
   </i-panel>
+
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <text class='error-text'>{{errorMsg}}</text>
+    <view class='empty-s'></view>
+  </i-modal>
 
 </view>

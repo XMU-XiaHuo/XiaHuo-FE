@@ -43,7 +43,11 @@ function wxRequest({
         }
         if (statusCode === 200) {
           if (data.code === 200) {
-            resolve(data);
+            if (data.result === null || data.result === false) {
+              reject(data);
+            } else {
+              resolve(data);
+            }
           } else if (data.code === 401) {
             handle401();
             reject(data);

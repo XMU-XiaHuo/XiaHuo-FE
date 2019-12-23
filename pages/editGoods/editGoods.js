@@ -1,106 +1,130 @@
 // pages/editGoods/editGoods.js
+const app = getApp();
+const {
+  wxRequest
+} = app.Request;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    goodsId: null,
     goodsInfo: {
       name: '',
       description: '',
       unit: '',
       expireDate: '',
-      properties: ['尺码', '颜色', '版本', '长度']
+      properties: []
     },
     errorInfo: {
       nameError: '',
       descriptionError: '',
       unitError: '',
-      expireDateError: '',
-      newPropertyError: ''
+      expireDateError: ''
     },
-    modalVisible: true,
-    newProperty: ''
+
+    // modal 相关
+    modalVisible: false,
+    errorTitle: '',
+    errorMsg: '',
+    modalButtons: [{
+      color: '#409eff',
+      name: '确认',
+    }],
   },
 
   // 处理输入事件
   inputEventCatcher: function(e) {
     let {
-      key,
-      object
+      key
     } = e.target.dataset;
-    let modifyKey = key;
-    if (object) {
-      modifyKey = object + '.' + key;
-    }
+    let modifyKey = 'goodsInfo.' + key;
     this.setData({
       [modifyKey]: e.detail
     })
   },
-
+  // 检查商品名
   checkName: function(name) {
     if (name === "") {
       return '商品名不能为空';
     }
     return '';
   },
+  // 检查保质期格式
+  checkDate: function(date) {
+    let regDate = /^[0-9]*[1-9][0-9]*$/;
+    if (!date || date.length === 0) {
+      return '';
+    }
+    if (!regDate.test(date)) {
+      return '保质期应为正整数';
+    }
+    return '';
+  },
 
   confirmEdit: function() {
+    let that = this;
     let {
-      name
-    } = this.data.goodsInfo;
-
-    // 检测商品名
-    let checkNameResult = this.checkName(name);
-    this.setData({
-      ['errorInfo.nameError']: checkNameResult
-    })
-  },
-
-  // 删除商品属性
-  deleteTag: function(e) {
-    let {
-      index
-    } = e.detail;
-    let properties = this.data.goodsInfo.properties;
-    properties.splice(index, 1);
-    this.setData({
-      ['goodsInfo.properties']: properties
-    })
-  },
-
-  // 创建商品属性
-  createTag: function(e) {
-
-  },
-
-  // 创建属性成功
-  submitNewProperty: function(e) {
-    let {
-      newProperty,
+      goodsId,
       goodsInfo
     } = this.data;
     let {
-      properties = []
+      name,
+      description,
+      unit,
+      expireDate,
+      properties
     } = goodsInfo;
-    if (newProperty === '') {
-      this.setData({
-        ['errorInfo.newPropertyError']: '属性名不能为空'
-      })
-    } else if (properties.indexOf(newProperty) > -1) {
-      this.setData({
-        ['errorInfo.newPropertyError']: '属性名与已有的重复'
-      })
-    } else {
-      this.setData({
-        ['goodsInfo.properties']: properties.concat(newProperty),
-        modalVisible: false
-      })
+
+    // 检测商品名
+    let checkNameResult = this.checkName(name);
+    // 检测保质期
+    let checkDateResult = this.checkDate(expireDate);
+    this.setData({
+      ['errorInfo.nameError']: checkNameResult,
+      ['errorInfo.expireDateError']: checkDateResult
+    });
+    if (checkNameResult.length > 0 || checkDateResult.length > 0) {
+      return;
     }
+
+    wxRequest({
+      url: '/goods/goods/goods',
+      method: 'PUT',
+      data: {
+        id: goodsId,
+        name: name,
+        description: description,
+        measuringUnit: unit,
+        properties: properties,
+        validTime: expireDate
+      }
+    }).then((res) => {
+      console.log(res);
+    }, (error) => {
+      that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+    })
+
   },
 
-  // 关闭 modal
-  closeModal: function() {
+  // 展示错误 modal
+  showModal: function(title = '', msg = '发生了未知的错误') {
+    let that = this;
+    this.setData({
+      errorTitle: title,
+      errorMsg: msg
+    }, () => {
+      that.setData({
+        modalVisible: true
+      })
+    });
+  },
+  // 错误 modal 的交互
+  clickModal({
+    detail
+  }) {
     this.setData({
       modalVisible: false
     })
@@ -110,55 +134,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    let that = this;
+    let id = options.id;
+    this.setData({
+      goodsId: id
+    }, () => {
+      wxRequest({
+        url: '/goods/goods/goods',
+        method: 'GET',
+        data: {
+          goodsId: id
+        }
+      }).then((res) => {
+        let {
+          result
+        } = res;
+        let {
+          name,
+          description,
+          measuringUnit,
+          validTime,
+          properties
+        } = result;
+        that.setData({
+          goodsInfo: {
+            name: name,
+            description: description,
+            unit: measuringUnit,
+            expireDate: validTime,
+            properties: properties
+          }
+        })
+      }, (error) => {
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+      })
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

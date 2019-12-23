@@ -11,19 +11,21 @@
   </view>
 
   <i-panel wx:if="{{hasResult}}" class='panel'>
-    <i-swipeout i-class="i-swipeout-demo-item" wx:for="[1,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2]" operateWidth="{{140}}" unclosable="{{true}}">
+    <i-swipeout i-class="i-swipeout-demo-item" wx:for="{{goodsList}}" operateWidth="{{140}}" unclosable="{{true}}">
       <view slot="content">
-        <view class="goods-name">九型门上衣</view>
+        <view class="goods-name">{{item.name}}</view>
       </view>
       <view slot="button" class="i-swipeout-demo-button-group">
         <view class="i-swipeout-demo-button info">
-          <view class="button-text" bindtap="jumpToInfoPage">详情</view>
+          <view class="button-text" bindtap="jumpToInfoPage" data-id="{{item.id}}">详情</view>
         </view>
         <view class="i-swipeout-demo-button delete">
-          <view class="button-text" bindtap="openDeleteAction">删除</view>
+          <view class="button-text" bindtap="openDeleteAction" data-id="{{item.id}}" data-index="{{index}}">删除</view>
         </view>
       </view>
     </i-swipeout>
+
+    <van-divider wx:if="{{hasResult && noMore}}" contentPosition="center">没有更多了</van-divider>
   </i-panel>
 
   <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="cancelDelete" bind:click="handleDelete">

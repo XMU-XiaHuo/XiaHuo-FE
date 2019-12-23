@@ -7,7 +7,11 @@ Component({
     propertyList: {
       type: Array,
       value: []
-    }
+    },
+    canClose: {
+      type: Boolean,
+      value: true
+    },
 
   },
 

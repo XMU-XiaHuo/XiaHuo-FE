@@ -5,6 +5,7 @@
     "goods-properties": "../../components/goods-properties/goods-properties",
     "i-panel": "../../iview/panel/index",
     "i-button": "../../iview/button/index",
+    "i-modal": "../../iview/modal/index",
     "van-field": "../../vant/field/index"
   }
 }

@@ -90,7 +90,7 @@ Page({
       this.showModal('♪(๑^∇^๑)', '保存成功');
     }, (error) => {
       // 展示错误 modal
-      this.showModal('出错了๑Ծ‸Ծ๑', error.message);
+      this.showModal('๑Ծ‸Ծ๑', error.message);
     });
   },
   // 修改仓库信息-接口
@@ -158,56 +158,8 @@ Page({
     this.getWarehouseInfo().then((res) => {
       that.initWarehouseInfo(res.result);
     }, (error) => {
-      that.showModal('๑Ծ‸Ծ๑', error.message);
+      that.showModal('出错了๑Ծ‸Ծ๑', error.message);
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

@@ -5,7 +5,7 @@
         <image class="search-img" src="image/search.png"></image>
       </view>
       <view class="no-result-text">
-        没有搜索结果
+        没有找到结果
       </view>
     </view>
   </view>

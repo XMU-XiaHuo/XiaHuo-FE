@@ -109,27 +109,20 @@ Page({
 
     // 检测姓名
     let checkNameResult = this.checkName(name);
-    this.setData({
-      ['errorInfo.nameError']: checkNameResult
-    })
-
     // 检测身份证号
     let checkIdentityResult = this.checkIdentity(identity);
-    this.setData({
-      ['errorInfo.identityError']: checkIdentityResult
-    })
-
     // 检测手机号
     let checkPhoneResult = this.checkPhone(phone);
-    this.setData({
-      ['errorInfo.phoneError']: checkPhoneResult
-    })
-
     // 检测邮箱
     let checkEmailResult = this.checkEmail(email);
     this.setData({
-      ['errorInfo.emailError']: checkEmailResult
-    })
+      errorInfo: {
+        nameError: checkNameResult,
+        identityError: checkIdentityResult,
+        phoneError: checkPhoneResult,
+        emailError: checkEmailResult
+      }
+    });
 
     // 如果有错，不执行下面的步骤
     if (checkNameResult.length > 0 || checkIdentityResult.length > 0 || checkPhoneResult.length > 0 || checkEmailResult.length > 0) {

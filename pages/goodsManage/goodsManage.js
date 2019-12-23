@@ -23,6 +23,8 @@ Page({
       name: '删除',
       color: '#ed3f14'
     }],
+    deleteGoodsId: null,
+    deleteGoodsIndex: null,
 
     // 页面滚动相关
     isPageScroll: false,
@@ -39,7 +41,9 @@ Page({
 
     // 商品数据相关
     page: 1,
-    loading: true
+    loading: true,
+    noMore: false,
+    goodsList: []
 
   },
 
@@ -53,47 +57,98 @@ Page({
       [modifyKey]: e.detail
     })
   },
-
+  // 搜索商品
   search: function() {
-    console.log(this.data.goodsName);
+    let that = this;
+    let {
+      goodsName
+    } = this.data;
     this.setData({
-      isSearching: true
+      loading: true,
+      isSearching: goodsName !== ""
+    }, () => {
+      wxRequest({
+        url: '/goods/goods/searchGoods',
+        method: 'GET',
+        data: {
+          goodsName: goodsName
+        }
+      }).then((res) => {
+        let {
+          result
+        } = res;
+        if (!result || result.length === 0) {
+          that.setData({
+            hasResult: false,
+            noMore: false
+          });
+        }
+        that.setData({
+          loading: false,
+          goodsList: result,
+          noMore: true
+        })
+      }, (error) => {
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+      });
     });
 
-    setTimeout(() => {
-      this.setData({
-        isSearching: false
-      })
-    }, 1000);
   },
-
   // 查看商品详情
-  jumpToInfoPage: function() {
+  jumpToInfoPage: function(e) {
+    let {
+      id
+    } = e.target.dataset;
     wx.navigateTo({
-      url: '../goodsDetail/goodsDetail'
+      url: '../goodsDetail/goodsDetail?id=' + id
     })
   },
   // 删除商品相关
   handleDelete() {
+    let that = this;
+    let {
+      deleteGoodsId,
+      deleteGoodsIndex,
+      goodsList
+    } = this.data;
+    // 设置 loading
     const action = [...this.data.deleteAction];
     action[0].loading = true;
-
     this.setData({
       deleteAction: action
-    });
-
-    setTimeout(() => {
-      action[0].loading = false;
-      this.setData({
-        actionSheetVisible: false,
-        deleteAction: action
+    }, () => {
+      wxRequest({
+        url: '/goods/goods/goods?goodsId=' + deleteGoodsId,
+        method: 'DELETE',
+      }).then((res) => {
+        goodsList.splice(deleteGoodsIndex,1);
+        action[0].loading = false;
+        that.setData({
+          actionSheetVisible: false,
+          deleteAction: action,
+          goodsList: goodsList
+        });
+        that.showModal('♪(๑^∇^๑)', '删除成功~');
+      }, (error) => {
+        action[0].loading = false;
+        that.setData({
+          actionSheetVisible: false,
+          deleteAction: action
+        });
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message);
       });
-    }, 2000);
+    });
   },
   // 打开删除确认框
-  openDeleteAction() {
+  openDeleteAction(e) {
+    let {
+      id,
+      index
+    } = e.target.dataset;
     this.setData({
-      actionSheetVisible: true
+      actionSheetVisible: true,
+      deleteGoodsId: id,
+      deleteGoodsIndex: index
     });
   },
   // 取消删除确认框
@@ -102,18 +157,20 @@ Page({
       actionSheetVisible: false
     });
   },
-
   // 创建商品跳转
   createGoods: function() {
     wx.navigateTo({
       url: '../createGoods/createGoods'
     })
   },
-
   // 获取商品列表-接口
   getGoodsList: function() {
-    let page = this.data.page;
+    let {
+      page,
+      goodsList
+    } = this.data;
     let that = this;
+    let noMore = false;
 
     that.setData({
       loading: true
@@ -126,18 +183,27 @@ Page({
           pageLimit: pageLimit
         }
       }).then((res) => {
-        console.log(res);
+        let {
+          result
+        } = res;
+        let {
+          goodsInfoVOS
+        } = result;
+        if (result.goodsInfoVOS.length < pageLimit) {
+          noMore = true;
+        }
         that.setData({
           page: page + 1,
-          loading: false
-        })
+          loading: false,
+          noMore: noMore,
+          goodsList: goodsList.concat(goodsInfoVOS)
+        });
       }, (error) => {
-        that.showModal('๑Ծ‸Ծ๑', error.message);
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message);
       });
     })
 
   },
-
   // 展示错误 modal
   showModal: function(title = '', msg = '发生了未知的错误') {
     let that = this;
@@ -203,8 +269,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉触底
    */
   onReachBottom: function() {
-    let that = this;
-    this.getGoodsList();
+    let {
+      noMore,
+      isSearching
+    } = this.data;
+    if (!noMore && !isSearching) {
+      this.getGoodsList();
+    }
   }
 
 })

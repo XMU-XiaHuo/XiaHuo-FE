@@ -3,13 +3,14 @@
   <view wx:for="{{propertyList}}" class="property-tag-container">
     <view class='property-tag'>{{item}}</view>
     <view class="close-icon-container">
-      <image src='image/close.png' class='close-icon' bindtap="deleteTag" data-index="{{index}}"></image>
+      <image src='image/close.png' class='close-icon' bindtap="deleteTag" data-index="{{index}}" wx:if="{{canClose}}"></image>
+      <image src='image/closegrey.png' class='close-icon' data-index="{{index}}" wx:else></image>
     </view>
   </view>
-  <view class="property-tag-container">
+  <view class="property-tag-container" bindtap="createTag" wx:if="{{canClose}}">
     <view class='property-tag add'>
       <text>添加属性</text>
-      <image src="image/add.png" class="add-icon" bindtap="createTag"></image>
+      <image src="image/add.png" class="add-icon"></image>
     </view>
   </view>
 </view>
