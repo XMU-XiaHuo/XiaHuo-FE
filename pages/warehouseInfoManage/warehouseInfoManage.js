@@ -100,8 +100,8 @@ Page({
       method: 'PUT',
       data: {
         warehouseName: name,
-        warehouseIntro: address,
-        warehousePosition: info
+        warehousePosition: address,
+        warehouseIntro: info
       }
     });
   },

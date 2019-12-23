@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/createGoods/createGoods",
     "pages/goodsManage/goodsManage",
-    "pages/warehouseInfoManage/warehouseInfoManage",
     "pages/authorityManage/authorityManage",
+    "pages/warehouseInfoManage/warehouseInfoManage",
+    "pages/index/index",
     "pages/mainPage/mainPage",
     "pages/leaveWarehouse/leaveWarehouse",
     "pages/myAuthority/myAuthority",
@@ -13,7 +14,6 @@
     "pages/noAuthority/noAuthority",
     "pages/editGoods/editGoods",
     "pages/stockCheck/stockCheck",
-    "pages/createGoods/createGoods",
     "pages/createProduct/createProduct",
     "pages/productList/productList",
     "pages/enterWarehouse/enterWarehouse",

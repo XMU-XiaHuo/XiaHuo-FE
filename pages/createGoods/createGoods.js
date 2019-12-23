@@ -20,6 +20,24 @@ Page({
     }
   },
 
+  // 处理输入事件
+  inputEventCatcher: function (e) {
+    let {
+      key
+    } = e.target.dataset;
+    let modifyKey = 'goodsInfo.' + key;
+    this.setData({
+      [modifyKey]: e.detail
+    })
+  },
+  checkName: function (name) {
+    let regName = /^[0-9]*[1-9][0-9]*$/;
+    if (!regName.test(name)) {
+      return '仓库名格式错误（应为 2 - 15 个汉字）';
+    }
+    return '';
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

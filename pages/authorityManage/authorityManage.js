@@ -16,14 +16,22 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 成员列表展示相关
     loading: true,
+    members: [],
+
+    // 删除相关
     actionSheetVisible: false,
     deleteAction: [{
       name: '删除',
       color: '#ed3f14'
     }],
+
+    // 邀请新成员相关
     isPageScroll: false,
     scrollTop: 0,
+
+    // 报错 modal 相关
     modalVisible: false,
     errorTitle: '๑Ծ‸Ծ๑',
     errorMsg: '',
@@ -147,7 +155,10 @@ Page({
   onLoad: function(options) {
     let that = this;
     this.getMemberInfo().then((res) => {
-      console.log(res);b
+      that.setData({
+        members: res.result,
+        loading: false
+      })
     }, (error) => {
       that.showModal(error.message);
     });

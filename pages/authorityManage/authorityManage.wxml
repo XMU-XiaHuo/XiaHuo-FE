@@ -7,19 +7,11 @@
   </view>
   <i-panel class='panel'>
     <page-loading content="加载成员中..." visible="{{loading}}"></page-loading>
-    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{0}}" unclosable="{{true}}">
+    <i-swipeout wx:for="{{members}}" i-class="i-swipeout-demo-item" operateWidth="{{item.canEdit ? 140 : 0}}" unclosable="{{true}}">
       <view slot="content">
         <i-icon type="addressbook" size="28" color="#80848f" />
-        <view class="user-name">谭源圆</view>
-        <role-tag class="role-tag" role="owner"></role-tag>
-      </view>
-    </i-swipeout>
-
-    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{140}}" unclosable="{{true}}">
-      <view slot="content">
-        <i-icon type="addressbook" size="28" color="#80848f" />
-        <view class="user-name">任建鹏</view>
-        <role-tag class="role-tag" role="admin"></role-tag>
+        <view class="user-name">{{item.name}}</view>
+        <role-tag wx:for="{{item.roles}}" wx:for-item="role" class="role-tag" role="{{role}}"></role-tag>
       </view>
       <view slot="button" class="i-swipeout-demo-button-group">
         <view class="i-swipeout-demo-button edit">
@@ -30,24 +22,6 @@
         </view>
       </view>
     </i-swipeout>
-
-    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{140}}">
-      <view slot="content">
-        <i-icon type="addressbook" size="28" color="#80848f" />
-        <view class="user-name">吴悠</view>
-        <role-tag class="role-tag" role="picker"></role-tag>
-        <role-tag class="role-tag" role="counter"></role-tag>
-      </view>
-      <view slot="button" class="i-swipeout-demo-button-group">
-        <view class="i-swipeout-demo-button edit">
-          <view class="button-text" bindtap="jumpToEditPage">编辑</view>
-        </view>
-        <view class="i-swipeout-demo-button delete">
-          <view class="button-text" bindtap="openDeleteAction">删除</view>
-        </view>
-      </view>
-    </i-swipeout>
-
   </i-panel>
 
   <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="handleCancel" bind:click="handleDelete">

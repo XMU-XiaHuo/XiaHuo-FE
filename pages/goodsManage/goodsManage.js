@@ -119,7 +119,7 @@ Page({
       loading: true
     }, () => {
       wxRequest({
-        url: '/goods/goodsList',
+        url: '/goods/goods/goodsList',
         method: 'GET',
         data: {
           page: page,
