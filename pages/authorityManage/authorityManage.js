@@ -26,6 +26,8 @@ Page({
       name: '删除',
       color: '#ed3f14'
     }],
+    deleteMemberId: null,
+    deleteMemberIndex: null,
 
     // 邀请新成员相关
     isPageScroll: false,
@@ -49,28 +51,53 @@ Page({
   },
 
   // 删除成员
-  openDeleteAction() {
+  openDeleteAction(e) {
+    let {
+      id,
+      index
+    } = e.target.dataset;
     this.setData({
-      actionSheetVisible: true
+      actionSheetVisible: true,
+      deleteMemberId: id,
+      deleteMemberIndex: index,
     });
   },
 
   // 确认删除
   handleDelete() {
+    let that = this;
+    let {
+      deleteMemberId, 
+      deleteMemberIndex,
+      members
+    } = this.data;
+    // 设置 loading
     const action = [...this.data.deleteAction];
     action[0].loading = true;
-
     this.setData({
       deleteAction: action
-    });
-
-    setTimeout(() => {
-      action[0].loading = false;
-      this.setData({
-        actionSheetVisible: false,
-        deleteAction: action
+    }, () => {
+      wxRequest({
+        url: '/user/user/member?memberId=' + deleteMemberId,
+        method: 'DELETE',
+      }).then((res) => {
+        members.splice(deleteMemberIndex, 1);
+        action[0].loading = false;
+        that.setData({
+          actionSheetVisible: false,
+          deleteAction: action,
+          memberList: memberList
+        });
+        that.showModal('♪(๑^∇^๑)', '删除成功~');
+      }, (error) => {
+        action[0].loading = false;
+        that.setData({
+          actionSheetVisible: false,
+          deleteAction: action
+        });
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message);
       });
-    }, 2000);
+    });
   },
 
   // 取消删除
@@ -89,13 +116,13 @@ Page({
   },
 
   // 删除成员-接口
-  deleteMemberInfo: function() {
+  deleteMember: function() {
     return wxRequest({
       url: '/user/user/member',
       method: 'DELETE'
     });
   },
-  
+
   /**
    * 生命周期函数--监听页面滚动
    */

@@ -7,7 +7,7 @@
   <van-search value="{{ goodsName }}" placeholder="请输入搜索关键词" bind:search="search" bind:change="inputEventCatcher" data-key="goodsName" />
 
   <view class="tip">
-    <span>* 右滑进行更多操作</span>
+    <span>* 左滑进行更多操作</span>
   </view>
 
   <i-panel wx:if="{{hasResult}}" class='panel'>

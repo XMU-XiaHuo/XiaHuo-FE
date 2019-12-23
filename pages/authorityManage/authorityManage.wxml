@@ -3,7 +3,7 @@
   <back-top-menu title="权限管理" backUrl="../mainPage/mainPage"></back-top-menu>
   <view class="empty"></view>
   <view class="tip">
-    <span>* 右滑进行编辑和删除</span>
+    <span>* 左滑进行编辑和删除</span>
   </view>
   <i-panel class='panel'>
     <page-loading content="加载成员中..." visible="{{loading}}"></page-loading>
@@ -18,7 +18,7 @@
           <view class="button-text" bindtap="jumpToEditPage">编辑</view>
         </view>
         <view class="i-swipeout-demo-button delete">
-          <view class="button-text" bindtap="openDeleteAction">删除</view>
+          <view class="button-text" bindtap="openDeleteAction" data-id="{{item.id}}" data-index="{{index}}">删除</view>
         </view>
       </view>
     </i-swipeout>

@@ -102,9 +102,9 @@ Page({
           },
           loading: false
         })
+      }, (error) => {
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message);
       })
-    }, (error) => {
-      that.showModal('出错了๑Ծ‸Ծ๑', error.message);
     });
   },
 })

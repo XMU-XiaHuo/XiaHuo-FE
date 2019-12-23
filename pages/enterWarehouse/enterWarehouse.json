@@ -2,8 +2,10 @@
   "usingComponents": {
     "back-top-menu": "../../components/back-top-menu/back-top-menu",
     "suggest-input": "../../components/suggest-input/suggest-input",
+    "page-loading": "../../components/page-loading/page-loading",
     "i-panel": "../../iview/panel/index",
     "i-button": "../../iview/button/index",
+    "i-modal": "../../iview/modal/index",
     "van-field": "../../vant/field/index"
   }
 }
