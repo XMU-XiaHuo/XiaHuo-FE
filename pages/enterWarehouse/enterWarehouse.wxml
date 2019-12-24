@@ -4,7 +4,7 @@
   <view class="empty"></view>
   <i-panel title="请完善入库信息:">
     <view class='input-container'>
-      <van-field label="商品名" value="{{goodsInfo.name}}" bind:change="inputGoodsName" placeholder="请输入商品名" error-message="{{errorInfo.nameError}}" data-key="name" />
+      <van-field label="商品名" value="{{goodsInfo.name}}" bind:change="inputGoodsName" placeholder="请输入商品" error-message="{{errorInfo.nameError}}" data-key="name" />
       <view class="suggest-container" hidden="{{isSuggesting}}">
         <page-loading isPart="{{true}}" visible="{{suggestLoading}}"></page-loading>
         <view class='no-result' hidden="{{!noResult}}">没有结果</view>
@@ -14,7 +14,7 @@
       </view>
     </view>
     <view class='input-container' hidden="{{!chooseGoodsId}}">
-      <van-field label="产品列表" value="{{productInfo.name}}" placeholder="请选择某一产品" error-message="{{errorInfo.productError}}" right-icon="{{icon}}" bind:click-icon="onClickIcon" readonly="{{true}}" bind:focus="suggestProduct"/>
+      <van-field label="产品" value="{{productName}}" placeholder="请选择某一产品" error-message="{{errorInfo.productError}}" right-icon="{{icon}}" bind:click-icon="onClickIcon" readonly="{{true}}" bind:focus="suggestProduct" />
       <view class="suggest-container" hidden="{{isSuggestingProduct}}">
         <page-loading isPart="{{true}}" visible="{{suggestLoadingProduct}}"></page-loading>
         <view class='no-result' hidden="{{!noResultProduct}}">没有结果</view>
@@ -25,10 +25,13 @@
     </view>
     <van-field label="存入数量" value="{{ goodsInfo.number }}" bind:change="inputEventCatcher" placeholder="请输入存入数量" error-message="{{errorInfo.numberError}}" data-key="number" />
     <van-field label="仓储编号" value="{{ goodsInfo.location }}" bind:change="inputEventCatcher" placeholder="请输入存入的仓储格子编号" error-message="{{errorInfo.locationrError}}" data-key="location" />
+    <view class="empty"></view>
+    <view class="empty"></view>
+    <view class="empty"></view>
   </i-panel>
 
   <view class="bottom-button">
-    <i-button bind:click="nextStep" type="primary" shape="circle">下一步</i-button>
+    <i-button bind:click="submitEnter" type="primary" shape="circle">入库</i-button>
   </view>
 
   <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">

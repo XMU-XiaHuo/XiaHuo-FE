@@ -1,6 +1,9 @@
 <!--pages/productList/productList.wxml-->
 <view class="container">
-  <back-top-menu title="产品列表" backUrl="../goodsDetail/goodsDetail"></back-top-menu>
+  <back-top-menu title="产品列表" backUrl="{{'../goodsDetail/goodsDetail?id='+goodsId}}"></back-top-menu>
+
+  <page-loading content="加载产品中..." visible="{{loading}}"></page-loading>
+
   <i-panel wx:if="{{hasResult}}" class='panel'>
     <van-collapse bind:change="collapseChangeCatcher" value="{{ activeNames }}">
       <van-collapse-item wx:for="{{productList}}" title="{{item.name}}" name="{{item.id}}">
@@ -13,7 +16,7 @@
     </van-collapse>
   </i-panel>
 
-  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="handleCancel" bind:click="handleDelete">
+  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="handleCancel" bind:click="cancelDelete">
     <view slot="header" style="padding: 16px">
       <view class="confirm-delete">确定删除吗？</view>
       <text>删除后无法恢复哦</text>
@@ -25,6 +28,11 @@
   </view>
 
   <no-result visible="{{!hasResult}}"></no-result>
-  <i-toast id="toast" />
+
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <text class='error-text'>{{errorMsg}}</text>
+    <view class='empty-s'></view>
+  </i-modal>
 
 </view>

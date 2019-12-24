@@ -1,7 +1,6 @@
 {
   "usingComponents": {
     "i-modal": "../../iview/modal/index",
-    "i-toast": "../../iview/toast/index",
     "van-field": "../../vant/field/index",
     "van-button": "../../vant/button/index",
     "van-search": "../../vant/search/index",

@@ -15,10 +15,7 @@ Page({
     goodsInfo: {
       name: '',
       number: '',
-      location: ''
-    },
-    productInfo: {
-      name: ''
+      location: '123456'
     },
     errorInfo: {
       nameError: '',
@@ -39,6 +36,7 @@ Page({
     suggestLoadingProduct: false,
     noResultProduct: false,
     chooseProductId: null,
+    productName: '',
     icon: 'arrow',
 
     // modal 相关
@@ -91,7 +89,9 @@ Page({
     let name = e.detail;
     this.setData({
       ['goodsInfo.name']: name,
-      chooseGoodsId: null
+      chooseGoodsId: null,
+      productName: '',
+      chooseProductId: null
     });
     let giveSuggestion = function() {
       if (!name) {
@@ -157,23 +157,135 @@ Page({
       isSuggesting: true
     })
   },
-
   // 推荐 product
-  suggestProduct: function() {
-    console.log(1);
+  suggestProduct: function(goodsId) {
+    let that = this;
+    wxRequest({
+      url: '/goods/product/products',
+      method: 'GET',
+      data: {
+        goodsId: goodsId
+      }
+    }).then((res) => {
+      let {
+        result
+      } = res;
+      that.setData({
+        suggestProductList: result,
+        suggestLoadingProduct: false,
+        noResultProduct: !(result && result.length)
+      });
+    }, (error) => {
+      that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+    });
+  },
+  // 选择某个推荐的项目
+  chooseSuggestProduct: function(e) {
+    let {
+      value
+    } = e.target.dataset;
+    this.setData({
+      productName: value.name,
+      chooseProductId: value.id,
+      isSuggestingProduct: true
+    })
   },
   // 点击 icon
   onClickIcon: function() {
+    let that = this;
     let {
       icon,
-      isSuggestingProduct
+      isSuggestingProduct,
+      chooseGoodsId
     } = this.data;
     this.setData({
       icon: icon === 'arrow-down' ? 'arrow' : 'arrow-down',
       isSuggestingProduct: !isSuggestingProduct,
       suggestLoadingProduct: true,
       noResultProduct: false,
+    }, () => {
+      if (chooseGoodsId) {
+        that.suggestProduct(chooseGoodsId);
+      }
+    });
+  },
+
+  // 检验表单
+  checkForm: function() {
+    let {
+      goodsInfo,
+      chooseProductId,
+      chooseGoodsId,
+      errorInfo
+    } = this.data;
+    let {
+      number,
+      location
+    } = goodsInfo;
+    let hasError = false;
+    if (!chooseGoodsId) {
+      errorInfo.nameError = '请选择商品';
+      hasError = true;
+    } else {
+      errorInfo.nameError = '';
+    }
+    if (!chooseProductId) {
+      errorInfo.productError = '请选择产品';
+      hasError = true;
+    } else {
+      errorInfo.productError = '';
+    }
+    let regNumber = /^[0-9]*[1-9][0-9]*$/;
+    if (!number || number.length === 0) {
+      errorInfo.numberError = '存入数量不能为空';
+      hasError = true;
+    } else if (!regNumber.test(number)) {
+      errorInfo.numberError = '存入数量应为正整数';
+      hasError = true;
+    } else {
+      errorInfo.numberError = '';
+    }
+    if (!location || location.length === 0) {
+      errorInfo.locationError = '仓储编号不能为空';
+      hasError = true;
+    } else {
+      errorInfo.locationError = '';
+    }
+    this.setData({
+      errorInfo
     })
+    return !hasError;
+  },
+
+  // 提交入库
+  submitEnter: function() {
+    let that = this;
+    let {
+      goodsInfo,
+      chooseProductId
+    } = this.data;
+    let {
+      number,
+      location
+    } = goodsInfo;
+
+    if (!this.checkForm()) {
+      return;
+    }
+
+    wxRequest({
+      url: '/storage-location/entry',
+      method: 'POST',
+      data: {
+        productId: chooseProductId,
+        entryNumber: number,
+        productLocation: location
+      }
+    }).then((res) => {
+      that.showModal('♪(๑^∇^๑)', '入库成功');
+    }, (error) => {
+      that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+    });
   },
 
   /**

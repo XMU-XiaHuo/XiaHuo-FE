@@ -1,13 +1,17 @@
 <!--pages/createProduct/createProduct.wxml-->
 <view class="container">
-  <back-top-menu title="创建产品" backUrl="../productList/productList"></back-top-menu>
+  <back-top-menu title="创建产品" backUrl="{{'../productList/productList?id='+goodsId}}'"></back-top-menu>
   <view class="empty"></view>
   <i-panel title="请完善产品信息:">
-    <van-field label="产品名称" value="{{ productInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入产品名称（不超过20字）" error-message="{{errorInfo.nameError}}" data-key="name" required/>
+    <van-field label="产品名" value="{{ productName }}" bind:change="inputProductName" placeholder="请输入产品名称（不超过20字）" error-message="{{productNameError}}" required/>
+    <van-field wx:for="{{inputList}}" label="{{item.label}}" value="{{ item.value }}" bind:change="inputEventCatcher" placeholder="请输入产品属性" data-index="{{index}}" error-message="{{item.error}}" required/>
   </i-panel>
   <view class="bottom-button">
-    <i-button bind:click="nextStep" type="primary" shape="circle">提交</i-button>
+    <i-button bind:click="submitCreate" type="primary" shape="circle">提交</i-button>
   </view>
-
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <text class='error-text'>{{errorMsg}}</text>
+    <view class='empty-s'></view>
+  </i-modal>
 </view>
-

@@ -1,7 +1,8 @@
 // pages/productList/productList.js
+const app = getApp();
 const {
-  $Toast
-} = require('../../iview/base/index');
+  wxRequest
+} = app.Request;
 
 Page({
 
@@ -9,8 +10,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 是否有结果
+    // 数据展示相关
+    loading: false,
+    goodsId: null,
     hasResult: true,
+    productList: [],
+
     // 伸缩面板 active 列表
     activeNames: [],
     // 删除 sheet 显示
@@ -20,20 +25,16 @@ Page({
       name: '删除',
       color: '#ed3f14'
     }],
-    // product 列表
-    productList: [{
-      name: '黄色XL',
-      id: 1
-    }, {
-      name: '黄色L',
-      id: 2
-    }, {
-      name: '红色XL',
-      id: 3
-    }, {
-      name: '红色L',
-      id: 4
-    }]
+
+    // modal 相关
+    modalVisible: false,
+    errorTitle: '',
+    errorMsg: '',
+    modalButtons: [{
+      color: '#409eff',
+      name: '确认',
+    }],
+
   },
 
   // 处理收缩面板变化事件
@@ -42,14 +43,12 @@ Page({
       activeNames: event.detail
     });
   },
-
   // 删除 product
-  deleteProduct: function(){
+  deleteProduct: function() {
     this.setData({
       actionSheetVisible: true
     });
   },
-
   // 确认删除后的操作
   handleDelete() {
     const action = [...this.data.deleteAction];
@@ -67,67 +66,69 @@ Page({
       });
     }, 2000);
   },
-
   // 取消删除
-  handleCancel() {
+  cancelDelete() {
     this.setData({
       actionSheetVisible: false
     });
+  },
+  // 创建 product
+  createProduct: function() {
+    wx.navigateTo({
+      url: '../createProduct/createProduct?id=' + this.data.goodsId
+    })
+  },
+  // 展示错误 modal
+  showModal: function(title = '', msg = '发生了未知的错误') {
+    let that = this;
+    this.setData({
+      errorTitle: title,
+      errorMsg: msg
+    }, () => {
+      that.setData({
+        modalVisible: true
+      })
+    });
+  },
+  // 错误 modal 的交互
+  clickModal({
+    detail
+  }) {
+    this.setData({
+      modalVisible: false
+    })
+  },
+  // 展示数据
+  showData: function(result) {
+    this.setData({
+      loading: false,
+      hasResult: result.length > 0,
+      productList: result
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    let that = this;
+    let id = 4;
+    this.setData({
+      goodsId: id,
+      loading: true
+    }, () => {
+      wxRequest({
+        url: '/goods/product/products',
+        method: 'GET',
+        data: {
+          goodsId: id
+        }
+      }).then((res) => {
+        that.showData(res.result);
+      }, (error) => {
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+      });
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

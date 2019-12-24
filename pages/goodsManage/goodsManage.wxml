@@ -2,7 +2,7 @@
 <view class="container">
   <back-top-menu title="商品管理" backUrl="../mainPage/mainPage"></back-top-menu>
 
-  <page-loading content="加载商品列表中..." visible="{{loading}}"></page-loading>
+  <page-loading content="加载商品中..." visible="{{loading}}"></page-loading>
 
   <van-search value="{{ goodsName }}" placeholder="请输入搜索关键词" bind:search="search" bind:change="inputEventCatcher" data-key="goodsName" />
 

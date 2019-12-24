@@ -34,14 +34,14 @@ Page({
   goToEditGoods: function() {
     wx.navigateTo({
       url: '../editGoods/editGoods?id=' + this.data.goodsId
-    })
+    });
   },
 
   // 跳转到产品列表页面
   goToProductList: function() {
     wx.navigateTo({
       url: '../productList/productList?id=' + this.data.goodsId
-    })
+    });
   },
 
   // 展示错误 modal
