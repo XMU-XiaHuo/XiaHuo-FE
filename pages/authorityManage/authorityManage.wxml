@@ -15,16 +15,16 @@
       </view>
       <view slot="button" class="i-swipeout-demo-button-group">
         <view class="i-swipeout-demo-button edit">
-          <view class="button-text" bindtap="jumpToEditPage">编辑</view>
+          <view class="button-text" bindtap="jumpToEditPage" data-item="{{item}}">编辑</view>
         </view>
         <view class="i-swipeout-demo-button delete">
-          <view class="button-text" bindtap="openDeleteAction" data-id="{{item.id}}" data-index="{{index}}">删除</view>
+          <view class="button-text" bindtap="openDeleteAction" data-id="{{item.userId}}" data-index="{{index}}">删除</view>
         </view>
       </view>
     </i-swipeout>
   </i-panel>
 
-  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="handleCancel" bind:click="handleDelete">
+  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="cancelDelete" bind:click="handleDelete">
     <view slot="header" style="padding: 16px">
       <view class="confirm-delete">确定删除吗？</view>
       <text>删除后无法恢复哦</text>

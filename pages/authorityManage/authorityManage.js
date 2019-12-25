@@ -35,7 +35,7 @@ Page({
 
     // 报错 modal 相关
     modalVisible: false,
-    errorTitle: '๑Ծ‸Ծ๑',
+    errorTitle: '',
     errorMsg: '',
     modalButtons: [{
       color: '#409eff',
@@ -44,9 +44,13 @@ Page({
   },
 
   // 编辑相关
-  jumpToEditPage: function() {
+  jumpToEditPage: function(e) {
+    let {
+      item
+    } = e.target.dataset;
+    wx.setStorageSync('roles', item.roles);
     wx.navigateTo({
-      url: '../authorityManagePerson/authorityManagePerson'
+      url: '../authorityManagePerson/authorityManagePerson?id=' + item.userId
     })
   },
 
@@ -67,7 +71,7 @@ Page({
   handleDelete() {
     let that = this;
     let {
-      deleteMemberId, 
+      deleteMemberId,
       deleteMemberIndex,
       members
     } = this.data;
@@ -101,7 +105,7 @@ Page({
   },
 
   // 取消删除
-  handleCancel() {
+  cancelDelete() {
     this.setData({
       actionSheetVisible: false
     });
@@ -112,14 +116,6 @@ Page({
     return wxRequest({
       url: '/user/user/members',
       method: 'GET'
-    });
-  },
-
-  // 删除成员-接口
-  deleteMember: function() {
-    return wxRequest({
-      url: '/user/user/member',
-      method: 'DELETE'
     });
   },
 
@@ -157,9 +153,10 @@ Page({
   },
 
   // 展示错误 modal
-  showModal: function(errorMsg = '发生了未知的错误') {
+  showModal: function(errorTitle = '', errorMsg = '发生了未知的错误') {
     let that = this;
     this.setData({
+      errorTitle: errorTitle,
       errorMsg: errorMsg
     }, () => {
       that.setData({
@@ -187,56 +184,8 @@ Page({
         loading: false
       })
     }, (error) => {
-      that.showModal(error.message);
+      that.showModal('出错了๑Ծ‸Ծ๑', error.message);
     });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

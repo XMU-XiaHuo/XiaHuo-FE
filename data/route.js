@@ -39,7 +39,7 @@ const Routes = [{
   },
   {
     title: '查看日志',
-    url: '../index/index',
+    url: '../log/log',
     icon: 'image/log.png'
   }
   // {

@@ -1,8 +1,25 @@
 /* pages/productList/productList.wxss */
 
+.property-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 15px;
+}
+
+.property{
+  width: 50%;
+  margin-top: 5rpx;
+}
+
+.property-key{
+  margin-right: 20rpx;
+}
+
 .button-group-container {
   display: flex;
   flex-direction: row-reverse;
+  margin-top: 30rpx;
 }
 
 .report-button {

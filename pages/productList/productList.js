@@ -25,6 +25,8 @@ Page({
       name: '删除',
       color: '#ed3f14'
     }],
+    deleteProductId: null,
+    deleteProductIndex: null,
 
     // modal 相关
     modalVisible: false,
@@ -44,27 +46,53 @@ Page({
     });
   },
   // 删除 product
-  deleteProduct: function() {
+  deleteProduct: function(e) {
+    let {
+      id,
+      index
+    } = e.target.dataset;
     this.setData({
-      actionSheetVisible: true
+      actionSheetVisible: true,
+      deleteProductId: id,
+      deleteProductIndex: index
     });
   },
   // 确认删除后的操作
   handleDelete() {
-    const action = [...this.data.deleteAction];
+    let that = this;
+    let {
+      deleteProductId,
+      deleteProductIndex,
+      deleteAction,
+      productList
+    } = this.data;
+    // 设置 loading
+    const action = [...deleteAction];
     action[0].loading = true;
-
     this.setData({
       deleteAction: action
-    });
-
-    setTimeout(() => {
-      action[0].loading = false;
-      this.setData({
-        actionSheetVisible: false,
-        deleteAction: action
+    }, () => {
+      wxRequest({
+        url: '/goods/product/product?productId=' + deleteProductId,
+        method: 'DELETE',
+      }).then((res) => {
+        productList.splice(deleteProductIndex, 1);
+        action[0].loading = false;
+        that.setData({
+          actionSheetVisible: false,
+          deleteAction: action,
+          productList: productList
+        });
+        that.showModal('♪(๑^∇^๑)', '删除成功~');
+      }, (error) => {
+        action[0].loading = false;
+        that.setData({
+          actionSheetVisible: false,
+          deleteAction: action
+        });
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message);
       });
-    }, 2000);
+    });
   },
   // 取消删除
   cancelDelete() {
@@ -106,7 +134,6 @@ Page({
       productList: result
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -129,6 +156,5 @@ Page({
         that.showModal('出错了๑Ծ‸Ծ๑', error.message);
       });
     });
-  },
-
+  }
 })
