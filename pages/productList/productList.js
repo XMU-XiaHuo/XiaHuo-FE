@@ -45,6 +45,16 @@ Page({
       activeNames: event.detail
     });
   },
+  // 跳转到编辑 product 页面
+  editProduct: function(e) {
+    let {
+      item
+    } = e.target.dataset;
+    wx.setStorageSync('product', item);
+    wx.navigateTo({
+      url: '../editProduct/editProduct'
+    })
+  },
   // 删除 product
   deleteProduct: function(e) {
     let {
@@ -154,6 +164,9 @@ Page({
         that.showData(res.result);
       }, (error) => {
         that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+        that.setData({
+          loading: false
+        })
       });
     });
   }

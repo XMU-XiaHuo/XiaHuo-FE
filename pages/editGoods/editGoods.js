@@ -102,7 +102,7 @@ Page({
         validTime: expireDate
       }
     }).then((res) => {
-      console.log(res);
+      that.showModal('♪(๑^∇^๑)', '修改成功');
     }, (error) => {
       that.showModal('出错了๑Ծ‸Ծ๑', error.message);
     })

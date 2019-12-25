@@ -95,7 +95,8 @@ Page({
     let that = this;
     let {
       productName,
-      inputList
+      inputList,
+      goodsId
     } = this.data;
     if (!this.checkForm(productName, inputList)) {
       return;
@@ -104,7 +105,7 @@ Page({
       url: '/goods/product/product',
       method: 'POST',
       data: {
-        goodsId: 4,
+        goodsId: goodsId,
         name: productName,
         propertiesValue: that.formatPropertiesValue(inputList)
       }

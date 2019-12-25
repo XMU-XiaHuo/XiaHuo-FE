@@ -1,2 +1,17 @@
 <!--pages/editProduct/editProduct.wxml-->
-<text>pages/editProduct/editProduct.wxml</text>
+<view class="container">
+  <back-top-menu title="修改产品信息" backUrl="{{'../productList/productList?id='+goodsId}}'"></back-top-menu>
+  <view class="empty"></view>
+  <i-panel>
+    <van-field label="产品名" value="{{ productName }}" bind:change="inputProductName" placeholder="请输入产品名称（不超过20字）" error-message="{{productNameError}}" required/>
+    <van-field wx:for="{{inputList}}" label="{{item.label}}" value="{{ item.value }}" bind:change="inputEventCatcher" placeholder="请输入产品属性" data-index="{{index}}" error-message="{{item.error}}" required/>
+  </i-panel>
+  <view class="bottom-button">
+    <i-button bind:click="submitEdit" type="primary" shape="circle">保存</i-button>
+  </view>
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <text class='error-text'>{{errorMsg}}</text>
+    <view class='empty-s'></view>
+  </i-modal>
+</view>

@@ -90,7 +90,7 @@ Page({
         that.setData({
           actionSheetVisible: false,
           deleteAction: action,
-          memberList: memberList
+          members: members
         });
         that.showModal('♪(๑^∇^๑)', '删除成功~');
       }, (error) => {
@@ -185,6 +185,9 @@ Page({
       })
     }, (error) => {
       that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+      that.setData({
+        loading: false
+      })
     });
   },
 

@@ -121,7 +121,7 @@ Page({
         url: '/goods/goods/goods?goodsId=' + deleteGoodsId,
         method: 'DELETE',
       }).then((res) => {
-        goodsList.splice(deleteGoodsIndex,1);
+        goodsList.splice(deleteGoodsIndex, 1);
         action[0].loading = false;
         that.setData({
           actionSheetVisible: false,
@@ -200,9 +200,11 @@ Page({
         });
       }, (error) => {
         that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+        that.setData({
+          loading: false
+        });
       });
     })
-
   },
   // 展示错误 modal
   showModal: function(title = '', msg = '发生了未知的错误') {

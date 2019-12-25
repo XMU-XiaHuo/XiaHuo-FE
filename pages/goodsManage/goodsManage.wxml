@@ -10,7 +10,8 @@
     <span>* 左滑进行更多操作</span>
   </view>
 
-  <i-panel wx:if="{{hasResult}}" class='panel'>
+  <view wx:if="{{hasResult}}">
+    <divider></divider>
     <i-swipeout i-class="i-swipeout-demo-item" wx:for="{{goodsList}}" operateWidth="{{140}}" unclosable="{{true}}">
       <view slot="content">
         <view class="goods-name">{{item.name}}</view>
@@ -26,7 +27,7 @@
     </i-swipeout>
 
     <van-divider wx:if="{{hasResult && noMore}}" contentPosition="center">没有更多了</van-divider>
-  </i-panel>
+  </view>
 
   <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="cancelDelete" bind:click="handleDelete">
     <view slot="header" style="padding: 16px">

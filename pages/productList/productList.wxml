@@ -6,7 +6,7 @@
 
   <i-panel wx:if="{{hasResult}}" class='panel'>
     <van-collapse bind:change="collapseChangeCatcher" value="{{ activeNames }}">
-      <van-collapse-item wx:for="{{productList}}" title="{{item.name+'-'+item.description}}" name="{{item.id}}">
+      <van-collapse-item wx:for="{{productList}}" title="{{item.description}}" name="{{item.id}}">
         <view class="property-container">
           <view class="property" wx:for="{{item.propertiesValue}}" wx:for-index="idx" wx:for-item="property">
             <view class="property-key inline-b">{{idx}}:</view>
@@ -15,7 +15,7 @@
         </view>
         <view class="button-group-container">
           <van-button class="report-button" size="small" round color="#F56C6C" bind:click="deleteProduct" data-id="{{item.id}}" data-index="{{index}}">删除</van-button>
-          <van-button class="report-button" size="small" round color="#409EFF" bind:click="editProduct">编辑</van-button>
+          <van-button class="report-button" size="small" round color="#409EFF" bind:click="editProduct" data-item="{{item}}">编辑</van-button>
         </view>
       </van-collapse-item>
     </van-collapse>

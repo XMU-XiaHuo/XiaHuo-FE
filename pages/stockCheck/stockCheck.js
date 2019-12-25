@@ -11,8 +11,9 @@ Page({
    */
   data: {
     storageNumber: '',
-    isSearching: false,
-    activeNames: ['1', '2'],
+    loading: false,
+    activeNames: [],
+    productList: [],
     hasResult: true,
 
     // 报损报溢
@@ -25,8 +26,16 @@ Page({
     errorInfo: {
       descriptionError: '',
       numberError: ''
-    }
+    },
 
+    // modal 相关
+    modalVisible: false,
+    errorTitle: '',
+    errorMsg: '',
+    modalButtons: [{
+      color: '#409eff',
+      name: '确认',
+    }],
   },
 
   // 处理输入事件
@@ -35,27 +44,58 @@ Page({
       key
     } = e.target.dataset;
     let modifyKey = key;
+    console.log(key);
     this.setData({
       [modifyKey]: e.detail
     })
   },
-
   // 处理收缩面板变化事件
   collapseChangeCatcher(event) {
     this.setData({
       activeNames: event.detail
     });
   },
-
+  // 展示数据
+  showData: function(result) {
+    if (result.productId === null) {
+      this.setData({
+        hasResult: false,
+        loading: false
+      });
+    } else {
+      this.setData({
+        productList: [].concat(result),
+        activeNames: [].concat(productId),
+        hasResult: true,
+        loading: false
+      });
+    }
+  },
   // 根据库位号搜索
   search: function() {
     let that = this;
-    console.log(this.data.storageNumber);
+    let {
+      storageNumber
+    } = this.data;
     this.setData({
-      isSearching: true
+      loading: true
+    }, () => {
+      wxRequest({
+        url: '/storage-location/storage/find',
+        method: 'GET',
+        data: {
+          storageLocation: storageNumber
+        }
+      }).then((res) => {
+        that.showData(res.result);
+      }, (error) => {
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+        that.setData({
+          loading: false
+        });
+      });
     });
   },
-
   // 报损弹窗
   reportDamage: function() {
     this.setData({
@@ -63,7 +103,6 @@ Page({
       reportType: 0
     })
   },
-
   // 报溢弹窗
   reportOverflow: function() {
     this.setData({
@@ -71,9 +110,8 @@ Page({
       reportType: 1
     })
   },
-
   // 处理输入事件
-  inputEventCatcher: function(e) {
+  inputEventCatcherReport: function(e) {
     let {
       key
     } = e.target.dataset;
@@ -82,7 +120,6 @@ Page({
       [modifyKey]: e.detail
     })
   },
-
   // 提交报损/报溢
   submitReport: function() {
     let {
@@ -105,7 +142,6 @@ Page({
       });
     }
   },
-
   // 检测描述信息
   checkDescription: function(description) {
     if (description === '') {
@@ -120,11 +156,30 @@ Page({
     }
     return '';
   },
-
   // 关闭 modal
   closeReportModal: function() {
     this.setData({
       reportModal: false
+    })
+  },
+  // 展示错误 modal
+  showModal: function(title = '', msg = '发生了未知的错误') {
+    let that = this;
+    this.setData({
+      errorTitle: title,
+      errorMsg: msg
+    }, () => {
+      that.setData({
+        modalVisible: true
+      })
+    });
+  },
+  // 错误 modal 的交互
+  clickModal({
+    detail
+  }) {
+    this.setData({
+      modalVisible: false
     })
   },
 

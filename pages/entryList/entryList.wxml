@@ -1,0 +1,19 @@
+<!--pages/log/pages/entryList/entryList.wxml-->
+<view class="container">
+  <back-top-menu title="进货单" backUrl="../log/log"></back-top-menu>
+
+  <page-loading content="加载进货单中..." visible="{{loading}}"></page-loading>
+
+  <i-panel wx:if="{{hasResult}}" class='panel'>
+
+    <van-divider wx:if="{{hasResult && noMore}}" contentPosition="center">没有更多了</van-divider>
+  </i-panel>
+
+  <no-result visible="{{!hasResult}}"></no-result>
+
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <text class='error-text'>{{errorMsg}}</text>
+    <view class='empty-s'></view>
+  </i-modal>
+</view>

@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    loading: false,
+    loading: true,
     goodsId: null,
     goodsInfo: {
       name: '',
@@ -72,7 +72,6 @@ Page({
     let that = this;
     let id = options.id;
     this.setData({
-      loading: true,
       goodsId: id
     }, () => {
       wxRequest({
@@ -104,6 +103,9 @@ Page({
         })
       }, (error) => {
         that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+        that.setData({
+          loading: false
+        });
       })
     });
   },
