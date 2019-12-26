@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/stockCheck/stockCheck",
+    "pages/index/index",
     "pages/mainPage/mainPage",
     "pages/goodsManage/goodsManage",
     "pages/productList/productList",
-    "pages/index/index",
-    "pages/stockCheck/stockCheck",
     "pages/entryList/entryList",
     "pages/log/log",
     "pages/authorityManage/authorityManage",

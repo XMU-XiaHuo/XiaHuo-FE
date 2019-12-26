@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    storageNumber: '',
+    storageNumber: '123456',
     loading: false,
     activeNames: [],
     productList: [],
@@ -20,6 +20,8 @@ Page({
     reportModal: false,
     reportType: 0,
     report: {
+      id: null,
+      location: '',
       description: '',
       number: '',
     },
@@ -44,7 +46,6 @@ Page({
       key
     } = e.target.dataset;
     let modifyKey = key;
-    console.log(key);
     this.setData({
       [modifyKey]: e.detail
     })
@@ -57,7 +58,10 @@ Page({
   },
   // 展示数据
   showData: function(result) {
-    if (result.productId === null) {
+    let {
+      productId
+    } = result;
+    if (productId === null) {
       this.setData({
         hasResult: false,
         loading: false
@@ -78,6 +82,7 @@ Page({
       storageNumber
     } = this.data;
     this.setData({
+      hasResult: true,
       loading: true
     }, () => {
       wxRequest({
@@ -96,19 +101,23 @@ Page({
       });
     });
   },
-  // 报损弹窗
-  reportDamage: function() {
+  // 报损/报溢弹窗
+  report: function(e) {
+    let {
+      type,
+      item
+    } = e.target.dataset;
     this.setData({
       reportModal: true,
-      reportType: 0
-    })
-  },
-  // 报溢弹窗
-  reportOverflow: function() {
-    this.setData({
-      reportModal: true,
-      reportType: 1
-    })
+      reportType: type,
+      report: {
+        id: item.productId,
+        location: item.productLocation,
+        description: '',
+        number: '',
+        oldNumber: item.productNumber
+      }
+    });
   },
   // 处理输入事件
   inputEventCatcherReport: function(e) {
@@ -122,25 +131,52 @@ Page({
   },
   // 提交报损/报溢
   submitReport: function() {
+    let that = this;
     let {
       reportType,
       report
     } = this.data;
     let {
+      id,
+      location,
       description,
-      number
+      number,
+      oldNumber
     } = report;
     let checkDescriptionResult = this.checkDescription(description);
-    let checkNumberResult = this.checkNumber(number, reportType);
+    let checkNumberResult = this.checkNumber(number, oldNumber, reportType);
     this.setData({
       ['errorInfo.descriptionError']: checkDescriptionResult,
       ['errorInfo.numberError']: checkNumberResult
-    })
-    if (checkDescriptionResult.length === 0 && checkNumberResult.length === 0) {
-      this.setData({
-        reportModal: false
-      });
+    });
+    if (checkDescriptionResult.length > 0 || checkNumberResult.length > 0) {
+      return;
     }
+    reportType = parseInt(reportType);
+    wxRequest({
+      url: '/storage-location/report',
+      method: 'POST',
+      data: {
+        productId: id,
+        productLocation: location,
+        description: description,
+        newNumber: number,
+        reportType: reportType
+      }
+    }).then((res) => {
+      that.setData({
+        reportModal: false
+      }, () => {
+        that.showModal('♪(๑^∇^๑)', reportType ? '报溢成功' : '报损成功');
+        that.search();
+      });
+    }, (error) => {
+      that.setData({
+        reportModal: false
+      }, () => {
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+      });
+    });
   },
   // 检测描述信息
   checkDescription: function(description) {
@@ -150,9 +186,27 @@ Page({
     return '';
   },
   // 检测真实数量
-  checkNumber: function(number, reportType) {
+  checkNumber: function(number, oldNumber, reportType) {
+    let regNumber = /^\d+$/;
     if (number === '') {
       return '真实数量不能为空';
+    }
+    if (!regNumber.test(number)) {
+      return '真实数量应为非负整数';
+    }
+    number = parseInt(number);
+    oldNumber = parseInt(oldNumber);
+    reportType = parseInt(reportType);
+    if (reportType) {
+      // 如果是报溢
+      if (number <= oldNumber) {
+        return '报溢时真实数量必须大于库存数量';
+      }
+    } else {
+      // 如果是报损
+      if (number >= oldNumber) {
+        return '报损时真实数量必须小于库存数量';
+      }
     }
     return '';
   },

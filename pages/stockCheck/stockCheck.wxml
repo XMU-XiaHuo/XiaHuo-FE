@@ -6,16 +6,16 @@
 
   <page-loading content="加载信息中..." visible="{{loading}}"></page-loading>
 
-  <view wx:if="{{hasResult}}">
+  <view wx:if="{{hasResult && productList.length > 0}}">
     <view class="tip">
       <span>* 若商品数量有误，请及时报损或报溢</span>
     </view>
-    <van-collapse bind:change="collapseChangeCatcher" value="{{ activeNames }}">
-      <van-collapse-item title="九型门T恤" name="1" value="x3">
-        商品的具体信息
+    <van-collapse wx:for="{{productList}}" bind:change="collapseChangeCatcher" value="{{ activeNames }}">
+      <van-collapse-item title="{{item.productName}}" name="{{item.productId}}" value="{{'x'+item.productNumber}}">
+        入库时间: {{item.entryTime}}
         <view class="button-group-container">
-          <van-button class="report-button" size="small" round type="info" bind:click="reportOverflow">报溢</van-button>
-          <van-button class="report-button" size="small" round type="info" bind:click="reportDamage">报损</van-button>
+          <van-button class="report-button" size="small" round type="info" bind:click="report" data-item="{{item}}" data-type="1">报溢</van-button>
+          <van-button class="report-button" size="small" round type="info" bind:click="report" data-item="{{item}}" data-type="0">报损</van-button>
         </view>
       </van-collapse-item>
     </van-collapse>
@@ -24,7 +24,7 @@
   <i-modal title="填写具体信息" visible="{{ reportModal }}" bind:ok="submitReport" bind:cancel="closeReportModal">
     <van-field input-class="modal-input" label="描述信息：" value="{{ report.description }}" bind:change="inputEventCatcherReport" error-message="{{errorInfo.descriptionError}}" data-key="description" title-width="70px" border="{{false}}" focus="{{true}}" maxlength="50"
     />
-    <van-field input-class="modal-input" label="真实数量：" value="{{ report.number }}" bind:change="inputEventCatcher" error-message="{{errorInfo.numberError}}" data-key="number" title-width="70px" border="{{false}}" />
+    <van-field input-class="modal-input" label="真实数量：" value="{{ report.number }}" bind:change="inputEventCatcherReport" error-message="{{errorInfo.numberError}}" data-key="number" title-width="70px" border="{{false}}" />
   </i-modal>
 
   <no-result visible="{{!hasResult}}"></no-result>
