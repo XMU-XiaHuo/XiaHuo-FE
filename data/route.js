@@ -34,7 +34,7 @@ const Routes = [{
   },
   {
     title: '库存信息',
-    url: '../mainPage/mainPage',
+    url: '../storageList/storageList',
     icon: 'image/store.png'
   },
   {

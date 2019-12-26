@@ -149,7 +149,9 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-    let id = 4;
+    let {
+      id
+    } = options;
     this.setData({
       goodsId: id,
       loading: true

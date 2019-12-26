@@ -1,0 +1,16 @@
+<!--pages/storageProduct/storageProduct.wxml-->
+<view class="container">
+  <back-top-menu title="{{'库存信息-'+productName}}" backUrl="../storageList/storageList"></back-top-menu>
+
+  <page-loading content="加载存储信息中..." visible="{{loading}}"></page-loading>
+
+  <i-cell-group wx:if="{{productList.length > 0}}">
+    <i-cell i-class="product-cell" wx:for="{{productList}}" title="{{'库位号: '+item.productLocation}}" value="{{'x'+item.productNumber}}" label="{{'入库时间: '+item.entryTime}}"></i-cell>
+  </i-cell-group>
+
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <view class='error-text'>{{errorMsg}}</view>
+    <view class='empty-s'></view>
+  </i-modal>
+</view>

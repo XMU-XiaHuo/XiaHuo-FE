@@ -1,4 +1,5 @@
 /* components/back-top-menu/back-top-menu.wxss */
+
 .back-top-menu {
   position: fixed;
   display: flex;
@@ -18,10 +19,15 @@
 }
 
 .title {
-  display: inline-block;
-  color: white;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  display: inline-block;
+  width: 400rpx;
+  text-align: center;
+  color: white;
   font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

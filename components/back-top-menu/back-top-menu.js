@@ -36,6 +36,7 @@ Component({
         backUrl
       } = this.data;
       if (backUrl) {
+        console.log(jumpType);
         if (jumpType === 'navigate') {
           wx.navigateTo({
             url: backUrl

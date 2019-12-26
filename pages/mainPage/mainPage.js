@@ -15,6 +15,7 @@ Page({
   data: {
     userInfo: {},
     userName: '',
+    warehouseName: '厦货',
     roleList: [],
     userInfoLoading: true,
     routeList: Routes
@@ -39,11 +40,17 @@ Page({
       method: 'GET'
     });
   },
-
   // 获取个人信息-接口
   getUserInfo: function() {
     return wxRequest({
       url: '/user/user/info',
+      method: 'GET'
+    });
+  },
+  // 获取仓库信息-接口
+  getWarehouseInfo: function() {
+    return wxRequest({
+      url: '/user/warehouse/warehouse',
       method: 'GET'
     });
   },
@@ -69,15 +76,51 @@ Page({
   onLoad: function(options) {
     let that = this;
     this.getWxUserInfo();
-    Promise.all([this.getPermissionInfo(), this.getUserInfo()]).then((resList) => {
-      let permissionRes = resList[0].result;
-      let userRes = resList[1].result;
+    let userName = wx.getStorageSync('userName');
+    let warehouseName = wx.getStorageSync('warehouseName');
+    console.log(warehouseName);
+    if (userName === "") {
+      this.getUserInfo().then(({
+        result
+      }) => {
+        wx.setStorage({
+          key: "userName",
+          data: result.name
+        });
+        that.setData({
+          userName: result.name,
+        })
+      })
+    } else {
       that.setData({
-        userName: userRes.name,
-        roleList: permissionRes,
+        userName: userName,
+      })
+    }
+    if (warehouseName === "") {
+      this.getWarehouseInfo().then(({
+        result
+      }) => {
+        wx.setStorage({
+          key: "warehouseName",
+          data: result.warehouseName
+        })
+        that.setData({
+          warehouseName: result.warehouseName
+        })
+      })
+    } else {
+      that.setData({
+        warehouseName: warehouseName
+      })
+    }
+    this.getPermissionInfo().then(({
+      result
+    }) => {
+      that.setData({
+        roleList: result,
         userInfoLoading: false
       })
-    })
+    });
   },
 
   /**

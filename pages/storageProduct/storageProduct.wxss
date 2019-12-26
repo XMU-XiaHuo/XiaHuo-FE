@@ -1,0 +1,8 @@
+/* pages/storageProduct/storageProduct.wxss */
+
+.product-cell {
+  box-sizing: border-box;
+  border: 0 solid #e9eaec;
+  border-top-width: 0.5px;
+  border-bottom-width: 0.5px;
+}

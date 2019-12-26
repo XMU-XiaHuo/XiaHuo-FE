@@ -1,6 +1,9 @@
 <!--pages/myAuthority/myAuthority.wxml-->
 <view class="authority-manage-person container">
   <back-top-menu title="我的权限" backUrl="../personInfoManage/personInfoManage"></back-top-menu>
+
+  <page-loading content="加载权限信息中..." visible="{{loading}}"></page-loading>
+  
   <i-cell-group>
     <i-cell wx:for="{{roleList}}" wx:key="index" title="{{item.title}}" label="{{item.label}}">
       <view slot="footer">
@@ -9,5 +12,4 @@
       </view>
     </i-cell>
   </i-cell-group>
-  <page-loading content="加载权限信息中..." visible="{{loading}}"></page-loading>
 </view>

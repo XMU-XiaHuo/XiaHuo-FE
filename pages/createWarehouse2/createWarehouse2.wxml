@@ -14,7 +14,7 @@
   </view>
   <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
     <view class='empty-s'></view>
-    <text class='error-text'>{{errorMsg}}</text>
+    <view class='error-text'>{{errorMsg}}</view>
     <view class='empty-s'></view>
   </i-modal>
 </view>

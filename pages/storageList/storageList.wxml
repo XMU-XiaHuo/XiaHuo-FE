@@ -1,0 +1,21 @@
+<!--pages/storageList/storageList.wxml-->
+<view class="container">
+  <back-top-menu title="库存信息" backUrl="../mainPage/mainPage"></back-top-menu>
+
+  <page-loading content="加载产品中..." visible="{{loading}}"></page-loading>
+
+  <i-cell-group wx:if="{{hasResult}}">
+    <view class="tip">
+      <span>* 点击每一项查看具体库存信息</span>
+    </view>
+    <i-cell i-class="product-cell" wx:for="{{productList}}" title="{{item.productName}}" value="{{'x'+item.totalNumber}}" bind:click="jump" data-item="{{item}}" is-link></i-cell>
+  </i-cell-group>
+
+  <no-result visible="{{!hasResult}}"></no-result>
+
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <view class='error-text'>{{errorMsg}}</view>
+    <view class='empty-s'></view>
+  </i-modal>
+</view>
