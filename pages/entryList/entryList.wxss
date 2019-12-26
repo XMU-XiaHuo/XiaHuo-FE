@@ -1,8 +1,13 @@
 /* pages/log/pages/entryList/entryList.wxss */
-.property{
+
+.property-container {
+  font-size: 15px;
+}
+
+.property {
   margin-top: 5rpx;
 }
 
-.property-key{
-  margin-right: 15rpx;
+.property-key {
+  margin-right: 20rpx;
 }

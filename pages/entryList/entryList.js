@@ -71,14 +71,6 @@ Page({
       modalVisible: false
     })
   },
-  // 格式化进货单成为界面可以接受的数据
-  formatEntryList: function(entryList) {
-    entryList.forEach((entry) => {
-      entry.showData = {
-        '产品名': entry.productName
-      }
-    })
-  },
   // 获取商品列表-接口
   getEntryList: function() {
     let that = this;
@@ -104,7 +96,6 @@ Page({
         let {
           storageRecordVOList
         } = result;
-        console.log(result);
         if (storageRecordVOList.length < pageLimit) {
           noMore = true;
         }

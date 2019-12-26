@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/reportList/reportList",
     "pages/entryList/entryList",
     "pages/mainPage/mainPage",
     "pages/stockCheck/stockCheck",
@@ -25,8 +26,7 @@
     "pages/createWarehouse2/createWarehouse2",
     "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
-    "pages/createWarehouse3/createWarehouse3",
-    "pages//reportList/reportList"
+    "pages/createWarehouse3/createWarehouse3"
   ],
   "window": {
     "backgroundTextStyle": "light",
