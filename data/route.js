@@ -27,14 +27,14 @@ const Routes = [{
     url: '../pick/pick',
     icon: 'image/pick.png'
   },
-  // {
-  //   title: '退换货',
-  //   url: '../mainPage/mainPage',
-  //   icon: 'image/tuihuo.png'
-  // },
   {
     title: '仓储盘点',
     url: '../stockCheck/stockCheck',
+    icon: 'image/pandian.png'
+  },
+  {
+    title: '库存信息',
+    url: '../mainPage/mainPage',
     icon: 'image/store.png'
   },
   {

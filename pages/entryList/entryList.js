@@ -19,6 +19,9 @@ Page({
     loading: true,
     noMore: false,
 
+    // 伸缩面板 active 列表
+    activeNames: [],
+
     // modal 相关
     modalVisible: false,
     errorTitle: '',
@@ -28,10 +31,28 @@ Page({
       name: '确认',
     }],
 
+    // map 
+    map: {
+      productId: '',
+      productName: '产品名',
+      createTime: "进货时间",
+      entryNumber: '进货数量',
+      operateUserId: '',
+      operateUserName: '操作者',
+      productLocation: "库位号"
+    }
+
+  },
+
+  // 处理收缩面板变化事件
+  collapseChangeCatcher(event) {
+    this.setData({
+      activeNames: event.detail
+    });
   },
 
   // 展示错误 modal
-  showModal: function (title = '', msg = '发生了未知的错误') {
+  showModal: function(title = '', msg = '发生了未知的错误') {
     let that = this;
     this.setData({
       errorTitle: title,
@@ -50,19 +71,27 @@ Page({
       modalVisible: false
     })
   },
+  // 格式化进货单成为界面可以接受的数据
+  formatEntryList: function(entryList) {
+    entryList.forEach((entry) => {
+      entry.showData = {
+        '产品名': entry.productName
+      }
+    })
+  },
   // 获取商品列表-接口
-  getEntryList: function () {
+  getEntryList: function() {
     let that = this;
     let {
       page,
-      entryList    } = this.data;
+      entryList
+    } = this.data;
     let noMore = false;
-
     that.setData({
       loading: true
     }, () => {
       wxRequest({
-        url: '/goods/goods/goodsList',
+        url: '/storage-location/entryList',
         method: 'GET',
         data: {
           page: page,
@@ -73,19 +102,23 @@ Page({
           result
         } = res;
         let {
-          goodsInfoVOS
+          storageRecordVOList
         } = result;
-        if (result.goodsInfoVOS.length < pageLimit) {
+        console.log(result);
+        if (storageRecordVOList.length < pageLimit) {
           noMore = true;
         }
         that.setData({
           page: page + 1,
           loading: false,
           noMore: noMore,
-          goodsList: goodsList.concat(goodsInfoVOS)
+          entryList: entryList.concat(storageRecordVOList)
         });
       }, (error) => {
         that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+        that.setData({
+          loading: false
+        })
       });
     })
   },
@@ -94,66 +127,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wxRequest({
-      url: '/storage-location/entryList',
-      method: 'GET',
-      data: {
-        page: 1,
-        pageLimit: 20
-      }
-    }).then((res) => {
-      console.log(res);
-    }, (error) => {
-      console.log(error);
-    });
+    this.getEntryList();
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
+   * 页面相关事件处理函数--监听用户下拉触底
    */
   onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
+    let {
+      noMore
+    } = this.data;
+    if (!noMore) {
+      this.getEntryList();
+    }
   }
 })

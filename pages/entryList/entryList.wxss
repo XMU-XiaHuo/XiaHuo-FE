@@ -1,1 +1,8 @@
 /* pages/log/pages/entryList/entryList.wxss */
+.property{
+  margin-top: 5rpx;
+}
+
+.property-key{
+  margin-right: 15rpx;
+}

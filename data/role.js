@@ -18,22 +18,6 @@ const Description = {
   '无权限': '无权限'
 }
 
-// const roleMap = function(roleList) {
-//   const handle = 'none';
-//   const map = {
-//     'Creator': 'owner',
-//     'Administrator': 'admin',
-//     'PickingMan': 'picker',
-//     'IncomeMan': 'storager',
-//     'OrderMan': 'orderer',
-//     'CheckMan': 'counter'
-//   };
-//   if (!role) {
-//     return handle;
-//   }
-//   return map[role] || handle;
-// }
-
 module.exports = {
   Roles,
   Description

@@ -3,17 +3,6 @@
   <image class="menu-img" src="{{sideBarHidden ? 'image/menu.png' : 'image/menu-coverd.png'}}" bindtap="toggleSideBar"></image>
   <view class="title">{{title}}</view>
   <view class="sidebar-container {{sideBarHidden ? 'sidebar-hidden' : 'sidebar-visible'}}">
-    <!-- <view class="user-info">
-      <view class="avatar-container">
-        <image class="avatar-img" src="{{userInfo.avatarUrl}}"></image>
-      </view>
-      <view class="text-container">
-        <view class="user-name">{{userInfo.nickName}}</view>
-        <role-tag role="admin"></role-tag>
-        <view class="warehouse-name">{{'厦大名字比较长的仓库'}}</view>
-      </view>
-    </view>
-    <divider></divider> -->
     <i-cell-group>
       <i-cell wx:for="{{routeList}}" url="{{item.url}}" is-link>
         <image class="menu-icon" src="{{item.icon}}"></image>

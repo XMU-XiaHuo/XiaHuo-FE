@@ -12,7 +12,7 @@ Component({
   properties: {
     title: {
       type: String,
-      value: '页面标题'
+      value: ''
     }
   },
 

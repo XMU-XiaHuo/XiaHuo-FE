@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/entryList/entryList",
+    "pages/mainPage/mainPage",
     "pages/stockCheck/stockCheck",
     "pages/index/index",
-    "pages/mainPage/mainPage",
     "pages/goodsManage/goodsManage",
     "pages/productList/productList",
-    "pages/entryList/entryList",
     "pages/log/log",
     "pages/authorityManage/authorityManage",
     "pages/editProduct/editProduct",
