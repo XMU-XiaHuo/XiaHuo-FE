@@ -23,11 +23,6 @@ const Routes = [{
     icon: 'image/ruku.png'
   },
   {
-    title: '拣货',
-    url: '../pick/pick',
-    icon: 'image/pick.png'
-  },
-  {
     title: '仓储盘点',
     url: '../stockCheck/stockCheck',
     icon: 'image/pandian.png'
@@ -36,6 +31,16 @@ const Routes = [{
     title: '库存信息',
     url: '../storageList/storageList',
     icon: 'image/store.png'
+  },
+  {
+    title: '查看订单',
+    url: '../mainPage/mainPage',
+    icon: 'image/dingdan.png'
+  },
+  {
+    title: '拣货',
+    url: '../pick/pick',
+    icon: 'image/pick.png'
   },
   {
     title: '查看日志',

@@ -107,8 +107,11 @@ Page({
   },
 
   // 格式化 properties 成为界面可接受的类型
-  formatProperties: function(properties = {}) {
+  formatProperties: function(properties) {
     let res = [];
+    if (!properties) {
+      return res;
+    }
     Object.keys(properties).forEach((key) => {
       res.push({
         label: key,
@@ -158,7 +161,6 @@ Page({
       productId: id,
       inputList: formatProperties
     });
-    console.log(product);
   },
 
   /**

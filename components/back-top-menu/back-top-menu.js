@@ -30,13 +30,11 @@ Component({
    */
   methods: {
     back: function(e) {
-      console.log(getCurrentPages());
       let {
         jumpType,
         backUrl
       } = this.data;
       if (backUrl) {
-        console.log(jumpType);
         if (jumpType === 'navigate') {
           wx.navigateTo({
             url: backUrl

@@ -191,4 +191,12 @@ Page({
     });
   },
 
+  /**
+   * 生命周期函数--监听页面转发
+   */
+  onShareAppMessage: function(options) {
+    console.log(1);
+    
+  }
+
 })

@@ -105,8 +105,10 @@ Page({
     }).then((res) => {
       // codeToBackEnd 成功
       if (res.result) {
+        let reLaunchUrl = wx.getStorageSync("reLaunchUrl");
+        wx.removeStorageSync('reLaunchUrl');
         wx.reLaunch({
-          url: '../mainPage/mainPage'
+          url: reLaunchUrl || '../mainPage/mainPage'
         });
       } else {
         that.setData({

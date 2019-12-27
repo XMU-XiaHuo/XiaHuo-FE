@@ -6,7 +6,29 @@ function addToken(res) {
   wx.setStorageSync("token", token);
 }
 
+function getTopPage() {
+  let pageList = getCurrentPages();
+  if (pageList.length === 0) {
+    return '../mainPage/mainPage';
+  }
+  let topPage = pageList[pageList.length - 1];
+  let {
+    route,
+    options
+  } = topPage;
+  Object.keys(options).forEach((key, index) => {
+    if (index === 0) {
+      route += '?';
+    } else {
+      route += '%';
+    }
+    route = route + key + '=' + options[key];
+  });
+  return route.replace('pages', '..');
+}
+
 function handle401() {
+  wx.setStorageSync("reLaunchUrl", getTopPage());
   wx.reLaunch({
     url: '../index/index'
   });

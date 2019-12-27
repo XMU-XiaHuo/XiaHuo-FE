@@ -78,7 +78,6 @@ Page({
     this.getWxUserInfo();
     let userName = wx.getStorageSync('userName');
     let warehouseName = wx.getStorageSync('warehouseName');
-    console.log(warehouseName);
     if (userName === "") {
       this.getUserInfo().then(({
         result
