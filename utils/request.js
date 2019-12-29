@@ -106,5 +106,6 @@ function wxRequest({
 
 module.exports = {
   baseURL,
-  wxRequest
+  wxRequest,
+  getTopPage
 };

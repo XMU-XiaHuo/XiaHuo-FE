@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/invited/invited",
     "pages/index/index",
     "pages/goodsManage/goodsManage",
     "pages/authorityManage/authorityManage",
@@ -28,8 +29,7 @@
     "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
     "pages/createWarehouse3/createWarehouse3",
-    "pages/storageProduct/storageProduct",
-    "pages/invited/invited"
+    "pages/storageProduct/storageProduct"
   ],
   "window": {
     "backgroundTextStyle": "light",

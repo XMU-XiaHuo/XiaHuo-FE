@@ -1,1 +1,35 @@
 /* pages/invited/invited.wxss */
+
+.invite-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30%;
+}
+
+.warehouse-img {
+  width: 512rpx;
+  height: 300rpx;
+}
+
+.user-line {
+  margin-top: 10rpx;
+}
+
+.user-name {
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.warehouse-name {
+  margin-top: 10rpx;
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.bottom-button-group {
+  position: fixed;
+  width: 100%;
+  top: 100%;
+  transform: translateY(-100%);
+}
