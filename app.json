@@ -1,10 +1,13 @@
 {
   "pages": [
-    "pages/invited/invited",
-    "pages/index/index",
-    "pages/goodsManage/goodsManage",
     "pages/authorityManage/authorityManage",
+    "pages/invited/invited",
+    "pages/warehouseInfoManage/warehouseInfoManage",
+    "pages/index/index",
     "pages/mainPage/mainPage",
+    "pages/createWarehouse2/createWarehouse2",
+    "pages/createWarehouse3/createWarehouse3",
+    "pages/goodsManage/goodsManage",
     "pages/storageList/storageList",
     "pages/enterWarehouse/enterWarehouse",
     "pages/reportList/reportList",
@@ -17,7 +20,6 @@
     "pages/createGoods/createGoods",
     "pages/editGoods/editGoods",
     "pages/goodsDetail/goodsDetail",
-    "pages/warehouseInfoManage/warehouseInfoManage",
     "pages/leaveWarehouse/leaveWarehouse",
     "pages/myAuthority/myAuthority",
     "pages/personInfoManage/personInfoManage",
@@ -25,10 +27,8 @@
     "pages/test/test",
     "pages/noAuthority/noAuthority",
     "pages/authorityManagePerson/authorityManagePerson",
-    "pages/createWarehouse2/createWarehouse2",
     "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
-    "pages/createWarehouse3/createWarehouse3",
     "pages/storageProduct/storageProduct"
   ],
   "window": {

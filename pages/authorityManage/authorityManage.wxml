@@ -6,7 +6,7 @@
     <span>* 左滑进行编辑和删除</span>
   </view>
   <i-panel class='panel'>
-    <page-loading content="加载成员中..." visible="{{loading}}"></page-loading>
+    <page-loading content="{{loadingText}}" visible="{{loading}}"></page-loading>
     <i-swipeout wx:for="{{members}}" i-class="i-swipeout-demo-item" operateWidth="{{item.canEdit ? 140 : 0}}" unclosable="{{true}}">
       <view slot="content">
         <i-icon type="addressbook" size="28" color="#80848f" />
@@ -32,10 +32,10 @@
   </i-action-sheet>
 
   <view class="bottom-sticky-button" hidden="{{isPageScroll}}">
-    <i-button bind:click="invite" type="primary" shape="circle">邀请新成员</i-button>
+    <i-button open-type="share" type="primary" shape="circle">邀请新成员</i-button>
   </view>
 
-  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}" open-type="share">
+  <i-modal title="{{errorTitle}}" disabled="{{canShare}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}" open-type="share">
     <view class='empty-s'></view>
     <view class='error-text'>{{errorMsg}}</view>
     <view class='empty-s'></view>

@@ -18,6 +18,7 @@ Page({
   data: {
     // 成员列表展示相关
     loading: true,
+    loadingText: '加载成员中...',
     members: [],
 
     // 删除相关
@@ -32,6 +33,8 @@ Page({
     // 邀请新成员相关
     isPageScroll: false,
     scrollTop: 0,
+    canShare: true,
+    shareCode: '',
 
     // 报错 modal 相关
     modalVisible: false,
@@ -192,11 +195,39 @@ Page({
   },
 
   /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    let that = this;
+    wxRequest({
+      url: '/user/user/inviteUrl',
+      method: 'GET'
+    }).then((res) => {
+      that.setData({
+        shareCode: res.result,
+        canShare: true
+      });
+    }, (error) => {
+      that.setData({
+        canShare: false
+      });
+    });
+  },
+
+
+  /**
    * 生命周期函数--监听页面转发
    */
   onShareAppMessage: function(options) {
-    console.log(1);
-    
+    let {
+      shareCode
+    } = this.data;
+    console.log('这里是邀请者，inviteCode 为 ' + shareCode)
+    return {
+      title: '测试',
+      path: '/pages/invited/invited?inviteCode=' + shareCode,
+      imageUrl: 'image/warehouse.png'
+    }
   }
 
 })

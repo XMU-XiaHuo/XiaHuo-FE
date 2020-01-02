@@ -65,6 +65,9 @@ function wxRequest({
         }
         if (statusCode === 200) {
           if (data.code === 200) {
+            if (url === '/user/user/login') {
+              resolve(data);
+            }
             if (data.result === null || data.result === false) {
               reject(data);
             } else {

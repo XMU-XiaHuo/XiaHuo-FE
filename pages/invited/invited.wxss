@@ -33,3 +33,23 @@
   top: 100%;
   transform: translateY(-100%);
 }
+
+.no-result-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 300rpx;
+}
+
+.center-container {
+  text-align: center;
+}
+
+.search-img {
+  width: 250rpx;
+  height: 250rpx;
+}
+
+.no-result-text {
+  margin-top: 20rpx;
+  font-size: 18px;
+}

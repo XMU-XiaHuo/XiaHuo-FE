@@ -1,9 +1,12 @@
 {
   "usingComponents": {
     "back-top-menu": "../../components/back-top-menu/back-top-menu",
+    "my-cell": "../../components/my-cell/my-cell",
     "i-panel": "../../iview/panel/index",
     "i-button": "../../iview/button/index",
     "i-modal": "../../iview/modal/index",
-    "van-field": "../../vant/field/index"
+    "van-area": "../../vant/area/index",
+    "van-field": "../../vant/field/index",
+    "van-cell": "../../vant/cell/index"
   }
 }

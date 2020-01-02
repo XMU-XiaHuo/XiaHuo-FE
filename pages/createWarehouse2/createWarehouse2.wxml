@@ -6,10 +6,15 @@
   <view class="empty"></view>
   <i-panel title="请完善仓库信息:">
     <van-field label="仓库名" value="{{ warehouseInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入仓库名（2-15字）" error-message="{{errorInfo.nameError}}" data-key="name" maxlength="15" required/>
-    <van-field label="仓库地址" value="{{ warehouseInfo.address }}" bind:change="inputEventCatcher" placeholder="请输入仓库地址（不超过50字）" error-message="{{errorInfo.addressError}}" data-key="address" maxlength="50" />
     <van-field label="仓库简介" value="{{ warehouseInfo.info }}" bind:change="inputEventCatcher" placeholder="请输入仓库简介（不超过80字）" error-message="{{errorInfo.infoError}}" data-key="info" maxlength="80" />
+    <van-cell title="仓库位置" is-link value="{{areaInfo.areaStr}}" required bind:click="chooseArea" />
+    <van-field label="具体地址" value="{{ warehouseInfo.address }}" bind:change="inputEventCatcher" placeholder="请输入仓库地址（不超过50字）" error-message="{{errorInfo.addressError}}" data-key="address" maxlength="50" required/>
   </i-panel>
-  <view class="bottom-button">
+  <view hidden="{{areaHidden}}">
+    <van-area area-list="{{ areaList }}" loading="{{areaLoading}}" bind:cancel="hideAreaPicker" bind:confirm="confirmAreaPick" />
+  </view>
+
+  <view class="bottom-button" hidden="{{!areaHidden}}">
     <i-button bind:click="nextStep" type="primary" shape="circle">提交</i-button>
   </view>
   <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
