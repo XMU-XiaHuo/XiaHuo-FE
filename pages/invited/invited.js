@@ -102,8 +102,6 @@ Page({
           inviteUserName,
           warehouseName
         });
-        console.log('这里是 inviteInfo 接口的返回值：')
-        console.log(res);
       }, (error) => {
         that.showModal('出错了๑Ծ‸Ծ๑', error.message)
         that.setData({

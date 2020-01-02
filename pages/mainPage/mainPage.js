@@ -78,7 +78,6 @@ Page({
     this.getWxUserInfo();
     let userName = wx.getStorageSync('userName');
     let warehouseName = wx.getStorageSync('warehouseName');
-    console.log('这是缓存里的userName:' + userName);
     if (userName === "") {
       this.getUserInfo().then(({
         result
@@ -87,7 +86,6 @@ Page({
           key: "userName",
           data: result.name
         });
-        console.log('这是请求返回里的userName:' + result.name);
         that.setData({
           userName: result.name,
         })

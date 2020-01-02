@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/warehouseInfoManage/warehouseInfoManage",
+    "pages/createWarehouse2/createWarehouse2",
+    "pages/mainPage/mainPage",
     "pages/index/index",
     "pages/authorityManage/authorityManage",
     "pages/invited/invited",
-    "pages/warehouseInfoManage/warehouseInfoManage",
-    "pages/mainPage/mainPage",
-    "pages/createWarehouse2/createWarehouse2",
     "pages/createWarehouse3/createWarehouse3",
     "pages/goodsManage/goodsManage",
     "pages/storageList/storageList",

@@ -3,17 +3,18 @@
   <back-top-menu title="仓库信息管理" backUrl="../mainPage/mainPage"></back-top-menu>
   <view class="empty"></view>
   <i-panel>
-    <van-field label="仓库名" value="{{ warehouseInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入仓库名（2-15字）" error-message="{{errorInfo.nameError}}" data-key="name" />
+    <van-field label="仓库名" value="{{ warehouseInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入仓库名（2-15字）" error-message="{{errorInfo.nameError}}" data-key="name" required/>
+    <van-field label="公司名称" value="{{ warehouseInfo.companyName }}" bind:change="inputEventCatcher" placeholder="请输入公司名（2-30字）" error-message="{{errorInfo.companyNameError}}" data-key="companyName" maxlength="30" required/>
     <van-field label="仓库简介" value="{{ warehouseInfo.info }}" bind:change="inputEventCatcher" placeholder="请输入仓库简介（不超过80字）" error-message="{{errorInfo.infoError}}" data-key="info" />
-    <my-cell label="仓库位置">
-      111
-    </my-cell>
-    <van-field label="具体地址" value="{{ warehouseInfo.address }}" bind:change="inputEventCatcher" placeholder="请输入仓库地址（不超过50字）" error-message="{{errorInfo.addressError}}" data-key="address" />
+    <van-cell title="仓库位置" is-link value="{{areaInfo.areaStr}}" required bind:click="chooseArea" />
+    <van-field label="具体地址" value="{{ warehouseInfo.address }}" bind:change="inputEventCatcher" placeholder="请输入仓库地址（不超过50字）" error-message="{{errorInfo.addressError}}" data-key="address" required/>
+    <van-field label="寄件人姓名" value="{{ warehouseInfo.senderName }}" bind:change="inputEventCatcher" placeholder="请输入寄件人真实姓名" error-message="{{errorInfo.senderNameError}}" data-key="senderName" required/>
+    <van-field label="寄件人电话" value="{{ warehouseInfo.senderPhone }}" bind:change="inputEventCatcher" placeholder="请输入寄件人电话" error-message="{{errorInfo.senderPhoneError}}" data-key="senderPhone" required/>
   </i-panel>
-  <view hidden="{{areaHidden}}">
+  <view class="bottom-button" hidden="{{areaHidden}}">
     <van-area area-list="{{ areaList }}" loading="{{areaLoading}}" bind:cancel="hideAreaPicker" bind:confirm="confirmAreaPick" />
   </view>
-  <view class="bottom-button">
+  <view class="bottom-button" hidden="{{!areaHidden}}">
     <i-button bind:click="save" type="primary" shape="circle">保存</i-button>
   </view>
   <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">

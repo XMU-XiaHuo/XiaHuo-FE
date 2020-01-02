@@ -3,6 +3,16 @@ const app = getApp();
 const {
   wxRequest
 } = app.Request;
+const {
+  checkName,
+  checkAddress,
+  checkInfo,
+  checkArea,
+  checkSenderName,
+  checkSenderPhone,
+  checkCompany,
+  checkError
+} = require('../../utils/formCheck.js');
 
 Page({
 
@@ -13,12 +23,18 @@ Page({
     warehouseInfo: {
       name: '谭源杰的仓库',
       address: '厦门市思明区海韵学生公寓海韵二',
-      info: '这是一个学生创建的仓库，仓库内有日用品如牙刷、牙膏、毛巾，同时还有水果如苹果、香蕉、梨'
+      info: '这是一个学生创建的仓库，仓库内有日用品如牙刷、牙膏、毛巾，同时还有水果如苹果、香蕉、梨',
+      senderName: '谭源杰',
+      senderPhone: '18059235981',
+      companyName: '悠总开的宝蓝公司'
     },
     errorInfo: {
       nameError: '',
       addressError: '',
-      infoError: ''
+      infoError: '',
+      senderNameError: '',
+      senderPhoneError: '',
+      companyNameError: ''
     },
 
     // 省市区
@@ -52,32 +68,6 @@ Page({
       [modifyKey]: e.detail
     })
   },
-  checkName: function(name) {
-    let regName = /^[\u4e00-\u9fa5]{2,15}$/;
-    if (!regName.test(name)) {
-      return '仓库名格式错误（应为 2 - 15 个汉字）';
-    }
-    return '';
-  },
-  checkAddress: function(address) {
-    if (!address || address.length === 0) {
-      return '具体地址不能为空';
-    }
-    return '';
-  },
-  checkInfo: function(info) {
-    if (!info || info.length === 0) {
-      return '仓库简介不能为空';
-    }
-    return '';
-  },
-  checkArea: function(areaInfo) {
-    if (!areaInfo['areaStr'] || areaInfo['areaStr'].length === 0) {
-      return '请填写仓库位置';
-    }
-    return '';
-  },
-
   // 创建仓库
   createWarehouse: function(name, address, info, areaInfo) {
     return new Promise((resolve, reject) => {
@@ -108,30 +98,46 @@ Page({
     let {
       name,
       address,
-      info
+      info,
+      senderName,
+      senderPhone,
+      companyName
     } = warehouseInfo;
 
     // 检测仓库名
-    let checkNameResult = this.checkName(name);
+    let checkNameResult = checkName(name);
     // 检测仓库地址
-    let checkAddressResult = this.checkAddress(address);
+    let checkAddressResult = checkAddress(address);
     // 检测仓库简介
-    let checkInfoResult = this.checkInfo(info);
+    let checkInfoResult = checkInfo(info);
+    // 检测寄件人名
+    let checkSenderNameResult = checkSenderName(senderName);
+    // 检测寄件人电话
+    let checkSenderPhoneResult = checkSenderPhone(senderPhone);
+    // 检测公司名
+    let checkCompanyResult = checkCompany(companyName);
+    let errorInfo = {
+      nameError: checkNameResult,
+      addressError: checkAddressResult,
+      infoError: checkInfoResult,
+      senderNameError: checkSenderNameResult,
+      senderPhoneError: checkSenderPhoneResult,
+      companyNameError: checkCompanyResult
+    }
+
     // 设置错误信息
     this.setData({
-      ['errorInfo.nameError']: checkNameResult,
-      ['errorInfo.addressError']: checkAddressResult,
-      ['errorInfo.infoError']: checkInfoResult
+      errorInfo
     });
 
-    let checkAreaResult = this.checkArea(areaInfo);
+    let checkAreaResult = checkArea(areaInfo);
     if (checkAreaResult.length > 0) {
       this.showModal(checkAreaResult);
       return;
     }
 
     // 如果有错，不执行下面的步骤
-    if (checkNameResult.length > 0 || checkAddressResult.length > 0 || checkInfoResult.length > 0) {
+    if (checkError(errorInfo)) {
       return;
     }
 

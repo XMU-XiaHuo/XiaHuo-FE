@@ -11,7 +11,8 @@
       <view slot="content">
         <i-icon type="addressbook" size="28" color="#80848f" />
         <view class="user-name">{{item.name}}</view>
-        <role-tag wx:for="{{item.roles}}" wx:for-item="role" class="role-tag" role="{{role}}"></role-tag>
+        <role-tag wx:if="{{item.roles.length>0}}" wx:for="{{item.roles}}" wx:for-item="role" class="role-tag" role="{{role}}"></role-tag>
+        <role-tag wx:if="{{item.roles.length==0}}" role="无权限"></role-tag>
       </view>
       <view slot="button" class="i-swipeout-demo-button-group">
         <view class="i-swipeout-demo-button edit">

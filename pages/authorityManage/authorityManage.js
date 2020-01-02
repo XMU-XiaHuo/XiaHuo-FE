@@ -222,7 +222,6 @@ Page({
     let {
       shareCode
     } = this.data;
-    console.log('这里是邀请者，inviteCode 为 ' + shareCode)
     return {
       title: '测试',
       path: '/pages/invited/invited?inviteCode=' + shareCode,

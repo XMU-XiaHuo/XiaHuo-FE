@@ -3,6 +3,17 @@ const app = getApp();
 const {
   wxRequest
 } = app.Request;
+const {
+  checkName,
+  checkAddress,
+  checkInfo,
+  checkArea,
+  checkSenderName,
+  checkSenderPhone,
+  checkCompany,
+  checkError
+} = require('../../utils/formCheck.js');
+
 
 Page({
 
@@ -13,13 +24,32 @@ Page({
     warehouseInfo: {
       name: '',
       address: '',
-      info: ''
+      info: '',
+      senderName: '',
+      senderPhone: '',
+      companyName: ''
     },
     errorInfo: {
       nameError: '',
       addressError: '',
-      infoError: ''
+      infoError: '',
+      senderNameError: '',
+      senderPhoneError: '',
+      companyNameError: ''
     },
+
+    // 省市区选择相关
+    areaList: [],
+    areaLoading: false,
+    areaHidden: true,
+    areaInfo: {
+      province: "",
+      city: "",
+      area: "",
+      areaStr: ""
+    },
+
+    // 错误 modal 相关
     modalVisible: false,
     errorTitle: '',
     errorMsg: '',
@@ -39,49 +69,82 @@ Page({
       [modifyKey]: e.detail
     })
   },
-  checkName: function(name) {
-    if (!name || name.length < 2) {
-      return '仓库名格式错误（应为 2 - 15 个汉字）';
-    }
-    return '';
+  // 显示地址选择器
+  chooseArea: function() {
+    this.setData({
+      areaHidden: false
+    })
   },
-  checkAddress: function(address) {
-    if (!address) {
-      return '仓库地址不能为空';
-    }
-    return '';
+  // 隐藏地址选择器
+  hideAreaPicker: function() {
+    this.setData({
+      areaHidden: true
+    })
   },
-  checkInfo: function(info) {
-    if (!info) {
-      return '仓库简介不能为空';
-    }
-    return '';
+  // 确认地址选择
+  confirmAreaPick: function(e) {
+    let {
+      values
+    } = e.detail;
+    this.setData({
+      areaInfo: {
+        province: values[0].name,
+        city: values[1].name,
+        area: values[2].name,
+        areaStr: `${values[0].name}-${values[1].name}-${values[2].name}`
+      },
+      areaHidden: true
+    })
   },
   // 保存
   save: function() {
     let {
+      warehouseInfo,
+      areaInfo
+    } = this.data;
+    let {
       name,
       address,
-      info
-    } = this.data.warehouseInfo;
+      info,
+      senderName,
+      senderPhone,
+      companyName
+    } = warehouseInfo;
 
     // 检测仓库名
-    let checkNameResult = this.checkName(name);
-    this.setData({
-      ['errorInfo.nameError']: checkNameResult
-    });
+    let checkNameResult = checkName(name);
     // 检测仓库地址
-    let checkAddressResult = this.checkAddress(address);
-    this.setData({
-      ['errorInfo.addressError']: checkAddressResult
-    });
+    let checkAddressResult = checkAddress(address);
     // 检测仓库简介
-    let checkInfoResult = this.checkInfo(info);
+    let checkInfoResult = checkInfo(info);
+    // 检测寄件人名
+    let checkSenderNameResult = checkSenderName(senderName);
+    // 检测寄件人电话
+    let checkSenderPhoneResult = checkSenderPhone(senderPhone);
+    // 检测公司名
+    let checkCompanyResult = checkCompany(companyName);
+    let errorInfo = {
+      nameError: checkNameResult,
+      addressError: checkAddressResult,
+      infoError: checkInfoResult,
+      senderNameError: checkSenderNameResult,
+      senderPhoneError: checkSenderPhoneResult,
+      companyNameError: checkCompanyResult
+    }
+
+    // 设置错误信息
     this.setData({
-      ['errorInfo.infoError']: checkInfoResult
+      errorInfo
     });
+
+    let checkAreaResult = checkArea(areaInfo);
+    if (checkAreaResult.length > 0) {
+      this.showModal('๑Ծ‸Ծ๑', checkAreaResult);
+      return;
+    }
+
     // 如果有错，不执行下面的步骤
-    if (checkNameResult.length > 0 || checkAddressResult.length > 0 || checkInfoResult.length > 0) {
+    if (checkError(errorInfo)) {
       return;
     }
 
@@ -159,7 +222,23 @@ Page({
       that.initWarehouseInfo(res.result);
     }, (error) => {
       that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+    });
+    this.setData({
+      areaLoading: true
     })
+    let areaList = wx.getStorageSync('areaList');
+    if (!areaList) {
+      const AreaList = require('../../data/area.js');
+      wx.setStorageSync('areaList', AreaList);
+      areaList = AreaList;
+    }
+    this.setData({
+      areaList: areaList.default
+    }, () => {
+      that.setData({
+        areaLoading: false,
+      })
+    });
   },
 
 })
