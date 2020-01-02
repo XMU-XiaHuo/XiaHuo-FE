@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/authorityManage/authorityManage",
     "pages/invited/invited",
     "pages/warehouseInfoManage/warehouseInfoManage",
-    "pages/index/index",
     "pages/mainPage/mainPage",
     "pages/createWarehouse2/createWarehouse2",
     "pages/createWarehouse3/createWarehouse3",

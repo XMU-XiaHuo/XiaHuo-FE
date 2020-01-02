@@ -74,7 +74,7 @@ Page({
     let {
       inviteCode
     } = options;
-    console.log('这里是邀请者，inviteCode 为 ' + inviteCode);
+    console.log('这里是被邀请者，inviteCode 为 ' + inviteCode);
     if (!token) {
       // 如果没有 token 先跳转到 login 界面，再返回
       wx.setStorageSync('reLaunchUrl', topPage);
@@ -82,22 +82,22 @@ Page({
         url: '../index/index',
       })
     }
-    // this.setData({
-    //   inviteCode: inviteCode
-    // }, () => {
-    //   wxRequest({
-    //     url: '/user/user/inviteInfo',
-    //     method: 'GET',
-    //     data: {
-    //       inviteCode: inviteCode
-    //     }
-    //   }).then((res) => {
-    //     console.log('这里是 inviteInfo 接口的返回值：')
-    //     console.log(res);
-    //   }, (error) => {
-    //     that.showModal('出错了๑Ծ‸Ծ๑', error.message)
-    //   });
-    // })
+    this.setData({
+      inviteCode: inviteCode
+    }, () => {
+      wxRequest({
+        url: '/user/user/inviteInfo',
+        method: 'GET',
+        data: {
+          inviteCode: inviteCode
+        }
+      }).then((res) => {
+        console.log('这里是 inviteInfo 接口的返回值：')
+        console.log(res);
+      }, (error) => {
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message)
+      });
+    })
 
   },
 
