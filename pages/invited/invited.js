@@ -13,6 +13,8 @@ Page({
   data: {
     valid: true,
     inviteCode: null,
+    inviteUserName: '',
+    warehouseName: '',
 
     // modal 相关
     modalVisible: false,
@@ -36,10 +38,11 @@ Page({
       url: '/user/user/invite?inviteCode=' + inviteCode + '&isAgree=' + type,
       method: 'PUT'
     }).then((res) => {
-      console.log('这里是 invite 接口的返回值：')
-      console.log(res);
+      wx.reLaunch({
+        url: '../index/index',
+      })
     }, (error) => {
-      that.showModal('出错了๑Ծ‸Ծ๑', error.message)
+      that.showModal('出错了๑Ծ‸Ծ๑', error.message);
     });
   },
 
@@ -74,7 +77,6 @@ Page({
     let {
       inviteCode
     } = options;
-    console.log('这里是被邀请者，inviteCode 为 ' + inviteCode);
     if (!token) {
       // 如果没有 token 先跳转到 login 界面，再返回
       wx.setStorageSync('reLaunchUrl', topPage);
@@ -92,10 +94,21 @@ Page({
           inviteCode: inviteCode
         }
       }).then((res) => {
+        let {
+          inviteUserName,
+          warehouseName
+        } = res.result;
+        that.setData({
+          inviteUserName,
+          warehouseName
+        });
         console.log('这里是 inviteInfo 接口的返回值：')
         console.log(res);
       }, (error) => {
         that.showModal('出错了๑Ծ‸Ծ๑', error.message)
+        that.setData({
+          valid: false
+        })
       });
     })
 

@@ -6,9 +6,9 @@
     <view class="invite-container">
       <image src="image/warehouse.png" class="warehouse-img"></image>
       <view class="user-line">
-        <text class="user-name">谭源杰</text> 邀请您加入
+        <text class="user-name">{{inviteUserName}}</text> 邀请您加入
       </view>
-      <view class="warehouse-name">厦大仓库</view>
+      <view class="warehouse-name">{{warehouseName}}</view>
     </view>
 
     <view class="bottom-button-group">
