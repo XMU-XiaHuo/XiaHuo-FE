@@ -149,22 +149,28 @@ Page({
     }
 
     // 请求后台
-    this.editWarehouseInfo(name, address, info).then((res) => {
+    this.editWarehouseInfo(name, address, info, senderName, senderPhone, companyName, areaInfo).then((res) => {
       this.showModal('♪(๑^∇^๑)', '保存成功');
     }, (error) => {
       // 展示错误 modal
-      this.showModal('๑Ծ‸Ծ๑', error.message);
+      this.showModal('出错了๑Ծ‸Ծ๑', error.message);
     });
   },
   // 修改仓库信息-接口
-  editWarehouseInfo: function(name, address, info) {
+  editWarehouseInfo: function(name, address, info, senderName, senderPhone, companyName, areaInfo) {
     return wxRequest({
       url: '/user/warehouse/warehouse',
       method: 'PUT',
       data: {
         warehouseName: name,
         warehousePosition: address,
-        warehouseIntro: info
+        warehouseIntro: info,
+        province: areaInfo.province,
+        city: areaInfo.city,
+        area: areaInfo.area,
+        senderName: senderName,
+        senderPhone: senderPhone,
+        companyName: companyName
       }
     });
   },
@@ -202,14 +208,29 @@ Page({
     let {
       warehouseName,
       warehousePosition,
-      warehouseIntro
+      warehouseIntro,
+      senderName,
+      senderPhone,
+      companyName,
+      area,
+      city,
+      province,
     } = result;
     this.setData({
       warehouseInfo: {
         name: warehouseName,
         address: warehousePosition,
-        info: warehouseIntro
+        info: warehouseIntro,
+        senderName,
+        senderPhone,
+        companyName
       },
+      areaInfo: {
+        province: province,
+        city: city,
+        area: area,
+        areaStr: `${province}-${city}-${area}`
+      }
     })
   },
 

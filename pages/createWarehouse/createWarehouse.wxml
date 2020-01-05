@@ -3,6 +3,8 @@
   <back-top-menu backUrl="../index/index" title="完善个人信息"></back-top-menu>
   <view class="empty"></view>
   <create-steps current="1"></create-steps>
+  <view class="empty-s"></view>
+  <view class="empty-s"></view>
   <i-panel>
     <van-field label="姓名" value="{{ userInfo.name }}" bind:change="inputEventCatcher" placeholder="请输入真实姓名" error-message="{{errorInfo.nameError}}" data-key="name" />
     <van-field label="身份证号" value="{{ userInfo.identity }}" bind:change="inputEventCatcher" placeholder="请输入身份证号" error-message="{{errorInfo.identityError}}" data-key="identity" />

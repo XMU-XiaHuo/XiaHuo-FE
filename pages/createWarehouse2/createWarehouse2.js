@@ -69,7 +69,7 @@ Page({
     })
   },
   // 创建仓库
-  createWarehouse: function(name, address, info, areaInfo) {
+  createWarehouse: function(name, address, info, areaInfo, senderName, senderPhone, companyName) {
     return new Promise((resolve, reject) => {
       wxRequest({
         url: '/user/warehouse/warehouse',
@@ -80,7 +80,10 @@ Page({
           warehouseIntro: info,
           province: areaInfo.province,
           city: areaInfo.city,
-          area: areaInfo.area
+          area: areaInfo.area,
+          senderName: senderName,
+          senderPhone: senderPhone,
+          companyName: companyName
         }
       }).then((res) => {
         resolve(res);
@@ -142,7 +145,7 @@ Page({
     }
 
     // 创建仓库
-    this.createWarehouse(name, address, info, areaInfo).then((res) => {
+    this.createWarehouse(name, address, info, areaInfo, senderName, senderPhone, companyName).then((res) => {
       // 跳转到成功页面
       wx.navigateTo({
         url: '../createWarehouse3/createWarehouse3'
