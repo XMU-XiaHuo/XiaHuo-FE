@@ -24,7 +24,7 @@ Page({
     actionSheetVisible: false,
     // 删除 sheet 的按钮
     deleteAction: [{
-      name: '删除',
+      name: '确认取消订单',
       color: '#ed3f14'
     }],
     deleteOrderId: null,
@@ -46,7 +46,7 @@ Page({
       activeNames: event.detail
     });
   },
-  // 删除 product
+  // 删除 order
   deleteOrder: function(e) {
     let {
       id,
@@ -73,26 +73,25 @@ Page({
     this.setData({
       deleteAction: action
     }, () => {
-      // wxRequest({
-      //   url: '/goods/product/product?productId=' + deleteProductId,
-      //   method: 'DELETE',
-      // }).then((res) => {
-      //   productList.splice(deleteProductIndex, 1);
-      //   action[0].loading = false;
-      //   that.setData({
-      //     actionSheetVisible: false,
-      //     deleteAction: action,
-      //     productList: productList
-      //   });
-      //   that.showModal('♪(๑^∇^๑)', '删除成功~');
-      // }, (error) => {
-      //   action[0].loading = false;
-      //   that.setData({
-      //     actionSheetVisible: false,
-      //     deleteAction: action
-      //   });
-      //   that.showModal('出错了๑Ծ‸Ծ๑', error.message);
-      // });
+      wxRequest({
+        url: '/order/order/orderStatus?orderId=' + deleteOrderId,
+        method: 'PUT',
+      }).then((res) => {
+        action[0].loading = false;
+        that.setData({
+          actionSheetVisible: false,
+          deleteAction: action,
+          ['orderList[' + deleteOrderIndex + '].status']: '已取消'
+        });
+        that.showModal('♪(๑^∇^๑)', '取消订单成功~');
+      }, (error) => {
+        action[0].loading = false;
+        that.setData({
+          actionSheetVisible: false,
+          deleteAction: action
+        });
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+      });
     });
   },
   // 取消删除
