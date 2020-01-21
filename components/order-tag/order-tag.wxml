@@ -1,0 +1,2 @@
+<!--components/order-tag/order-tag.wxml-->
+<view class="order-tag {{orderMap[status]}}">{{status}}</view>

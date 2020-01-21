@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/orderList/orderList",
+    "pages/index/index",
     "pages/warehouseInfoManage/warehouseInfoManage",
     "pages/mainPage/mainPage",
-    "pages/index/index",
     "pages/createWarehouse2/createWarehouse2",
     "pages/authorityManage/authorityManage",
     "pages/invited/invited",
@@ -30,8 +31,7 @@
     "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
     "pages/storageProduct/storageProduct",
-    "pages/pickList/pickList",
-    "pages/orderList/orderList"
+    "pages/pickList/pickList"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -34,7 +34,7 @@ const Routes = [{
   },
   {
     title: '查看订单',
-    url: '../mainPage/mainPage',
+    url: '../orderList/orderList',
     icon: 'image/dingdan.png'
   },
   {

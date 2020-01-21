@@ -1,0 +1,27 @@
+/* components/order-tag/order-tag.wxss */
+
+.order-tag {
+  display: inline-block;
+  padding: 8rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  font-size: 14px;
+  line-height: 1em;
+  color: white;
+}
+
+.none {
+  background-color: #f56c6c;
+}
+
+.warning {
+  background-color: #e6a23c;
+}
+
+.primary {
+  background-color: #409eff;
+}
+
+.success {
+  background-color: #67c23a;
+}

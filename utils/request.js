@@ -1,5 +1,4 @@
-// const baseURL = 'http://localhost:3000';
-const baseURL = 'http://106.13.46.72:8082';
+const baseURL = 'http://106.12.214.178:8082';
 
 function addToken(res) {
   let token = res.header['token'];
@@ -79,6 +78,10 @@ function wxRequest({
           } else if (data.code === 403) {
             handle403();
             reject(data);
+          } else if (data.code === 504) {
+            reject({
+              message: '服务器处理超时，请稍后再试'
+            });
           } else {
             console.log('=====================================')
             console.log('服务器发生错误: 后端出错');

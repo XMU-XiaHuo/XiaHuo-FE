@@ -1,2 +1,63 @@
 <!--pages/orderList/orderList.wxml-->
-<text>pages/orderList/orderList.wxml</text>
+<view class="container">
+  <back-top-menu title="订单列表" backUrl="../mainPage/mainPage"></back-top-menu>
+
+  <page-loading content="加载订单中..." visible="{{loading}}"></page-loading>
+
+  <i-panel class='panel'>
+    <van-collapse bind:change="collapseChangeCatcher" value="{{ activeNames }}">
+      <van-collapse-item wx:for="{{orderList}}" name="{{item.id}}">
+        <view slot="title">
+          <view>
+            {{item.customerName+'-'+item.customerProvince+'-'+item.customerCity+'-'+item.customerArea}}
+            <order-tag class="order-list-tag" status="{{item.status}}"></order-tag>
+          </view>
+          <view>
+            {{item.createdTime}}
+          </view>
+        </view>
+        <view class="property-container">
+          <view class="property">
+            <view class="property-key inline-b">顾客姓名:</view>
+            <view class="property-value inline-b">{{item.customerName || '暂无'}}</view>
+          </view>
+          <view class="property">
+            <view class="property-key inline-b">顾客地址:</view>
+            <view class="property-value inline-b">{{item.customerProvince+'-'+item.customerCity+'-'+item.customerArea}}</view>
+          </view>
+          <view class="property">
+            <view class="property-key inline-b">详细地址:</view>
+            <view class="property-value inline-b">{{item.customerAddressDetail || '暂无'}}</view>
+          </view>
+          <view class="property">
+            <view class="property-key inline-b">联系方式:</view>
+            <view class="property-value inline-b">{{item.customerPhone || '暂无'}}</view>
+          </view>
+          <view class="property">
+            <view class="property-key inline-b">下单时间:</view>
+            <view class="property-value inline-b">{{item.createdTime || '暂无'}}</view>
+          </view>
+        </view>
+        <view class="button-group-container">
+          <van-button class="report-button" size="small" round color="#F56C6C" bind:click="deleteOrder" data-id="{{item.id}}" data-index="{{index}}">取消</van-button>
+        </view>
+      </van-collapse-item>
+    </van-collapse>
+
+    <van-divider wx:if="{{noMore}}" contentPosition="center">没有更多了</van-divider>
+  </i-panel>
+
+  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="cancelDelete" bind:click="handleDelete">
+    <view slot="header" style="padding: 16px">
+      <view class="confirm-delete">确定删除吗？</view>
+      <text>删除后无法恢复哦</text>
+    </view>
+  </i-action-sheet>
+
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <view class='error-text'>{{errorMsg}}</view>
+    <view class='empty-s'></view>
+  </i-modal>
+
+</view>
