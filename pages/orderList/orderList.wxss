@@ -37,3 +37,9 @@
   float: right;
   margin-right: 15rpx;
 }
+
+.order-goods {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

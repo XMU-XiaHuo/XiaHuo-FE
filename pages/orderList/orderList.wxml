@@ -37,6 +37,12 @@
             <view class="property-key inline-b">下单时间:</view>
             <view class="property-value inline-b">{{item.createdTime || '暂无'}}</view>
           </view>
+          <view class="order-goods">
+            <view class="property-key">下单商品:</view>
+            <view>
+              <view wx:for="{{item.orderDetailVOList}}" wx:for-item="goods">{{goods.description + ' X ' + goods.number}}</view>
+            </view>
+          </view>
         </view>
         <view class="button-group-container">
           <van-button class="report-button" size="small" round color="#F56C6C" bind:click="deleteOrder" data-id="{{item.id}}" data-index="{{index}}">取消订单</van-button>
