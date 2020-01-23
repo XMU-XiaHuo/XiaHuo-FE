@@ -1,0 +1,13 @@
+/* pages/printOrder/printOrder.wxss */
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: 350rpx;
+}
+
+.loading-text {
+  margin-top: 50rpx;
+}

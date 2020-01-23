@@ -16,7 +16,7 @@
 }
 
 .loading-text {
-  margin-top: 20rpx;
+  margin-top: 50rpx;
 }
 
 .warehouse-container {

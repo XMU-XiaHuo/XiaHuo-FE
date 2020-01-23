@@ -78,10 +78,6 @@ function wxRequest({
           } else if (data.code === 403) {
             handle403();
             reject(data);
-          } else if (data.code === 504) {
-            reject({
-              message: '服务器处理超时，请稍后再试'
-            });
           } else {
             console.log('=====================================')
             console.log('服务器发生错误: 后端出错');
@@ -95,6 +91,10 @@ function wxRequest({
         } else if (statusCode === 403) {
           handle403();
           reject(data);
+        } else if (statusCode === 504) {
+          reject({
+            message: '服务器处理超时，请稍后再试'
+          });
         } else {
           console.log('=====================================')
           console.log('服务器发生错误: HTTP 状态码不为 200');

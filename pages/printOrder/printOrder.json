@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-modal": "../../iview/modal/index",
+    "van-loading": "../../vant/loading/index",
+    "back-top-menu": "../../components/back-top-menu/back-top-menu"
+  }
+}

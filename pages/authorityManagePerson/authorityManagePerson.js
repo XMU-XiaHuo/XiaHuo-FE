@@ -135,9 +135,9 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面卸载
+   * 生命周期函数--监听页面隐藏
    */
-  onUnload: function() {
+  onHide: function() {
     wx.removeStorageSync('roles');
   },
 })

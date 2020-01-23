@@ -46,6 +46,19 @@ Page({
       activeNames: event.detail
     });
   },
+  // 打印
+  printOrder: function(e){
+    let {
+      id
+    } = e.target.dataset;
+    let orderIdList = id.map((value)=>{
+      return value.orderId;
+    });
+    wx.setStorageSync('orderIdList', orderIdList)
+    wx.navigateTo({
+      url: '../chooseDelivery/chooseDelivery',
+    })
+  },
   // 删除 order
   deleteOrder: function(e) {
     let {
