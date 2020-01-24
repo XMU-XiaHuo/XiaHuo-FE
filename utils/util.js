@@ -37,8 +37,15 @@ const throttle = function(method, context, time) {
   }
 };
 
+const randomString = function() {
+  let dateString = formatTime(new Date());
+  let randomNumber = Math.floor(Math.random() * 10);
+  return `${dateString}-${randomNumber}`;
+}
+
 module.exports = {
   formatTime,
   debounce,
-  throttle
+  throttle,
+  randomString
 }

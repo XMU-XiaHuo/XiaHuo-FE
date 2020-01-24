@@ -11,3 +11,15 @@
 .loading-text {
   margin-top: 50rpx;
 }
+
+.file-image {
+  height: 200rpx;
+  width: 200rpx;
+}
+
+.bottom-button-group {
+  position: fixed;
+  width: 100%;
+  top: 100%;
+  transform: translateY(-100%);
+}

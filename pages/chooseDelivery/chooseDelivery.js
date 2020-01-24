@@ -1,5 +1,6 @@
 // pages/chooseDelivery/chooseDelivery.js
 const app = getApp();
+const fs = wx.getFileSystemManager();
 const {
   wxRequest
 } = app.Request;
@@ -103,9 +104,32 @@ Page({
       data: {
         courierWay: deliveryName,
         orderIdList: orderIdList
-      }
+      },
+      isFile: true
     }).then((res) => {
-      console.log(res);
+      console.log(`${wx.env.USER_DATA_PATH}/3.doc`)
+      fs.writeFileSync(`${wx.env.USER_DATA_PATH}/3.doc`, res, 'utf-8');
+      wx.openDocument({
+        filePath: `${wx.env.USER_DATA_PATH}/3.doc`,
+        fileType: 'doc',
+        success: function(res) {
+          console.log('打开文档成功');
+        },
+        fail: function(error) {
+          console.log(error);
+        }
+      })
+      // wx.downloadFile({
+      //   url: `${wx.env.USER_DATA_PATH}/3.doc`,
+      //   success: function(res) {
+      //     if (res.statusCode === 200) {
+
+      //     }
+      //   },
+      //   fail: function(error) {
+      //     console.log(error);
+      //   }
+      // })
     }, (error) => {
       that.showModal('出错了๑Ծ‸Ծ๑', error.message);
     });

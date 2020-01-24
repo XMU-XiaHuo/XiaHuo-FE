@@ -7,6 +7,15 @@
     <view class="loading-text">{{loadingText}}</view>
   </view>
 
+  <view class='loading-container' hidden="{{loading}}">
+    <image src="image/file.png" class="file-image"></image>
+  </view>
+
+  <view class="bottom-button-group">
+    <i-button bind:click="chooseDelivery" type="primary" shape="circle">重选快递商</i-button>
+    <i-button bind:click="download" type="primary" shape="circle" hidden="{{loading}}">下载快递单</i-button>
+  </view>
+
   <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
     <view class='empty-s'></view>
     <view class='error-text'>{{errorMsg}}</view>

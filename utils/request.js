@@ -43,7 +43,8 @@ function wxRequest({
   url = "",
   method = 'GET',
   data,
-  header
+  header,
+  isFile = false
 }) {
   return new Promise((resolve, reject) => {
     wx.request({
@@ -78,6 +79,8 @@ function wxRequest({
           } else if (data.code === 403) {
             handle403();
             reject(data);
+          } else if (isFile) {
+            resolve(data);
           } else {
             console.log('=====================================')
             console.log('服务器发生错误: 后端出错');

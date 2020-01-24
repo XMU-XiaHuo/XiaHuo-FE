@@ -1,6 +1,6 @@
 <!--pages/chooseDelivery/chooseDelivery.wxml-->
 <view class="container">
-  <back-top-menu title="选取快递" backUrl="../orderList/orderList"></back-top-menu>
+  <back-top-menu title="选择快递商" backUrl="../orderList/orderList"></back-top-menu>
 
   <page-loading content="加载快递商中..." visible="{{loading}}"></page-loading>
 

@@ -40,7 +40,7 @@
           <view class="property order-goods">
             <view class="property-key">下单商品:</view>
             <view>
-              <view wx:for="{{item.orderDetailVOList}}" wx:for-item="goods">{{goods.description + ' （x' + goods.number + ')'}}</view>
+              <view wx:for="{{item.orderDetailVOList}}" wx:for-item="goods">{{goods.description + ' （x' + goods.number + '）'}}</view>
             </view>
           </view>
         </view>
