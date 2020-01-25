@@ -54,7 +54,7 @@ Page({
     let orderIdList = id.map((value)=>{
       return value.orderId;
     });
-    //wx.setStorageSync('orderIdList', orderIdList);
+    wx.setStorageSync('orderIdList', orderIdList);
     wx.reLaunch({
       url: '../chooseDelivery/chooseDelivery'
     });

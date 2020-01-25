@@ -39,6 +39,13 @@ Page({
       that.setData({
         loadingText: '下载快递单中..'
       });
+      if (res.message) {
+        that.showModal('出错了๑Ծ‸Ծ๑', res.message);
+        that.setData({
+          loadingText: '下载快递单出错'
+        });
+        return;
+      }
       fs.writeFile({
         filePath: `${wx.env.USER_DATA_PATH}/order.doc`,
         data: res,
