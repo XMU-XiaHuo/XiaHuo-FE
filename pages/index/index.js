@@ -107,9 +107,20 @@ Page({
       if (res.result) {
         let reLaunchUrl = wx.getStorageSync("reLaunchUrl");
         wx.removeStorageSync('reLaunchUrl');
-        wx.reLaunch({
-          url: reLaunchUrl || '../mainPage/mainPage'
-        });
+        // 获取用户信息
+        wx.getSetting({
+          success: res => {
+            if (res.authSetting['scope.userInfo']) {
+              wx.reLaunch({
+                url: reLaunchUrl || '../mainPage/mainPage'
+              });
+            } else {
+              wx.reLaunch({
+                url: '../../pages/userAuthorize/userAuthorize'
+              })
+            }
+          },
+        })
       } else {
         that.setData({
           createWarehouseVisible: false

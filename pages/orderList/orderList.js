@@ -54,10 +54,10 @@ Page({
     let orderIdList = id.map((value)=>{
       return value.orderId;
     });
-    wx.setStorageSync('orderIdList', orderIdList)
-    wx.navigateTo({
-      url: '../chooseDelivery/chooseDelivery',
-    })
+    //wx.setStorageSync('orderIdList', orderIdList);
+    wx.reLaunch({
+      url: '../chooseDelivery/chooseDelivery'
+    });
   },
   // 删除 order
   deleteOrder: function(e) {

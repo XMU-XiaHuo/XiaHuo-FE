@@ -13,8 +13,12 @@
 }
 
 .file-image {
-  height: 200rpx;
-  width: 200rpx;
+  height: 230rpx;
+  width: 230rpx;
+}
+
+.file-text {
+  margin-top: 20rpx;
 }
 
 .bottom-button-group {

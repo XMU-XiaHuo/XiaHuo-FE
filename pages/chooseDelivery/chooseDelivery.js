@@ -1,6 +1,5 @@
 // pages/chooseDelivery/chooseDelivery.js
 const app = getApp();
-const fs = wx.getFileSystemManager();
 const {
   wxRequest
 } = app.Request;
@@ -51,13 +50,6 @@ Page({
     });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-    wx.removeStorageSync('orderIdList');
-  },
-
   onSwitchChange(e) {
     let {
       index
@@ -97,42 +89,9 @@ Page({
       that.showModal('๑Ծ‸Ծ๑', '请选择一家快递商');
       return;
     }
-    let orderIdList = wx.getStorageSync('orderIdList');
-    wxRequest({
-      url: '/picking-orders/print/wayBillPrint',
-      method: 'POST',
-      data: {
-        courierWay: deliveryName,
-        orderIdList: orderIdList
-      },
-      isFile: true
-    }).then((res) => {
-      console.log(`${wx.env.USER_DATA_PATH}/3.doc`)
-      fs.writeFileSync(`${wx.env.USER_DATA_PATH}/3.doc`, res, 'utf-8');
-      wx.openDocument({
-        filePath: `${wx.env.USER_DATA_PATH}/3.doc`,
-        fileType: 'doc',
-        success: function(res) {
-          console.log('打开文档成功');
-        },
-        fail: function(error) {
-          console.log(error);
-        }
-      })
-      // wx.downloadFile({
-      //   url: `${wx.env.USER_DATA_PATH}/3.doc`,
-      //   success: function(res) {
-      //     if (res.statusCode === 200) {
-
-      //     }
-      //   },
-      //   fail: function(error) {
-      //     console.log(error);
-      //   }
-      // })
-    }, (error) => {
-      that.showModal('出错了๑Ծ‸Ծ๑', error.message);
-    });
+    wx.reLaunch({
+      url: '../printOrder/printOrder?deliveryName=' + deliveryName,
+    })
   },
 
   // 展示错误 modal
