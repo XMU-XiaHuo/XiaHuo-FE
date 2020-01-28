@@ -1,1 +1,23 @@
 /* pages/pick/pick.wxss */
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: 350rpx;
+}
+
+.scan-image {
+  height: 250rpx;
+  width: 250rpx;
+}
+
+.scan-text {
+  margin-top: 20rpx;
+}
+
+.panel-title {
+  margin: 30rpx 0 20rpx 20rpx;
+  font-size: 16px;
+}

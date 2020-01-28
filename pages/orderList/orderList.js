@@ -47,11 +47,11 @@ Page({
     });
   },
   // 打印
-  printOrder: function(e){
+  printOrder: function(e) {
     let {
       id
     } = e.target.dataset;
-    let orderIdList = id.map((value)=>{
+    let orderIdList = id.map((value) => {
       return value.orderId;
     });
     wx.setStorageSync('orderIdList', orderIdList);

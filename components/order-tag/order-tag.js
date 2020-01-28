@@ -3,7 +3,7 @@ const OrderMap = {
   '未处理': 'warning',
   '库存不足': 'none',
   '已取消': 'none',
-  '处理中': 'primary',
+  '等待拣货': 'warning',
   '拣货中': 'primary',
   '已完成': 'success',
   '未知': 'none'

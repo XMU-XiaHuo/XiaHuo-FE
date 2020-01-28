@@ -1,70 +1,102 @@
 // pages/pick/pick.js
+const app = getApp();
+const {
+  wxRequest
+} = app.Request;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    topMenuTitle: '拣货',
 
+    loading: false,
+    loadingText: '',
+    isScan: false,
+    pickOrder: {},
+    dataShow: false,
+
+    // modal 相关
+    modalVisible: false,
+    errorTitle: '',
+    errorMsg: '',
+    modalButtons: [{
+      color: '#409eff',
+      name: '确认',
+    }],
+  },
+
+  scan: function() {
+    let that = this;
+    this.setData({
+      loading: true,
+      loadingText: '加载扫码中..',
+      isScan: true,
+    }, () => {
+      wx.scanCode({
+        success(res) {
+          let {
+            result
+          } = res;
+          that.setData({
+            loading: true,
+            loadingText: '加载拣货单中..',
+          }, () => {
+            wxRequest({
+              url: '/picking-orders/picking/pickingOrder',
+              method: 'POST',
+              data: {
+                jsonString: result
+              }
+            }).then((res) => {
+              that.setData({
+                pickOrder: res.result,
+                loading: false,
+                dataShow: true,
+                topMenuTitle: '拣货单详情'
+              });
+              console.log(res.result);
+            }, (error) => {
+              that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+            });
+          })
+        },
+        fail() {
+          that.setData({
+            loadingText: '๑Ծ‸Ծ๑微信扫码出错'
+          })
+        }
+      })
+    })
+  },
+
+  // 展示错误 modal
+  showModal: function(title = '', msg = '发生了未知的错误') {
+    let that = this;
+    this.setData({
+      errorTitle: title,
+      errorMsg: msg
+    }, () => {
+      that.setData({
+        modalVisible: true
+      })
+    });
+  },
+  // 错误 modal 的交互
+  clickModal({
+    detail
+  }) {
+    this.setData({
+      modalVisible: false
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.scanCode({
-      success(res) {
-        console.log(res)
-      }
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

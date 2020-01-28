@@ -46,13 +46,20 @@ Page({
         });
         return;
       }
+      console.log(`${wx.env.USER_DATA_PATH}/order.pdf`)
       fs.writeFile({
-        filePath: `${wx.env.USER_DATA_PATH}/order.doc`,
+        filePath: `${wx.env.USER_DATA_PATH}/order.pdf`,
         data: res,
         encoding: 'utf-8',
         success() {
           that.setData({
             loading: false
+          });
+          wx.saveFile({
+            tempFilePath: `${wx.env.USER_DATA_PATH}/order.pdf`,
+            success(res) {
+              console.log(res.savedFilePath);
+            }
           })
         },
         fail(error) {
@@ -66,13 +73,15 @@ Page({
 
   openOrder: function() {
     let that = this;
+    console.log(`${wx.env.USER_DATA_PATH}/order.pdf`)
     wx.openDocument({
-      filePath: `${wx.env.USER_DATA_PATH}/order.doc`,
-      fileType: 'doc',
+      filePath: `${wx.env.USER_DATA_PATH}/order.pdf`,
+      fileType: 'pdf',
       success: function(res) {
-
+        console.log('打开文件成功');
       },
       fail: function(error) {
+        console.log(error);
         that.showModal('出错了๑Ծ‸Ծ๑', '打开文件失败')
       }
     });

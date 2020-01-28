@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/orderList/orderList",
+    "pages/pick/pick",
     "pages/index/index",
     "pages/printOrder/printOrder",
     "pages/chooseDelivery/chooseDelivery",
@@ -30,7 +31,6 @@
     "pages/test/test",
     "pages/noAuthority/noAuthority",
     "pages/authorityManagePerson/authorityManagePerson",
-    "pages/pick/pick",
     "pages/userAuthorize/userAuthorize",
     "pages/storageProduct/storageProduct",
     "pages/pickList/pickList"

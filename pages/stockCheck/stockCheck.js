@@ -160,8 +160,7 @@ Page({
         productId: id,
         productLocation: location,
         description: description,
-        newNumber: number,
-        reportType: reportType
+        newNumber: number
       }
     }).then((res) => {
       that.setData({
