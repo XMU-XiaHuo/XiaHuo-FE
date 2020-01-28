@@ -6,7 +6,7 @@ const formatTime = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('-') + ',' + [hour, minute, second].map(formatNumber).join(':')
+  return [year, month, day].map(formatNumber).join('-') + ' ' + formatNumber(hour) + '时' + formatNumber(minute) + '分' + formatNumber(second) + '秒';
 }
 
 const formatNumber = n => {
@@ -39,8 +39,7 @@ const throttle = function(method, context, time) {
 
 const randomString = function() {
   let dateString = formatTime(new Date());
-  let randomNumber = Math.floor(Math.random() * 10);
-  return `${dateString}-${randomNumber}`;
+  return `${dateString}`;
 }
 
 module.exports = {

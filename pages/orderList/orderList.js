@@ -49,7 +49,8 @@ Page({
   // 打印
   printOrder: function(e) {
     let {
-      id
+      id,
+      name
     } = e.target.dataset;
     let orderIdList = id.map((value) => {
       return value.orderId;

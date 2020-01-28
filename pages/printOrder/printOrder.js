@@ -5,6 +5,10 @@ const {
 } = app.Request;
 const fs = wx.getFileSystemManager();
 
+const {
+  randomString
+} = require('../../utils/util.js');
+
 Page({
 
   /**
@@ -13,6 +17,7 @@ Page({
   data: {
     loading: true,
     loadingText: '生成快递单中..',
+    fileName: '',
 
     // modal 相关
     modalVisible: false,
@@ -46,21 +51,16 @@ Page({
         });
         return;
       }
-      console.log(`${wx.env.USER_DATA_PATH}/order.pdf`)
+      let fileName = randomString();
       fs.writeFile({
-        filePath: `${wx.env.USER_DATA_PATH}/order.pdf`,
+        filePath: `${wx.env.USER_DATA_PATH}/${fileName}.html`,
         data: res,
         encoding: 'utf-8',
         success() {
           that.setData({
-            loading: false
+            loading: false,
+            fileName: fileName + '.html'
           });
-          wx.saveFile({
-            tempFilePath: `${wx.env.USER_DATA_PATH}/order.pdf`,
-            success(res) {
-              console.log(res.savedFilePath);
-            }
-          })
         },
         fail(error) {
           console.log(error);
@@ -71,12 +71,28 @@ Page({
     });
   },
 
+  writeFile: function(){
+    fs.writeFile({
+      filePath: `${wx.env.USER_DATA_PATH}/订单信息.html`,
+      data: res,
+      encoding: 'utf-8',
+      success() {
+        that.setData({
+          loading: false
+        });
+      },
+      fail(error) {
+        console.log(error);
+      }
+    });
+  },
+
   openOrder: function() {
     let that = this;
-    console.log(`${wx.env.USER_DATA_PATH}/order.pdf`)
+    console.log(`${wx.env.USER_DATA_PATH}/order.docx`)
     wx.openDocument({
-      filePath: `${wx.env.USER_DATA_PATH}/order.pdf`,
-      fileType: 'pdf',
+      filePath: `${wx.env.USER_DATA_PATH}/order.docx`,
+      fileType: 'docx',
       success: function(res) {
         console.log('打开文件成功');
       },

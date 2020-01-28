@@ -9,7 +9,7 @@
 
   <view class='loading-container' hidden="{{loading}}">
     <image src="image/file.png" class="file-image"></image>
-    <view class="file-text">order.html</view>
+    <view class="file-text">{{fileName}}</view>
   </view>
 
   <view class="bottom-button-group">
