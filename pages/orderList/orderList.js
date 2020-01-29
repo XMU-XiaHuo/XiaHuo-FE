@@ -18,6 +18,13 @@ Page({
     page: 1,
     noMore: false,
 
+    // 批量处理相关
+    isChoosing: false,
+
+    // 页面滚动相关
+    isPageScroll: false,
+    scrollTop: 0,
+
     // 伸缩面板 active 列表
     activeNames: [],
     // 删除 sheet 显示
@@ -52,10 +59,7 @@ Page({
       id,
       name
     } = e.target.dataset;
-    let orderIdList = id.map((value) => {
-      return value.orderId;
-    });
-    wx.setStorageSync('orderIdList', orderIdList);
+    wx.setStorageSync('orderIdList', [id]);
     wx.reLaunch({
       url: '../chooseDelivery/chooseDelivery'
     });
@@ -134,7 +138,7 @@ Page({
       modalVisible: false
     })
   },
-
+  // 获取订单列表
   getOrderList: function() {
     let that = this;
     let {
@@ -156,6 +160,11 @@ Page({
           orderVOList
         } = res.result;
         console.log(orderVOList);
+        orderVOList = orderVOList.map((value) => {
+          return Object.assign(value, {
+            isChoose: false
+          })
+        })
         that.setData({
           orderList: orderList.concat(orderVOList),
           noMore: orderVOList.length <= 0,
@@ -170,6 +179,38 @@ Page({
         })
       });
     });
+  },
+  // 开启批量处理
+  openBatchChoose: function() {
+    this.setData({
+      isChoosing: true
+    })
+  },
+  // 关闭批量处理
+  closeBatchChoose: function() {
+    let {
+      orderList
+    } = this.data;
+    orderList.forEach((value) => {
+      value.isChoose = false;
+    })
+    this.setData({
+      orderList: orderList,
+      isChoosing: false
+    })
+  },
+  // 选择单个订单
+  choose: function(e) {
+    let {
+      index
+    } = e.target.dataset;
+    let {
+      orderList
+    } = this.data;
+    orderList[index].isChoose = true;
+    this.setData({
+      orderList
+    })
   },
 
   /**
@@ -189,5 +230,38 @@ Page({
     if (!noMore) {
       this.getOrderList();
     }
+  },
+
+  /**
+   * 生命周期函数--监听页面滚动
+   */
+  onPageScroll: function(ev) {
+    let _this = this;
+    let {
+      windowHeight
+    } = wx.getSystemInfoSync();
+
+    //判断浏览器滚动条上下滚动
+    if (ev.scrollTop > this.data.scrollTop || ev.scrollTop == windowHeight) {
+      // 向下滚动
+      if (this.data.isPageScroll === false) {
+        this.setData({
+          isPageScroll: true
+        })
+      }
+    } else {
+      // 向上滚动
+      if (this.data.isPageScroll === true) {
+        this.setData({
+          isPageScroll: false
+        })
+      }
+    }
+    // 给scrollTop重新赋值
+    setTimeout(function() {
+      _this.setData({
+        scrollTop: ev.scrollTop
+      })
+    }, 0);
   }
 })

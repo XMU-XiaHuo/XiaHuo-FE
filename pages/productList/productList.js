@@ -16,6 +16,10 @@ Page({
     hasResult: true,
     productList: [],
 
+    // 页面滚动相关
+    isPageScroll: false,
+    scrollTop: 0,
+
     // 伸缩面板 active 列表
     activeNames: [],
     // 删除 sheet 显示
@@ -171,5 +175,38 @@ Page({
         })
       });
     });
+  },
+
+  /**
+   * 生命周期函数--监听页面滚动
+   */
+  onPageScroll: function (ev) {
+    let _this = this;
+    let {
+      windowHeight
+    } = wx.getSystemInfoSync();
+
+    //判断浏览器滚动条上下滚动
+    if (ev.scrollTop > this.data.scrollTop || ev.scrollTop == windowHeight) {
+      // 向下滚动
+      if (this.data.isPageScroll === false) {
+        this.setData({
+          isPageScroll: true
+        })
+      }
+    } else {
+      // 向上滚动
+      if (this.data.isPageScroll === true) {
+        this.setData({
+          isPageScroll: false
+        })
+      }
+    }
+    // 给scrollTop重新赋值
+    setTimeout(function () {
+      _this.setData({
+        scrollTop: ev.scrollTop
+      })
+    }, 0);
   }
 })

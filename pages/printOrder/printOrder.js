@@ -59,7 +59,7 @@ Page({
         data: res,
         encoding: 'utf-8',
         success() {
-          let logContent = `${formatTime(date)} 写入文件 （./${fileName}.html），所选快递为 ${deliveryName}\n`;
+          let logContent = `${formatTime(date)} 写入文件 （./${fileName}.html），所选快递为${deliveryName}\n`;
           that.writeLog({
             filePath: `${wx.env.USER_DATA_PATH}/log.doc`,
             content: logContent,
@@ -104,7 +104,7 @@ Page({
       fail(error) {
         fs.writeFile({
           filePath: filePath,
-          data: `此为日志文件，所有快递单在同级文件夹下可找到。\n${content}`,
+          data: `此为日志文件，所有快递单可在同级文件夹下找到。\n${content}`,
           encoding: 'utf-8',
           success(res) {
             successCbk(res);

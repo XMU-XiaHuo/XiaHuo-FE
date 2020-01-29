@@ -6,14 +6,19 @@
 
   <i-panel class='panel'>
     <van-collapse bind:change="collapseChangeCatcher" value="{{ activeNames }}">
-      <van-collapse-item wx:for="{{orderList}}" name="{{item.id}}">
-        <view slot="title">
-          <view>
-            {{item.customerName+'-'+item.customerProvince+'-'+item.customerCity+'-'+item.customerArea}}
-            <order-tag class="order-list-tag" status="{{item.status}}"></order-tag>
+      <van-collapse-item wx:for="{{orderList}}" name="{{item.id}}" clickable="{{!isChoosing}}" is-link="{{!isChoosing}}">
+        <view slot="title" class="order-title">
+          <view class="choose-icon-container" hidden="{{!isChoosing}}" catchtap="choose" data-index="{{index}}">
+            <image class="choose-icon" src="image/success.png" hidden="{{!item.isChoose}}"></image>
           </view>
-          <view>
-            {{item.createdTime}}
+          <view class="order-content-container">
+            <view>
+              {{item.customerName+'-'+item.customerProvince+'-'+item.customerCity+'-'+item.customerArea}}
+              <order-tag class="order-list-tag" status="{{item.status}}"></order-tag>
+            </view>
+            <view>
+              {{item.createdTime}}
+            </view>
           </view>
         </view>
         <view class="property-container">
@@ -46,10 +51,20 @@
         </view>
         <view class="button-group-container">
           <van-button class="report-button" size="small" round color="#F56C6C" bind:click="deleteOrder" data-id="{{item.id}}" data-index="{{index}}">取消订单</van-button>
-          <van-button class="report-button" size="small" round type="info" bind:click="printOrder" data-id="{{item.orderDetailVOList}}" data-name="{{item.customerName+'-'+item.customerProvince+'-'+item.customerCity+'-'+item.customerArea}}">打印快递单</van-button>
+          <van-button class="report-button" size="small" round type="info" bind:click="printOrder" data-id="{{item.id}}" data-name="{{item.customerName+'-'+item.customerProvince+'-'+item.customerCity+'-'+item.customerArea}}">打印快递单</van-button>
         </view>
       </van-collapse-item>
     </van-collapse>
+
+    <view class="bottom-sticky-button" hidden="{{isPageScroll}}">
+      <view hidden="{{isChoosing}}">
+        <i-button bind:click="openBatchChoose" type="primary" shape="circle">批量选择</i-button>
+      </view>
+      <view hidden="{{!isChoosing}}">
+        <i-button bind:click="createProduct" type="primary" shape="circle">打印快递单</i-button>
+        <i-button bind:click="closeBatchChoose" type="error" shape="circle">取消批量选择</i-button>
+      </view>
+    </view>
 
     <van-divider wx:if="{{noMore}}" contentPosition="center">没有更多了</van-divider>
   </i-panel>
