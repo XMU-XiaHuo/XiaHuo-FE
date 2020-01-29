@@ -6,7 +6,8 @@ const {
 const fs = wx.getFileSystemManager();
 
 const {
-  randomString
+  randomString,
+  formatTime
 } = require('../../utils/util.js');
 
 Page({
@@ -51,16 +52,24 @@ Page({
         });
         return;
       }
-      let fileName = randomString();
+      let date = new Date();
+      let fileName = randomString(date);
       fs.writeFile({
         filePath: `${wx.env.USER_DATA_PATH}/${fileName}.html`,
         data: res,
         encoding: 'utf-8',
         success() {
-          that.setData({
-            loading: false,
-            fileName: fileName + '.html'
-          });
+          let logContent = `${formatTime(date)} 写入文件 （./${fileName}.html），所选快递为 ${deliveryName}\n`;
+          that.writeLog({
+            filePath: `${wx.env.USER_DATA_PATH}/log.doc`,
+            content: logContent,
+            successCbk() {
+              that.setData({
+                loading: false,
+                fileName: fileName + '.html'
+              });
+            }
+          })
         },
         fail(error) {
           console.log(error);
@@ -71,30 +80,51 @@ Page({
     });
   },
 
-  writeFile: function(){
-    fs.writeFile({
-      filePath: `${wx.env.USER_DATA_PATH}/订单信息.html`,
-      data: res,
-      encoding: 'utf-8',
-      success() {
-        that.setData({
-          loading: false
+  writeLog: function({
+    filePath,
+    content,
+    successCbk
+  }) {
+    fs.stat({
+      path: filePath,
+      success(res) {
+        fs.appendFile({
+          filePath: filePath,
+          data: content,
+          encoding: 'utf-8',
+          success(res) {
+            successCbk(res);
+          },
+          fail(error) {
+            console.log(error);
+            that.showModal('出错了๑Ծ‸Ծ๑', error.errorMsg);
+          }
         });
       },
       fail(error) {
-        console.log(error);
+        fs.writeFile({
+          filePath: filePath,
+          data: `此为日志文件，所有快递单在同级文件夹下可找到。\n${content}`,
+          encoding: 'utf-8',
+          success(res) {
+            successCbk(res);
+          },
+          fail(error) {
+            console.log(error);
+            that.showModal('出错了๑Ծ‸Ծ๑', error.errorMsg);
+          }
+        });
       }
     });
   },
 
   openOrder: function() {
     let that = this;
-    console.log(`${wx.env.USER_DATA_PATH}/order.docx`)
     wx.openDocument({
-      filePath: `${wx.env.USER_DATA_PATH}/order.docx`,
-      fileType: 'docx',
+      filePath: `${wx.env.USER_DATA_PATH}/log.doc`,
+      fileType: 'doc',
       success: function(res) {
-        console.log('打开文件成功');
+
       },
       fail: function(error) {
         console.log(error);

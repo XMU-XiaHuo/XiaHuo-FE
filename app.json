@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/orderList/orderList",
+    "pages/printOrder/printOrder",
     "pages/pick/pick",
     "pages/index/index",
-    "pages/printOrder/printOrder",
     "pages/chooseDelivery/chooseDelivery",
     "pages/warehouseInfoManage/warehouseInfoManage",
     "pages/mainPage/mainPage",
