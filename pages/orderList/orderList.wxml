@@ -9,7 +9,7 @@
       <van-collapse-item wx:for="{{orderList}}" name="{{item.id}}" clickable="{{!isChoosing}}" is-link="{{!isChoosing}}">
         <view slot="title" class="order-title">
           <view class="choose-icon-container" hidden="{{!isChoosing}}" catchtap="choose" data-index="{{index}}">
-            <image class="choose-icon" src="image/success.png" hidden="{{!item.isChoose}}"></image>
+            <image class="choose-icon" src="image/success.png" hidden="{{!item.isChoose}}" data-index="{{index}}"></image>
           </view>
           <view class="order-content-container">
             <view>
@@ -61,7 +61,7 @@
         <i-button bind:click="openBatchChoose" type="primary" shape="circle">批量选择</i-button>
       </view>
       <view hidden="{{!isChoosing}}">
-        <i-button bind:click="createProduct" type="primary" shape="circle">打印快递单</i-button>
+        <i-button bind:click="printOrderBatch" type="primary" shape="circle">打印快递单</i-button>
         <i-button bind:click="closeBatchChoose" type="error" shape="circle">取消批量选择</i-button>
       </view>
     </view>

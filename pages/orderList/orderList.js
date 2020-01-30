@@ -20,6 +20,7 @@ Page({
 
     // 批量处理相关
     isChoosing: false,
+    chooseList: [],
 
     // 页面滚动相关
     isPageScroll: false,
@@ -196,7 +197,8 @@ Page({
     })
     this.setData({
       orderList: orderList,
-      isChoosing: false
+      isChoosing: false,
+      chooseList: []
     })
   },
   // 选择单个订单
@@ -205,12 +207,39 @@ Page({
       index
     } = e.target.dataset;
     let {
-      orderList
+      orderList,
+      chooseList
     } = this.data;
-    orderList[index].isChoose = true;
+    let order = orderList[index]
+    if (order.isChoose) {
+      let i = chooseList.indexOf(order.id);
+      if (i > -1) {
+        chooseList.splice(i, 1);
+      }
+      orderList[index].isChoose = false;
+    } else {
+      chooseList.push(order.id);
+      orderList[index].isChoose = true;
+    }
     this.setData({
-      orderList
+      orderList,
+      chooseList
     })
+  },
+
+  printOrderBatch: function() {
+    let {
+      chooseList
+    } = this.data;
+    if (chooseList && chooseList.length > 0) {
+      wx.setStorageSync('orderIdList', chooseList);
+      wx.reLaunch({
+        url: '../chooseDelivery/chooseDelivery'
+      });
+    } else {
+      this.showModal('๑Ծ‸Ծ๑', '请选择要打印的订单');
+    }
+
   },
 
   /**
