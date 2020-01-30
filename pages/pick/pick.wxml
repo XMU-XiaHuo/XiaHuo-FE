@@ -6,8 +6,10 @@
   </view>
 
   <view class='loading-container' hidden="{{isScan}}">
-    <image src="image/scan.png" class="scan-image" bindtap="scan"></image>
-    <view class="scan-text">点击扫描快递单</view>
+    <view class='scan-container' bindtap="scan">
+      <image src="image/scan.png" class="scan-image"></image>
+      <view class="scan-text">点击扫描快递单</view>
+    </view>
   </view>
 
   <view hidden="{{!dataShow}}">
@@ -21,6 +23,12 @@
     <i-panel>
       <i-cell wx:for="{{pickOrder.productLocationList}}" title="{{item.productName + ' （x' + item.productNumber + '）'}}" value="{{'位置：'+item.productLocation}}"></i-cell>
     </i-panel>
+    <view class="button-group">
+      <i-button bind:click="pickOperation" data-value="1" type="primary" shape="circle">拣货完成</i-button>
+      <i-button bind:click="pickOperation" data-value="2" type="error" shape="circle">取消拣货</i-button>
+      <i-button bind:click="pickOperation" data-value="3" type="error" shape="circle">库存不足</i-button>
+    </view>
+
   </view>
 
   <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">

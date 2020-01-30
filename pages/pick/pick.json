@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "i-modal": "../../iview/modal/index",
+    "i-button": "../../iview/button/index",
     "i-panel": "../../iview/panel/index",
     "i-cell": "../../iview/cell/index",
     "page-loading": "../../components/page-loading/page-loading",

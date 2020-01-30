@@ -27,7 +27,7 @@ Page({
       name: '确认',
     }],
   },
-
+  // 扫描二维码
   scan: function() {
     let that = this;
     this.setData({
@@ -71,7 +71,33 @@ Page({
       })
     })
   },
-
+  // 执行拣货动作
+  pickOperation: function(e) {
+    let that = this;
+    let {
+      value
+    } = e.target.dataset;
+    let {
+      pickOrder
+    } = this.data;
+    wxRequest({
+      url: '/picking-orders/picking/pickOperation',
+      method: 'POST',
+      data: {
+        operateType: parseInt(value),
+        pickingId: pickOrder.id,
+        pickingType: pickOrder.pickingType
+      }
+    }).then((res) => {
+      console.log(res);
+      that.showModal('♪(๑^∇^๑)', '操作成功');
+      wx.reLaunch({
+        url: '../pick/pick',
+      })
+    }, (error) => {
+      that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+    });
+  },
   // 展示错误 modal
   showModal: function(title = '', msg = '发生了未知的错误') {
     let that = this;
