@@ -1,4 +1,0 @@
-<!--pages/test/test.wxml-->
-<view class="test">
-  <button bindtap="testWxLogin">调用wx.login()</button>
-</view>

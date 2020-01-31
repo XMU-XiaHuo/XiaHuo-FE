@@ -1,9 +1,0 @@
-<!--components/suggest-input/suggest-input.wxml-->
-<view class='input-container'>
-  <van-field label="{{label}}" value="{{ inputValue }}" bind:change="inputEventCatcher" placeholder="placeholder" error-message="{{ errorValue }}" required />
-  <view class="suggest-container" hidden="{{isSuggesting}}">
-    <view class='suggest-item' wx:for="{{suggestList}}" bindtap="chooseSuggest" data-value="{{item}}">
-      {{item}}
-    </view>
-  </view>
-</view>

@@ -93,7 +93,7 @@ Page({
       that.showModal('♪(๑^∇^๑)', '操作成功');
       wx.reLaunch({
         url: '../pick/pick',
-      })
+      });
     }, (error) => {
       that.showModal('出错了๑Ծ‸Ծ๑', error.message);
     });
