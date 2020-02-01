@@ -1,0 +1,36 @@
+/* pages/goodsManage/goodsManage.wxss */
+
+.tip {
+  text-align: right;
+  font-size: 13px;
+  color: #80848f;
+  margin: 30rpx 0 20rpx 0;
+  padding-right: 20rpx;
+}
+
+.goods-name {
+  display: inline-block;
+  margin: 0 20rpx;
+  font-size: 15px;
+}
+
+.i-swipeout-demo-button-group {
+  height: 100%;
+}
+
+.i-swipeout-demo-button {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 100%;
+}
+
+.button-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}

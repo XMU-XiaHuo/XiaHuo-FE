@@ -1,0 +1,10 @@
+<!--pages/noAuthority/noAuthority.wxml-->
+<view class="authority-manage-person container">
+  <back-top-menu title=""></back-top-menu>
+  <view class='warn-container'>
+    <image src='image/warn.png' class='warn-img'></image>
+    <view>您没有权限执行此操作</view>
+    <view>请向仓库创建者或管理员申请权限</view>
+  </view>
+
+</view>

@@ -1,0 +1,34 @@
+<!--pages/invited/invited.wxml-->
+<view class="container">
+  <back-top-menu title="加入仓库" backUrl="../index/index"></back-top-menu>
+
+  <view wx:if="{{valid}}">
+    <view class="invite-container">
+      <image src="image/warehouse.png" class="warehouse-img"></image>
+      <view class="user-line">
+        <text class="user-name">{{inviteUserName}}</text> 邀请您加入
+      </view>
+      <view class="warehouse-name">{{warehouseName}}</view>
+    </view>
+
+    <view class="bottom-button-group">
+      <i-button bind:click="handleInvite" type="primary" shape="circle" data-type="{{true}}">接受</i-button>
+      <i-button bind:click="handleInvite" type="error" shape="circle" data-type="{{false}}">拒绝</i-button>
+    </view>
+  </view>
+
+  <view class="no-result-container" wx:else>
+    <view class="center-container">
+      <image class="search-img" src="image/shixiao.png"></image>
+      <view class="no-result-text">
+        该邀请已失效
+      </view>
+    </view>
+  </view>
+
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <view class='error-text'>{{errorMsg}}</view>
+    <view class='empty-s'></view>
+  </i-modal>
+</view>

@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "i-panel": "../../iview/panel/index",
+    "i-action-sheet": "../../iview/action-sheet/index",
+    "i-button": "../../iview/button/index",
+    "i-modal": "../../iview/modal/index",
+    "van-button": "../../vant/button/index",
+    "van-collapse": "../../vant/collapse/index",
+    "van-collapse-item": "../../vant/collapse-item/index",
+    "back-top-menu": "../../components/back-top-menu/back-top-menu",
+    "page-loading": "../../components/page-loading/page-loading",
+    "no-result": "../../components/no-result/no-result"
+  }
+}

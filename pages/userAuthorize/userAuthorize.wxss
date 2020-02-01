@@ -20,7 +20,7 @@
 
 .instructions{
   width: 80%;
-  margin-top: 70rpx;
+  margin-top: 60rpx;
 }
 
 .instructions-title{
@@ -32,6 +32,7 @@
 .instructions-title-english{
   font-size: 17px;
   display: inline-block;
+  line-height: 1.2em;
 }
 
 .instructions-content{

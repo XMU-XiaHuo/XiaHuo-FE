@@ -80,6 +80,9 @@ VantComponent({
             if (this.data.disabled) {
                 return;
             }
+            if (!this.data.clickable){
+              return;
+            }
             const { name, expanded } = this.data;
             const index = this.parent.children.indexOf(this);
             const currentName = name == null ? index : name;

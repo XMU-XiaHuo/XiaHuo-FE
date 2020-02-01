@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "i-cell-group": "../../iview/cell-group/index",
+    "i-cell": "../../iview/cell/index",
+    "i-switch": "../../iview/switch/index",
+    "i-icon": "../../iview/icon/index",
+    "i-button": "../../iview/button/index",
+    "back-top-menu": "../../components/back-top-menu/back-top-menu",
+    "page-loading": "../../components/page-loading/page-loading"
+  }
+}

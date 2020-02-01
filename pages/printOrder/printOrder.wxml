@@ -1,0 +1,27 @@
+<!--pages/printOrder/printOrder.wxml-->
+<view class="container">
+  <back-top-menu title="下载快递单" backUrl="../chooseDelivery/chooseDelivery"></back-top-menu>
+
+  <view class='loading-container' hidden="{{!loading}}">
+    <van-loading size="50px" color="#409eff" vertical></van-loading>
+    <view class="loading-text">{{loadingText}}</view>
+  </view>
+
+  <view class='loading-container' hidden="{{loading}}">
+    <image src="image/file.png" class="file-image"></image>
+    <view class="file-text">{{fileName}}</view>
+  </view>
+
+  <view class="bottom-button-group">
+    <view hidden="{{loading}}">
+      <i-button bind:click="openOrder" type="primary" shape="circle">打开快递单</i-button>
+    </view>
+    <i-button bind:click="backToOrderList" type="primary" shape="circle">返回订单列表</i-button>
+  </view>
+
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <view class='error-text'>{{errorMsg}}</view>
+    <view class='empty-s'></view>
+  </i-modal>
+</view>

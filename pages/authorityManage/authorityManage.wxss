@@ -35,14 +35,6 @@
   text-align: center;
 }
 
-.delete {
-  background-color: #f56c6c;
-}
-
-.edit {
-  background-color: #e6a23c;
-}
-
 .role-tag {
   margin-right: 15rpx;
 }
@@ -73,11 +65,4 @@
   color: #444;
   font-size: 16px;
   margin-bottom: 10rpx;
-}
-
-.bottom-sticky-button{
-  position: fixed;
-  width: 100%;
-  top: 100%;
-  transform: translateY(-100%);
 }

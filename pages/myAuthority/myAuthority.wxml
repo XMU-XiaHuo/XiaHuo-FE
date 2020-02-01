@@ -1,0 +1,15 @@
+<!--pages/myAuthority/myAuthority.wxml-->
+<view class="authority-manage-person container">
+  <back-top-menu title="我的权限" backUrl="../personInfoManage/personInfoManage"></back-top-menu>
+
+  <page-loading content="加载权限信息中..." visible="{{loading}}"></page-loading>
+  
+  <i-cell-group>
+    <i-cell wx:for="{{roleList}}" wx:key="index" title="{{item.title}}" label="{{item.label}}">
+      <view slot="footer">
+        <i-icon type="success_fill" color="#67C23A" size="25" wx:if="{{item.have}}" />
+        <i-icon type="delete_fill" color="#F56C6C" size="25" wx:else/>
+      </view>
+    </i-cell>
+  </i-cell-group>
+</view>

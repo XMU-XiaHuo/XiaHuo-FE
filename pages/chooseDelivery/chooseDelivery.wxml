@@ -1,0 +1,26 @@
+<!--pages/chooseDelivery/chooseDelivery.wxml-->
+<view class="container">
+  <back-top-menu title="选择快递商" backUrl="../orderList/orderList"></back-top-menu>
+
+  <page-loading content="加载快递商中..." visible="{{loading}}"></page-loading>
+
+  <i-cell-group>
+    <i-cell wx:for="{{deliveryList}}" wx:key="index" title="{{item.title}}">
+      <i-switch slot="footer" value="{{item.switch}}" bind:change="onSwitchChange" data-index="{{index}}">
+        <i-icon type="right" slot="open"></i-icon>
+        <i-icon type="close" slot="close"></i-icon>
+      </i-switch>
+    </i-cell>
+  </i-cell-group>
+
+  <view class="bottom-button">
+    <i-button bind:click="nextStep" type="primary" shape="circle">确定</i-button>
+  </view>
+
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <view class='error-text'>{{errorMsg}}</view>
+    <view class='empty-s'></view>
+  </i-modal>
+
+</view>

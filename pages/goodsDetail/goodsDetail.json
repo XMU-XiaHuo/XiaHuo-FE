@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "back-top-menu": "../../components/back-top-menu/back-top-menu",
+    "page-loading": "../../components/page-loading/page-loading",
+    "i-panel": "../../iview/panel/index",
+    "i-button": "../../iview/button/index",
+    "i-swipeout": "../../iview/swipeout/index",
+    "i-modal": "../../iview/modal/index",
+    "i-cell": "../../iview/cell/index" 
+  }
+}

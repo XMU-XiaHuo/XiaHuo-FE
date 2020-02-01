@@ -2,8 +2,11 @@
   "usingComponents": {
     "create-steps": "../../components/create-steps/create-steps",
     "back-top-menu": "../../components/back-top-menu/back-top-menu",
+    "van-area": "../../vant/area/index",
+    "van-field": "../../vant/field/index",
+    "van-cell": "../../vant/cell/index",
     "i-panel": "../../iview/panel/index",
-    "i-button": "../../iview/button/index",
-    "van-field": "../../vant/field/index"
+    "i-modal": "../../iview/modal/index",
+    "i-button": "../../iview/button/index"
   }
 }

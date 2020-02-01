@@ -1,0 +1,11 @@
+<!--components/no-result/no-result.wxml-->
+<view class="no-result-container" wx:if="{{visible}}">
+  <view class="center-container">
+    <view class="search-img-bg">
+      <image class="search-img" src="image/search.png"></image>
+    </view>
+    <view class="no-result-text">
+      没有找到结果
+    </view>
+  </view>
+</view>

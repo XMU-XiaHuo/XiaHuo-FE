@@ -1,0 +1,8 @@
+/* pages/createGoods/createGoods.wxss */
+
+.modal-input {
+  padding: 0 15rpx !important;
+  border: 0.8px solid #dcdfe6 !important;
+  box-sizing: border-box !important;
+  border-radius: 4px;
+}

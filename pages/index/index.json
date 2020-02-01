@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "role-tag": "../../components/role-tag/role-tag"
+    "role-tag": "../../components/role-tag/role-tag",
+    "i-modal": "../../iview/modal/index",
+    "van-loading": "../../vant/loading/index"
   }
 }

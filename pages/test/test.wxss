@@ -1,5 +1,0 @@
-/* pages/test/test.wxss */
-
-.test{
-  padding-top: 100rpx;
-}

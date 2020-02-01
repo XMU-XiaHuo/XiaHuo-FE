@@ -1,0 +1,31 @@
+/* pages/stockCheck/stockCheck.wxss */
+
+.result-title {
+  font-size: 20px;
+  padding-left: 16px;
+}
+
+.tip {
+  text-align: right;
+  font-size: 14px;
+  color: #80848f;
+  margin: 35rpx 0 15rpx 0;
+  padding-right: 20rpx;
+}
+
+.button-group-container {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 30rpx;
+}
+
+.report-button {
+  margin-right: 10rpx;
+}
+
+.modal-input {
+  padding: 0 15rpx !important;
+  border: 0.8px solid #DCDFE6 !important;
+  box-sizing: border-box !important;
+  border-radius: 4px;
+}

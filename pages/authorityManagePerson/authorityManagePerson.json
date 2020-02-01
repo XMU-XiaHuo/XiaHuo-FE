@@ -5,6 +5,7 @@
     "i-switch": "../../iview/switch/index",
     "i-icon": "../../iview/icon/index",
     "i-button": "../../iview/button/index",
+    "i-modal": "../../iview/modal/index",
     "back-top-menu": "../../components/back-top-menu/back-top-menu"
   }
 }

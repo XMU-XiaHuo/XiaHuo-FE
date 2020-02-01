@@ -1,0 +1,4 @@
+<!--components/page-loading/page-loading.wxml-->
+<view class="{{isPart ? 'page-loading-part' : 'page-loading'}}" hidden="{{!visible}}">
+  <van-loading color="#409EFF" class="loading-img" text-size="16px" vertical>{{content}}</van-loading>
+</view>

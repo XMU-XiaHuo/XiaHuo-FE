@@ -1,7 +1,8 @@
 /* components/role-tag/role-tag.wxss */
-.warehouse-role {
+.warehouse-role-tag {
   display: inline-block;
   padding: 8rpx;
+  text-align: center;
   border-radius: 10rpx;
   font-size: 14px;
   line-height: 1em;

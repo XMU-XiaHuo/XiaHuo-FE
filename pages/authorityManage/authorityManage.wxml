@@ -1,55 +1,31 @@
 <!--pages/authorityManage/authorityManage.wxml-->
 <view class="container">
-  <top-menu title="权限管理"></top-menu>
+  <back-top-menu title="权限管理" backUrl="../mainPage/mainPage"></back-top-menu>
   <view class="empty"></view>
   <view class="tip">
-    <span>* 右滑进行编辑和删除</span>
+    <span>* 左滑进行编辑和删除</span>
   </view>
   <i-panel class='panel'>
-    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{0}}" unclosable="{{true}}">
+    <page-loading content="{{loadingText}}" visible="{{loading}}"></page-loading>
+    <i-swipeout wx:for="{{members}}" i-class="i-swipeout-demo-item" operateWidth="{{item.canEdit ? 140 : 0}}" unclosable="{{true}}">
       <view slot="content">
         <i-icon type="addressbook" size="28" color="#80848f" />
-        <view class="user-name">谭源圆</view>
-        <role-tag class="role-tag" role="owner"></role-tag>
-      </view>
-    </i-swipeout>
-
-    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{140}}" unclosable="{{true}}">
-      <view slot="content">
-        <i-icon type="addressbook" size="28" color="#80848f" />
-        <view class="user-name">任建鹏</view>
-        <role-tag class="role-tag" role="admin"></role-tag>
+        <view class="user-name">{{item.name}}</view>
+        <role-tag wx:if="{{item.roles.length>0}}" wx:for="{{item.roles}}" wx:for-item="role" class="role-tag" role="{{role}}"></role-tag>
+        <role-tag wx:if="{{item.roles.length==0}}" role="无权限"></role-tag>
       </view>
       <view slot="button" class="i-swipeout-demo-button-group">
         <view class="i-swipeout-demo-button edit">
-          <view class="button-text" bindtap="jumpToEditPage">编辑</view>
+          <view class="button-text" bindtap="jumpToEditPage" data-item="{{item}}">编辑</view>
         </view>
         <view class="i-swipeout-demo-button delete">
-          <view class="button-text" bindtap="openDeleteAction">删除</view>
+          <view class="button-text" bindtap="openDeleteAction" data-id="{{item.userId}}" data-index="{{index}}">删除</view>
         </view>
       </view>
     </i-swipeout>
-
-    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{140}}">
-      <view slot="content">
-        <i-icon type="addressbook" size="28" color="#80848f" />
-        <view class="user-name">吴悠</view>
-        <role-tag class="role-tag" role="picker"></role-tag>
-        <role-tag class="role-tag" role="counter"></role-tag>
-      </view>
-      <view slot="button" class="i-swipeout-demo-button-group">
-        <view class="i-swipeout-demo-button edit">
-          <view class="button-text" bindtap="jumpToEditPage">编辑</view>
-        </view>
-        <view class="i-swipeout-demo-button delete">
-          <view class="button-text" bindtap="openDeleteAction">删除</view>
-        </view>
-      </view>
-    </i-swipeout>
-
   </i-panel>
 
-  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="handleCancel" bind:click="handleDelete" mask-closable="{{ false }}">
+  <i-action-sheet visible="{{ actionSheetVisible }}" actions="{{ deleteAction }}" show-cancel bind:cancel="cancelDelete" bind:click="handleDelete">
     <view slot="header" style="padding: 16px">
       <view class="confirm-delete">确定删除吗？</view>
       <text>删除后无法恢复哦</text>
@@ -57,7 +33,13 @@
   </i-action-sheet>
 
   <view class="bottom-sticky-button" hidden="{{isPageScroll}}">
-    <i-button bind:click="invite" type="primary" shape="circle">邀请新成员</i-button>
+    <i-button open-type="share" type="primary" shape="circle">邀请新成员</i-button>
   </view>
+
+  <i-modal title="{{errorTitle}}" disabled="{{canShare}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}" open-type="share">
+    <view class='empty-s'></view>
+    <view class='error-text'>{{errorMsg}}</view>
+    <view class='empty-s'></view>
+  </i-modal>
 
 </view>

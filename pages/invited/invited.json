@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "i-modal": "../../iview/modal/index",
+    "i-button": "../../iview/button/index",
+    "back-top-menu": "../../components/back-top-menu/back-top-menu",
+    "page-loading": "../../components/page-loading/page-loading"
+  }
+}

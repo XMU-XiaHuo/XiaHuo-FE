@@ -1,8 +1,74 @@
 /* pages/mainPage/mainPage.wxss */
 
-.person-info{
+.person-info {
+  position: relative;
   height: 250rpx;
   width: 100%;
+  padding: 40rpx 30rpx 40rpx 50rpx;
+  box-sizing: border-box;
+  background-size: cover;
+}
+
+.avatar-img {
+  width: 170rpx;
+  height: 170rpx;
+}
+
+.text-container {
+  font-size: 16px;
+  vertical-align: top;
+  width: 470rpx;
+  height: 170rpx;
+  padding: 10rpx 0 0 30rpx;
+  box-sizing: border-box;
+}
+
+.text-flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 25rpx 0;
+}
+
+.role-container {
+  height: 50rpx;
+  margin-top: 10rpx;
+}
+
+.role-tag-list {
+  margin-right: 10rpx;
+}
+
+.grid-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.square {
+  position: relative;
+  width: 249.5rpx;
+  height: 249.5rpx;
+  text-align: center;
+}
+
+.square-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.right-bottom-border {
+  border-bottom: 0.75rpx solid #f2f6fc;
+  border-right: 0.75rpx solid #f2f6fc;
+}
+
+.bottom-border {
+  border-bottom: 0.75rpx solid #f2f6fc;
 }
 
 .route-icon {
@@ -13,4 +79,8 @@
 .route-title {
   margin-top: 15rpx;
   font-size: 15px;
+}
+
+.square:active {
+  background-color: #f2f6fc;
 }

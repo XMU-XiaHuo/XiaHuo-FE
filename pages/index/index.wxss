@@ -1,11 +1,9 @@
 .container {
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   box-sizing: border-box;
-  padding-top: 175rpx;
+  padding-top: 250rpx;
 }
 
 .logo {
@@ -13,26 +11,24 @@
   height: 250rpx;
 }
 
-.welcome-text {
-  margin-top: 25rpx;
-  font-size: 20px;
+.loading-container {
+  margin-top: 100rpx;
 }
 
-.warehouse-container:first-child {
-  margin-top: 75rpx;
-  border-radius: 20rpx 20rpx 0 0;
-  border-top: 2px solid black;
-}
-
-.warehouse-container:last-child {
-  border-radius: 0 0 20rpx 20rpx;
-  border-bottom: 2px solid black;
+.loading-text {
+  margin-top: 50rpx;
 }
 
 .warehouse-container {
-  width: 400rpx;
-  padding: 20rpx;
-  border: 1px solid black;
+  width: 300rpx;
+  height: 250rpx;
+  margin-top: 100rpx;
+  border-radius: 50rpx 50rpx 50rpx 50rpx;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .warehouse-container:active {
@@ -40,19 +36,14 @@
 }
 
 .warehouse-name {
-  display: inline-block;
-  width: 250rpx;
-  font-size: 16px;
-  text-overflow: ellipsis;
+  font-size: 18px;
   white-space: nowrap;
   overflow: hidden;
-  vertical-align: text-bottom;
-  line-height: 1em;
   margin-right: 20rpx;
 }
 
 .create-img {
-  width: 50rpx;
-  height: 50rpx;
-  vertical-align: middle;
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 30rpx;
 }

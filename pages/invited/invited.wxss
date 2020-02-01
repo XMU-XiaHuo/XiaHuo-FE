@@ -1,0 +1,55 @@
+/* pages/invited/invited.wxss */
+
+.invite-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30%;
+}
+
+.warehouse-img {
+  width: 512rpx;
+  height: 300rpx;
+}
+
+.user-line {
+  margin-top: 10rpx;
+}
+
+.user-name {
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.warehouse-name {
+  margin-top: 10rpx;
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.bottom-button-group {
+  position: fixed;
+  width: 100%;
+  top: 100%;
+  transform: translateY(-100%);
+}
+
+.no-result-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 300rpx;
+}
+
+.center-container {
+  text-align: center;
+}
+
+.search-img {
+  width: 250rpx;
+  height: 250rpx;
+}
+
+.no-result-text {
+  margin-top: 20rpx;
+  font-size: 18px;
+}

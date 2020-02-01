@@ -1,13 +1,32 @@
 <!--pages/mainPage/mainPage.wxml-->
 <view class="container">
-  <top-menu title="厦货"></top-menu>
-
-  <view class="person-info"></view>
+  <top-menu title="{{warehouseName}}"></top-menu>
+  <view class="person-info" style="background-image:url('image/bg.jpg')">
+    <page-loading content="加载个人信息中..." isPart="{{true}}" visible="{{userInfoLoading}}"></page-loading>
+    <view class="inline-b avatar-img-container">
+      <image src="{{userInfo.avatarUrl}}" class="avatar-img"></image>
+    </view>
+    <view class="inline-b text-container">
+      <view class="text-flex-container">
+        <view class="text-ellipsis">{{userName}}</view>
+        <view class="role-container">
+          <role-tag wx:if="{{roleList.length>0}}" wx:for="{{roleList}}" role="{{item}}" class="role-tag-list"></role-tag>
+          <role-tag wx:if="{{roleList.length==0}}" role="无权限"></role-tag>
+        </view>
+      </view>
+    </view>
+  </view>
   <divider></divider>
-  <van-grid column-num="3" square clickable>
-    <van-grid-item wx:for="{{ routeList }}" use-slot class="route-square">
-      <image class="route-icon" src="{{item.icon}}"></image>
-      <text class="route-title">{{item.title}}</text>
-    </van-grid-item>
-  </van-grid>
+
+  <view class="grid-container">
+    <view wx:for="{{routeList}}" class="square {{index%3===2 ? 'bottom-border' : 'right-bottom-border'}}" bindtap="navigateTo" data-url="{{item.url}}">
+      <view class="square-content">
+        <view>
+          <image class="route-icon" src="{{item.icon}}"></image>
+        </view>
+        <text class="route-title">{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+
 </view>

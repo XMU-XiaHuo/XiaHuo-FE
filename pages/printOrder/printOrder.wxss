@@ -1,0 +1,29 @@
+/* pages/printOrder/printOrder.wxss */
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: 350rpx;
+}
+
+.loading-text {
+  margin-top: 50rpx;
+}
+
+.file-image {
+  height: 230rpx;
+  width: 230rpx;
+}
+
+.file-text {
+  margin-top: 20rpx;
+}
+
+.bottom-button-group {
+  position: fixed;
+  width: 100%;
+  top: 100%;
+  transform: translateY(-100%);
+}

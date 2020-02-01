@@ -11,6 +11,10 @@ Component({
     backUrl: {
       type: String,
       value: undefined
+    },
+    jumpType: {
+      type: String,
+      value: 'reLaunch'
     }
   },
 
@@ -27,16 +31,27 @@ Component({
   methods: {
     back: function(e) {
       let {
-        url
-      } = e.currentTarget.dataset;
-      if (url) {
-        wx.navigateTo({
-          url: e.currentTarget.dataset.url
-        })
-      } else {
-        wx.navigateBack({
-          delta: 1
-        })
+        jumpType,
+        backUrl
+      } = this.data;
+      if (backUrl) {
+        if (jumpType === 'navigate') {
+          wx.navigateTo({
+            url: backUrl
+          })
+        } else if (jumpType === 'redirect') {
+          wx.redirectTo({
+            url: backUrl
+          })
+        } else if (jumpType === 'reLaunch') {
+          wx.reLaunch({
+            url: backUrl
+          })
+        } else {
+          wx.navigateBack({
+            delta: 1
+          })
+        }
       }
     },
   }

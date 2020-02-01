@@ -1,0 +1,16 @@
+/* pages/storageList/storageList.wxss */
+
+.tip {
+  text-align: right;
+  font-size: 13px;
+  color: #80848f;
+  margin: 30rpx 0 20rpx 0;
+  padding-right: 20rpx;
+}
+
+.product-cell {
+  box-sizing: border-box;
+  border: 0 solid #e9eaec;
+  border-top-width: 0.5px;
+  border-bottom-width: 0.5px;
+}

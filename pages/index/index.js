@@ -1,72 +1,138 @@
 //index.js
-//获取应用实例
 const app = getApp();
+const {
+  wxRequest
+} = app.Request;
 
 Page({
   data: {
     logo: 'image/logo.png',
-    userInfo: {},
-    warehouse: [{
-        name: '厦门吴悠是xxxxxxxxxxxxxx仓库',
-        role: 'owner'
+    loadingText: '登录中...',
+    modalVisible: false,
+    errorTitle: '登录出错了๑Ծ‸Ծ๑',
+    errorMsg: '',
+    modalButtons: [{
+        name: '取消'
       },
       {
-        name: '福州仓库',
-        role: 'admin'
-      },
-      {
-        name: '泉州仓库',
-        role: 'picker'
-      },
+        color: '#409eff',
+        name: '重试',
+      }
     ],
-    
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../mainPage/mainPage'
-    })
+    userInfo: {},
+    createWarehouseVisible: true
   },
   jumpToCreatePage: function() {
     wx.navigateTo({
       url: '../createWarehouse/createWarehouse'
     })
   },
-  onLoad: function() {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        console.log(res);
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+  // wxLogin 获取 code
+  getCode: function() {
+    return new Promise((resolve, reject) => {
+      wx.login({
+        success(res) {
+          if (res.code) {
+            resolve(res.code);
+          } else {
+            reject();
+          }
+        },
+        fail(error) {
+          reject(error);
         }
       })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
     })
-  }
+  },
+  // 发 code 到后端-接口
+  codeToBackEnd: function(code) {
+    return wxRequest({
+      url: '/user/user/login',
+      method: 'GET',
+      data: {
+        code: code
+      },
+      header: {
+        'content-type': 'application/json'
+      }
+    });
+  },
+  // 展示错误 modal
+  showModal: function(errorMsg = '发生了未知的错误') {
+    let that = this;
+    this.setData({
+      errorMsg: errorMsg
+    }, () => {
+      that.setData({
+        modalVisible: true
+      })
+    });
+  },
+  // 错误 modal 的交互
+  clickModal({
+    detail
+  }) {
+    const index = detail.index;
+    if (index === 1) {
+      this.reTry();
+    }
+    this.setData({
+      modalVisible: false
+    })
+  },
+  // 重试登录
+  reTry: function() {
+    this.userLogin();
+  },
+  // 用户登录总流程
+  userLogin: function() {
+    let that = this;
+    Promise.resolve().then(() => {
+      this.setData({
+        loadingText: '微信授权中...'
+      });
+      return this.getCode();
+    }).then((code) => {
+      // wxLogin 成功
+      this.setData({
+        loadingText: '登录中...'
+      });
+      return this.codeToBackEnd(code);
+    }, (error) => {
+      // wxLogin 失败
+      this.showModal('微信授权失败\n请检查您的网络连接, 并稍后重试');
+      console.log(error);
+    }).then((res) => {
+      // codeToBackEnd 成功
+      if (res.result) {
+        let reLaunchUrl = wx.getStorageSync("reLaunchUrl");
+        wx.removeStorageSync('reLaunchUrl');
+        // 获取用户信息
+        wx.getSetting({
+          success: res => {
+            if (res.authSetting['scope.userInfo']) {
+              wx.reLaunch({
+                url: reLaunchUrl || '../mainPage/mainPage'
+              });
+            } else {
+              wx.reLaunch({
+                url: '../../pages/userAuthorize/userAuthorize'
+              })
+            }
+          },
+        })
+      } else {
+        that.setData({
+          createWarehouseVisible: false
+        });
+      }
+    }, (error) => {
+      // codeToBackEnd 失败
+      this.showModal('系统后台出错, 请稍后重试');
+    });
+  },
+  onLoad: function() {
+    this.userLogin();
+  },
+
 })

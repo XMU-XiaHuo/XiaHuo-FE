@@ -1,0 +1,39 @@
+<!--pages/pick/pick.wxml-->
+<view class="container">
+  <back-top-menu title="{{topMenuTitle}}" backUrl="../mainPage/mainPage"></back-top-menu>
+  <view hidden="{{!loading}}">
+    <page-loading content="{{loadingText}}"></page-loading>
+  </view>
+
+  <view class='loading-container' hidden="{{isScan}}">
+    <view class='scan-container' bindtap="scan">
+      <image src="image/scan.png" class="scan-image"></image>
+      <view class="scan-text">点击扫描快递单</view>
+    </view>
+  </view>
+
+  <view hidden="{{!dataShow}}">
+    <view class="panel-title">拣货单基本信息:</view>
+    <i-panel>
+      <i-cell title="ID" value="***"></i-cell>
+      <i-cell title="类型" value="{{pickOrder.type}}"></i-cell>
+      <i-cell title="状态" value="{{pickOrder.status}}"></i-cell>
+    </i-panel>
+    <view class="panel-title">货物清单:</view>
+    <i-panel>
+      <i-cell wx:for="{{pickOrder.productLocationList}}" title="{{item.productName + ' （x' + item.productNumber + '）'}}" value="{{'位置：'+item.productLocation}}"></i-cell>
+    </i-panel>
+    <view class="button-group">
+      <i-button bind:click="pickOperation" data-value="1" type="primary" shape="circle">拣货完成</i-button>
+      <i-button bind:click="pickOperation" data-value="2" type="error" shape="circle">取消拣货</i-button>
+      <i-button bind:click="pickOperation" data-value="3" type="error" shape="circle">库存不足</i-button>
+    </view>
+
+  </view>
+
+  <i-modal title="{{errorTitle}}" visible="{{ modalVisible }}" bind:click="clickModal" actions="{{ modalButtons }}">
+    <view class='empty-s'></view>
+    <view class='error-text'>{{errorMsg}}</view>
+    <view class='empty-s'></view>
+  </i-modal>
+</view>

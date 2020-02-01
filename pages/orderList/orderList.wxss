@@ -1,0 +1,67 @@
+/* pages/orderList/orderList.wxss */
+
+.property-container {
+  font-size: 15px;
+}
+
+.property {
+  margin-top: 5rpx;
+}
+
+.property-key {
+  margin-right: 20rpx;
+}
+
+.button-group-container {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 30rpx;
+  margin-right: 20rpx;
+}
+
+.report-button {
+  margin-right: 15rpx;
+}
+
+.button-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.order-list-tag {
+  float: right;
+  margin-right: 15rpx;
+}
+
+.order-goods {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.order-title {
+  display: flex;
+  align-items: center;
+}
+
+.order-content-container {
+  flex-grow: 1;
+}
+
+.choose-icon-container {
+  width: 35rpx;
+  height: 35rpx;
+  border-radius: 50%;
+  border: 1px solid #dcdfe6;
+  margin-right: 25rpx;
+}
+
+.choose-icon {
+  width: 35rpx;
+  height: 35rpx;
+}
