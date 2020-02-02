@@ -77,36 +77,50 @@ Page({
   onLoad: function(options) {
     let that = this;
     this.getWxUserInfo();
-    let userName = wx.getStorageSync('userName');
-    let warehouseName = wx.getStorageSync('warehouseName');
-    if (userName === "") {
-      this.getUserInfo().then(({
-        result
-      }) => {
-        wx.setStorageSync("userName", result.name);
-        that.setData({
-          userName: result.name,
-        })
-      })
-    } else {
+    // let userName = wx.getStorageSync('userName');
+    // let warehouseName = wx.getStorageSync('warehouseName');
+    // if (userName === "") {
+    //   this.getUserInfo().then(({
+    //     result
+    //   }) => {
+    //     wx.setStorageSync("userName", result.name);
+    //     that.setData({
+    //       userName: result.name,
+    //     })
+    //   })
+    // } else {
+    //   that.setData({
+    //     userName: userName,
+    //   })
+    // }
+    // if (warehouseName === "") {
+    //   this.getWarehouseInfo().then(({
+    //     result
+    //   }) => {
+    //     wx.setStorageSync("warehouseName", result.warehouseName)
+    //     that.setData({
+    //       warehouseName: result.warehouseName
+    //     })
+    //   })
+    // } else {
+    //   that.setData({
+    //     warehouseName: warehouseName
+    //   })
+    // }
+    this.getUserInfo().then(({
+      result
+    }) => {
       that.setData({
-        userName: userName,
+        userName: result.name,
       })
-    }
-    if (warehouseName === "") {
-      this.getWarehouseInfo().then(({
-        result
-      }) => {
-        wx.setStorageSync("warehouseName", result.warehouseName)
-        that.setData({
-          warehouseName: result.warehouseName
-        })
-      })
-    } else {
+    })
+    this.getWarehouseInfo().then(({
+      result
+    }) => {
       that.setData({
-        warehouseName: warehouseName
+        warehouseName: result.warehouseName
       })
-    }
+    })
     this.getPermissionInfo().then(({
       result
     }) => {

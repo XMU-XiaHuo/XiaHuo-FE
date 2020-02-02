@@ -8,7 +8,7 @@
     </view>
     <view class="inline-b text-container">
       <view class="text-flex-container">
-        <view class="text-ellipsis">{{userName}}</view>
+        <view class="text-ellipsis">{{userName || ''}}</view>
         <view class="role-container">
           <role-tag wx:if="{{roleList.length>0}}" wx:for="{{roleList}}" role="{{item}}" class="role-tag-list"></role-tag>
           <role-tag wx:if="{{roleList.length==0}}" role="无权限"></role-tag>

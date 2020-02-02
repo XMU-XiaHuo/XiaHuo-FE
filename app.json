@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/mainPage/mainPage",
     "pages/pick/pick",
     "pages/orderList/orderList",
     "pages/printOrder/printOrder",
-    "pages/index/index",
     "pages/chooseDelivery/chooseDelivery",
     "pages/warehouseInfoManage/warehouseInfoManage",
     "pages/createWarehouse2/createWarehouse2",
