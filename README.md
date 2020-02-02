@@ -46,7 +46,6 @@
  
  "pages/storageProduct/storageProduct", //库存信息页面
   
-  
  "pages/storageList/storageList", //仓储盘点页面
     "pages/stockCheck/stockCheck", //每项产品存储信息
  
