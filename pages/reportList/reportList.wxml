@@ -6,7 +6,7 @@
 
   <i-panel wx:if="{{hasResult}}" class='panel'>
     <van-collapse bind:change="collapseChangeCatcher" value="{{ activeNames }}">
-      <van-collapse-item wx:for="{{reportList}}" name="{{item.id}}">
+      <van-collapse-item wx:for="{{reportList}}" clickable="{{true}}" name="{{item.id}}">
         <text slot="title">{{'产品: ' + item.productName + ' \n时间: ' + item.createTime}}</text>
         <view class="property-container">
           <view class="property" wx:for="{{item}}" wx:for-index="idx" wx:for-item="property" wx:if="{{map[idx].length > 0}}">

@@ -11,7 +11,7 @@
       <span>* 若商品数量有误，请及时报损或报溢</span>
     </view>
     <van-collapse wx:for="{{productList}}" bind:change="collapseChangeCatcher" value="{{ activeNames }}">
-      <van-collapse-item title="{{item.productName}}" name="{{item.productId}}" value="{{'x'+item.productNumber}}">
+      <van-collapse-item title="{{item.productName}}" name="{{item.productId}}" value="{{'x'+item.productNumber}}" clickable="{{true}}">
         入库时间: {{item.entryTime}}
         <view class="button-group-container">
           <van-button class="report-button" size="small" round type="info" bind:click="report" data-item="{{item}}" data-type="1">报溢</van-button>
