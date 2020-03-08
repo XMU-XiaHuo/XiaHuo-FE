@@ -35,7 +35,7 @@ Page({
     map: {
       productId: '',
       productName: '产品名',
-      createTime: "进货时间",
+      createTime: "操作时间",
       entryNumber: '进货数量',
       operateUserId: '',
       operateUserName: '操作者',

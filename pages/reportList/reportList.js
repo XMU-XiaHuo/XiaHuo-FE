@@ -36,7 +36,7 @@ Page({
       productId: '',
       productName: '产品名',
       productLocation: "库位号",
-      createTime: "进货时间",
+      createTime: "操作时间",
       description: "描述信息",
       newNumber: '新数量',
       oldNumber: '原数量',
