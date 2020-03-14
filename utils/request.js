@@ -1,4 +1,4 @@
-const baseURL = 'http://106.13.38.39:8082';
+const baseURL = 'http://106.13.61.224:8082';
 
 function addToken(res) {
   let token = res.header['token'];
