@@ -4,5 +4,6 @@
   <i-panel>
     <i-cell title="查看进货单" url="../entryList/entryList" is-link></i-cell>
     <i-cell title="查看报损 / 报溢单" url="../reportList/reportList" is-link></i-cell>
+    <i-cell title="查看计费单" url="../serviceBilling/serviceBilling" is-link></i-cell>
   </i-panel>
 </view>

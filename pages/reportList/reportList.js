@@ -73,7 +73,7 @@ Page({
     })
   },
 
-  // 获取商品列表-接口
+  // 获取报损/报溢单接口
   getReportList: function() {
     let that = this;
     let {

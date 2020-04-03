@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/log/log",
+    "pages/serviceBilling/serviceBilling",
     "pages/index/index",
     "pages/mainPage/mainPage",
     "pages/pick/pick",
@@ -18,7 +20,6 @@
     "pages/entryList/entryList",
     "pages/stockCheck/stockCheck",
     "pages/productList/productList",
-    "pages/log/log",
     "pages/editProduct/editProduct",
     "pages/createProduct/createProduct",
     "pages/createGoods/createGoods",
