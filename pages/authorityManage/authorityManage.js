@@ -223,7 +223,7 @@ Page({
       shareCode
     } = this.data;
     return {
-      title: '测试',
+      title: '邀请函',
       path: '/pages/invited/invited?inviteCode=' + shareCode,
       imageUrl: 'image/warehouse.png'
     }
