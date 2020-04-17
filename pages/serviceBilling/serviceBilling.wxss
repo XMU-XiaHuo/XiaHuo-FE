@@ -1,1 +1,13 @@
 /* pages/serviceBilling/serviceBilling.wxss */
+
+.property-container {
+  font-size: 15px;
+}
+
+.property {
+  margin-top: 5rpx;
+}
+
+.property-key {
+  margin-right: 20rpx;
+}

@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/log/log",
-    "pages/serviceBilling/serviceBilling",
     "pages/index/index",
+    "pages/serviceBilling/serviceBilling",
+    "pages/log/log",
     "pages/mainPage/mainPage",
     "pages/pick/pick",
     "pages/orderList/orderList",

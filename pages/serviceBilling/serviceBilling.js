@@ -30,6 +30,12 @@ Page({
       color: '#409eff',
       name: '确认',
     }],
+
+    // map 
+    map: {
+      orderNum: '订单数量',
+      cost: '费用'
+    }
   },
 
   // 处理收缩面板变化事件
@@ -71,36 +77,35 @@ Page({
     that.setData({
       loading: true
     }, () => {
-      // wxRequest({
-      //   url: '/storage-location/reportList',
-      //   method: 'GET',
-      //   data: {
-      //     page: page,
-      //     pageLimit: pageLimit
-      //   }
-      // }).then((res) => {
-      //   let {
-      //     result
-      //   } = res;
-      //   console.log(result);
-      //   let {
-      //     storageReportVOList
-      //   } = result;
-      //   if (storageReportVOList.length < pageLimit) {
-      //     noMore = true;
-      //   }
-      //   that.setData({
-      //     page: page + 1,
-      //     loading: false,
-      //     noMore: noMore,
-      //     reportList: reportList.concat(storageReportVOList)
-      //   });
-      // }, (error) => {
-      //   that.showModal('出错了๑Ծ‸Ծ๑', error.message);
-      //   that.setData({
-      //     loading: false
-      //   })
-      // });
+      wxRequest({
+        url: '/order/order/orderReports',
+        method: 'GET',
+        data: {
+          pageNum: page,
+          pageLimit: pageLimit
+        }
+      }).then((res) => {
+        let {
+          result
+        } = res;
+        let {
+          orderReportVOList
+        } = result;
+        if (orderReportVOList.length < pageLimit) {
+          noMore = true;
+        }
+        that.setData({
+          page: page + 1,
+          loading: false,
+          noMore: noMore,
+          billList: billList.concat(orderReportVOList)
+        });
+      }, (error) => {
+        that.showModal('出错了๑Ծ‸Ծ๑', error.message);
+        that.setData({
+          loading: false
+        })
+      });
     })
   },
 

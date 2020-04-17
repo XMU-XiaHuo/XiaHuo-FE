@@ -2,12 +2,12 @@
 <view class="container">
   <back-top-menu title="计费单" backUrl="../log/log"></back-top-menu>
 
-  <page-loading content="加载报损/报溢单中..." visible="{{loading}}"></page-loading>
+  <page-loading content="加载计费单中..." visible="{{loading}}"></page-loading>
 
   <i-panel wx:if="{{hasResult}}" class='panel'>
     <van-collapse bind:change="collapseChangeCatcher" value="{{ activeNames }}">
       <van-collapse-item wx:for="{{billList}}" clickable="{{true}}" name="{{item.id}}">
-        <text slot="title">{{'产品: ' + item.productName + ' \n时间: ' + item.createTime}}</text>
+        <text slot="title">{{item.startTime + ' - ' + item.endTime}}</text>
         <view class="property-container">
           <view class="property" wx:for="{{item}}" wx:for-index="idx" wx:for-item="property" wx:if="{{map[idx].length > 0}}">
             <view class="property-key inline-b">{{map[idx]}}:</view>
