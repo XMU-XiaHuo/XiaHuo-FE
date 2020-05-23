@@ -15,7 +15,7 @@ Page({
     goodsInfo: {
       name: '',
       number: '',
-      location: '123456'
+      location: ''
     },
     errorInfo: {
       nameError: '',
